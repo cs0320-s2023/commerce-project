@@ -1,12 +1,11 @@
-# cs32 --> Sprint 5 **MAPS!**
+# cs32 --> Term Project **YESSSIRRRR!**
 ## Contributors
-Developed by Zeeshan Bhalwani (zbhalwan) & Sam Feldman (sfeldma8)
+Developed by Zeeshan Bhalwani (zbhalwan) & Kyle Sohn (ksohn3) & Safae Merigh (smerigh) & Omer Chaudhry (mchaud11)
 
 Total time: 20 hours
 
-Github Repo: https://github.com/cs0320-s2023/sprint-5-sfeldma8-zbhalwan
+Github Repo: https://github.com/
 
-Would like to acknowledge mke2, ipinedad, ksohn for their code which we took some inspiration from.
 
 ## Project Description
 Added new data sources to our backend API server which allowed us to filter and query redlining data. Developed frontend that would allow for areas to be rendered on an interactive map. Areas could be filtered through bounds and highlighted through queries. Data api calls which the backend allowed for.
@@ -63,9 +62,7 @@ There are two geoJSON files that are available to use through the following file
   * `utils` contains a getter for the api response error messages so that they can outputted on the webapp
 
   ### Shortcuts
-  `ctrl + r` to reset the bounds to entire USA map
-  `ctrl + o + p` to reset the highlighted areas based on keyword search
-  `ctrl + d` to populate coordiantes with boundbox for detroit
+
   
 
 ## Errors and Bugs
@@ -82,17 +79,3 @@ There are many different errors returned by the API, so documenting them all wou
 * Run `Server.main()` and go to `localhost:3232` and utilize API endpoints and parameters detailed in the API section.
 * Run the tests: `npm test` for frontend and `mvn test`
   * run the server before running integration tests
-
-## Reflection
-1. VSCode - ide that allows us to devleop clean frontend typescript code
-2. TypeScript - allows us to develop frontend code
-3. npm - allows us to complile, build, run, and test frontend code
-4. mapbox-gl - render frontend map
-5. HTML - allows us to organize webpages
-6. RTL - allows us to test frontend
-7. jest-dom - allows for testing frontend
-8. Moshi - allows us to back and forth between jsons
-9. Spark - allows us to create backend api server
-10. JUnit - allows for testing backend
-11. guava - allows for caching on the backend
-12. Laptops/Computers - allows us to develop code
