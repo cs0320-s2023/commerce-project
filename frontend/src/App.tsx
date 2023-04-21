@@ -3,12 +3,13 @@ import "./App.css";
 import {ProductDescription} from  "./components"
 import {SearchBar} from "./components"
 import {SearchResults} from "./components"
+import {siteName} from "../src/config"
 
 
 function App() {
   return (
     <div className="app" id="appID" role="app">
-      Initial app
+      {siteName}
       <SearchBar/>
       <ProductDescription/>
       <SearchResults/>

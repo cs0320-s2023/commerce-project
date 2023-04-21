@@ -16,17 +16,43 @@
   color: white;
 }
 
-.search-bar{
+.search-bar-container{
+  position: relative;
   background-color: red;
-  min-height: 20vh;
+  height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(1px + 2vmin);
-  color: white;
+  color: black;
+  z-Index: 1;
+  
 }
 
+.search-bar{
+  position: relative;
+  min-width: 100vh;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(5px + 2vmin);
+}
+
+.sc-bcXHqe.bncmtB.react-search-box-dropdown{
+  margin-top: 0%;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  background-color: white;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.sc-gswNZR.ilZVLX{
+  font-size: 20px;
+}
 .product-description{
   background-color: yellow;
   min-height: 20vh;

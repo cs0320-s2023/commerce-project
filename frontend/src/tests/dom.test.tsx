@@ -15,7 +15,9 @@ beforeEach(() => {});
 
 test("renders components", () => {
   render(<App />);
+  expect(screen.getByRole("search-bar-container")).toBeInTheDocument();
   expect(screen.getByRole("search-bar")).toBeInTheDocument();
+
   expect(screen.getByRole("product-description")).toBeInTheDocument();
   expect(screen.getByRole("search-results")).toBeInTheDocument();
 });
