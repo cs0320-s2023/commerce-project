@@ -1,53 +1,32 @@
-const mockProductList = [
+interface IProduct {
+    key: string,
+    value: string,
+}
+
+const mockProductList : IProduct[] = [
     {
-      key: "Gazelle-bold-shoes",
-      value: "Nike gazelle bold shoes"
+        key: "Gazelle-bold-shoes",
+        value: "Nike gazelle bold shoes",
     },
     {
         key: "Samba-og-shoes",
-        value: "Adidas Samba OG Shoes"
+        value: "Adidas Samba OG Shoes",
     },
     {
-      key: "nizza-platform-shoes",
-      value: "Puma Nizza Platform Shoes"
+        key: "nizza-platform-shoes",
+        value: "Puma Nizza Platform Shoes",
     },
     {
-      key: "vegan-cycling-shoes",
-      value: "Adidas Vegan Cycling Shoes"
+        key: "vegan-cycling-shoes",
+        value: "Adidas Vegan Cycling Shoes",
     },
     {
-      key: "ultra-4d-running-shoes",
-      value: "Adidas Ultra Running Shoes"
+        key: "ultra-4d-running-shoes",
+        value: "Adidas Ultra Running Shoes",
     },
   ];
 
-const data = [
-    {
-      key: "john",
-      value: "John Doe"
-    },
-    {
-      key: "jane",
-      value: "Jane Doe"
-    },
-    {
-      key: "safae",
-      value: "safae"
-    },
-    {
-      key: "robert",
-      value: "Robert"
-    },
-    {
-      key: "karius",
-      value: "Karius"
-    }
-  ]
-
-export const getProductList = () => {
+export const getProductList = () : IProduct[] => {
+    console.log("getProductList " + mockProductList);
     return mockProductList
-}
-
-export const getData = () => {
-    return data
 }

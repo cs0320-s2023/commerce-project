@@ -61,7 +61,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(1px + 2vmin);
-  color: white;
+  color: black;
 }
 
 .search-results{
@@ -73,4 +73,30 @@
   justify-content: center;
   font-size: calc(1px + 2vmin);
   color: white;
+}
+
+.product-option{
+  background-color: green;
+  min-height: 5vh;
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  justify-content: left;
+  font-size: calc(1px + 2vmin);
+  color: white;
+}
+
+.product-vendor{
+  background-color: black;
+  width: 100px;
+}
+
+.product-price{
+  width: 100px;
+  background-color: pink;
+}
+
+.product-image{
+  width: 200px;
+  height: 200px;
 }

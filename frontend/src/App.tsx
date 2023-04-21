@@ -7,12 +7,15 @@ import {siteName} from "../src/config"
 
 
 function App() {
+
+  const [productKey, setProductKey] = useState("");
+
   return (
     <div className="app" id="appID" role="app">
       {siteName}
-      <SearchBar/>
-      <ProductDescription/>
-      <SearchResults/>
+      <SearchBar setProductKey={setProductKey}/>
+      <ProductDescription productKey={productKey}/>
+      <SearchResults productKey={productKey}/>
     </div>
   );}
 
