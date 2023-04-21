@@ -1,1 +1,0 @@
-export const ACCESS_TOKEN : string = 'pk.eyJ1IjoiemJoYWx3YW4iLCJhIjoiY2xnMnp0OHJuMGFpaDN0cHAzNnZydnY5MiJ9.Z-cmNLI8MIWle7V6y2gVXg';

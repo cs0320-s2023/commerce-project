@@ -9,3 +9,5 @@ pom.xml.bak
 
 # Misc
 .DS_Store
+
+node_modules/
