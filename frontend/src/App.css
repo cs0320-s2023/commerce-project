@@ -1,10 +1,45 @@
-.App {
+.app {
   text-align: center;
   display: flex;
+  flex-direction: column;
+  align-items: left;
 }
 
 .App-header {
   background-color: #282c34;
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(1px + 2vmin);
+  color: white;
+}
+
+.search-bar{
+  background-color: red;
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(1px + 2vmin);
+  color: white;
+}
+
+.product-description{
+  background-color: yellow;
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(1px + 2vmin);
+  color: white;
+}
+
+.search-results{
+  background-color: green;
   min-height: 20vh;
   display: flex;
   flex-direction: column;
