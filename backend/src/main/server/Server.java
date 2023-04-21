@@ -49,7 +49,7 @@ public class Server {
 
         String data = "";
         try {
-            Reader reader = new FileReader("backend/src/main/java/edu/brown/cs32/examples/sprint3/data/fullDownload.json", StandardCharsets.UTF_8);
+            Reader reader = new FileReader("backend/src/main/java/edu/brown/cs32/examples/sprint3/data/mockJ4sRTPResponse.json", StandardCharsets.UTF_8);
             BufferedReader bf = new BufferedReader(reader);
             data = bf.readLine();
             } 
@@ -58,8 +58,10 @@ public class Server {
         }
 
     // Setting up the handler for the GET endpoints
-        Spark.get("bounds", new BoundaryHandler(data));
-        Spark.get("query", new QueryHandler(data));
+//        Spark.get("bounds", new BoundaryHandler(data));
+//        Spark.get("query", new QueryHandler(data));
+
+        // Spark.get("sneakers", new SneakerRTPHandler(data))
         
         Spark.init();
         Spark.awaitInitialization();
