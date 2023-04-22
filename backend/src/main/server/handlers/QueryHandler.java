@@ -1,4 +1,4 @@
-package edu.brown.cs32.examples.sprint3.server.handlers;
+package server.handlers;
 
 import java.io.IOException;
 import java.lang.reflect.Type;

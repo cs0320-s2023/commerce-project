@@ -1,6 +1,6 @@
-package edu.brown.cs32.examples.sprint3.server;
+package server;
 
-import static spark.Spark.after;
+import spark.Spark;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -8,9 +8,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 
-import edu.brown.cs32.examples.sprint3.server.handlers.BoundaryHandler;
-import edu.brown.cs32.examples.sprint3.server.handlers.QueryHandler;
-import spark.Spark;
+import static spark.Spark.after;
 
 /**
  * Top-level class for this demo. Contains the main() method which starts Spark and runs the various handlers.

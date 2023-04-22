@@ -8,6 +8,8 @@ import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 
 import edu.brown.cs32.examples.sprint3.server.utilities.GeoUtils.GeoData;
+import server.utilities.SneakerUtils;
+
 /**
  * class to parse JSON files
  */
@@ -53,5 +55,10 @@ public class JSONParser<T> {
             Moshi moshi = new Moshi.Builder().build();
             return  moshi.adapter(GeoData.class).fromJson(geoJson);
           }
+
+    public static SneakerUtils.SneakerData fromSneakerJson(String sneakerJSON) throws IOException {
+        Moshi moshi = new Moshi.Builder().build();
+        return  moshi.adapter(SneakerUtils.SneakerData.class).fromJson(sneakerJSON);
+    }
     
 }
