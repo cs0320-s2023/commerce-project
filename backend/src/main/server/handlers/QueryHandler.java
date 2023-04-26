@@ -13,9 +13,9 @@ import com.squareup.moshi.Moshi;
 import com.squareup.moshi.Types;
 
 import edu.brown.cs32.examples.sprint3.JsonHandlers.JSONParser;
-import edu.brown.cs32.examples.sprint3.server.utilities.GeoUtils.GeoData;
-import edu.brown.cs32.examples.sprint3.server.utilities.GeoUtils.GeoFeatures;
+
 import edu.brown.cs32.examples.sprint3.server.utilities.Serialize;
+import server.utilities.GeoUtils;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -24,7 +24,7 @@ import spark.Route;
  * This class is responsible for handling the query requests from the frontend.
  */
 public class QueryHandler implements Route {
-    private GeoData data;
+    private GeoUtils.GeoData data;
     private EvictingQueue<String> searchHistory = EvictingQueue.create(10);
 
     
@@ -48,11 +48,11 @@ public class QueryHandler implements Route {
      * @param keyword
      * @return GeoData object that contains only the features that match the query
      */
-    private static GeoData findQueryMatches(GeoData geoJsonData, String keyword) {
+    private static GeoUtils.GeoData findQueryMatches(GeoUtils.GeoData geoJsonData, String keyword) {
         // Source: ipinedad-mmcpher1
 
-        List<GeoFeatures> matchingFeatures = new ArrayList<>();
-        for(GeoFeatures feature : geoJsonData.features()) {
+        List<GeoUtils.GeoFeatures> matchingFeatures = new ArrayList<>();
+        for(GeoUtils.GeoFeatures feature : geoJsonData.features()) {
           
           Map<String, String> areaDescription = feature.properties().areaDescription();
     
@@ -72,7 +72,7 @@ public class QueryHandler implements Route {
             }
           }
         }
-        GeoData matches = new GeoData("FeatureCollection", matchingFeatures);
+        GeoUtils.GeoData matches = new GeoUtils.GeoData("FeatureCollection", matchingFeatures);
         return matches;
       }
     
@@ -101,7 +101,7 @@ public class QueryHandler implements Route {
         }
         System.out.println(searchHistory);
 
-        GeoData matchingFeatures = findQueryMatches(data, keyword);
+        GeoUtils.GeoData matchingFeatures = findQueryMatches(data, keyword);
 
 
    

@@ -1,4 +1,4 @@
-package edu.brown.cs32.examples.sprint3.server.utilities;
+package server.utilities;
 
 import java.util.List;
 import java.util.Map;

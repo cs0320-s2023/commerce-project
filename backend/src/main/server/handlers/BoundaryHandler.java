@@ -1,7 +1,6 @@
-package edu.brown.cs32.examples.sprint3.server.handlers;
+package server.handlers;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,12 +8,13 @@ import java.util.Map;
 
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
-import com.squareup.moshi.Types;
 
 import edu.brown.cs32.examples.sprint3.JsonHandlers.JSONParser;
 import edu.brown.cs32.examples.sprint3.server.utilities.Serialize;
-import edu.brown.cs32.examples.sprint3.server.utilities.GeoUtils.GeoData;
-import edu.brown.cs32.examples.sprint3.server.utilities.GeoUtils.GeoFeatures;
+
+
+import server.utilities.GeoUtils;
+import server.utilities.GeoUtils.GeoData;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -23,6 +23,7 @@ import spark.Route;
  */
 public class BoundaryHandler implements Route {
     private GeoData data;
+
 
     public BoundaryHandler(String geoJsonData) {
         try {
@@ -37,11 +38,11 @@ public class BoundaryHandler implements Route {
      * helper method that takes in a GeoData object and a bounding box and returns a GeoData object
      * that contains only the features that are within the bounding box
      */
-    private static GeoData boundingCoords(GeoData geoJsonData,  Double minLat, Double maxLat, Double minLon, Double maxLon) {
+    private static GeoUtils.GeoData boundingCoords(GeoData geoJsonData, Double minLat, Double maxLat, Double minLon, Double maxLon) {
         // Source: ipinedad-mmcpher1
-        List<GeoFeatures> features = geoJsonData.features();
-        List<GeoFeatures> matchingFeatures = new ArrayList<>();
-        for(GeoFeatures feature : features) {
+        List<GeoUtils.GeoFeatures> features = geoJsonData.features();
+        List<GeoUtils.GeoFeatures> matchingFeatures = new ArrayList<>();
+        for(GeoUtils.GeoFeatures feature : features) {
           // coords List: [minLat, maxLat, minLon, maxLon]
           List<Double> coords = findExtent(feature);
           if(coords.size() < 4) continue;
@@ -55,7 +56,7 @@ public class BoundaryHandler implements Route {
           if(coords.get(3) > maxLon) continue;
           matchingFeatures.add(feature);
         }
-        GeoData result = new GeoData("FeatureCollection", matchingFeatures);
+        GeoUtils.GeoData result = new GeoUtils.GeoData("FeatureCollection", matchingFeatures);
         return result;
       }
     /**
@@ -63,7 +64,7 @@ public class BoundaryHandler implements Route {
      * @param feature
      * @return
      */
-      private static List<Double> findExtent(GeoFeatures feature) {
+      private static List<Double> findExtent(GeoUtils.GeoFeatures feature) {
         if(feature.geometry() == null) {
           return List.of();
         }
@@ -123,7 +124,7 @@ public class BoundaryHandler implements Route {
     }
 
     try {
-        GeoData filteredResults = boundingCoords(data, queryMinLat, queryMaxLat, queryMinLon, queryMaxLon);
+        GeoUtils.GeoData filteredResults = boundingCoords(data, queryMinLat, queryMaxLat, queryMinLon, queryMaxLon);
         Map<String, Object> successResponse = new HashMap<>();
         successResponse.put("result", "success");
         successResponse.put("data", filteredResults);

@@ -4,19 +4,33 @@ import server.utilities.SneakerUtils;
 import spark.Request;
 import spark.Response;
 import spark.Route;
+import edu.brown.cs32.examples.sprint3.JsonHandlers.JSONParser;
+import edu.brown.cs32.examples.sprint3.server.utilities.Serialize;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SneakerSKUHandler implements Route {
-    private SneakerUtils.SneakerData sneakerData;
+    private SneakerUtils.SneakerInfo sneakerInfo;
+    private SneakerUtils.SneakerData data;
 
 
-    public void SneakerDataHandler(String sneakerJSON) {
+    public SneakerSKUHandler(String sneakerJSON) {
         try {
-            this.sneakerData = edu.brown.cs32.examples.sprint3.JsonHandlers.JSONParser.fromSneakerJson(sneakerJSON);
+            this.sneakerInfo = JSONParser.fromSneakerJson(sneakerJSON);
         } catch (IOException e) {
             System.err.println("Sneaker Data couldn't be deserialized.");
         }
+    }
+
+    private static String findSneakerSKU(SneakerUtils.SneakerData sneakerData, String sneakerName) {
+        for (SneakerUtils.SneakerInfo datum : sneakerData.data()) {
+            if (sneakerName.toLowerCase().equals(datum.name().toLowerCase())) {
+                return datum.sku();
+            }
+        }
+        return null;
     }
 
 
@@ -28,8 +42,20 @@ public class SneakerSKUHandler implements Route {
             return edu.brown.cs32.examples.sprint3.server.utilities.Serialize.error("error_bad_request", "keyword parameter is missing");
         }
 
+        String skuNumber = findSneakerSKU(data, sneakerName);
 
 
-        return null;
+        if (skuNumber.isBlank()) {
+            return Serialize.error("error_bad_request", "sku number does not exist. try a more specific sneaker name");
+        }
+
+
+        Map<String, Object> successResponse = new HashMap<>();
+        successResponse.put("result", "success");
+        successResponse.put("sku", skuNumber);
+
+        return Serialize.success(successResponse);
+
+
     }
 }
