@@ -1,72 +1,46 @@
-# cs32 --> Term Project **YESSSIRRRR!**
+# cs32 --> Term Project
 ## Contributors
 Developed by Zeeshan Bhalwani (zbhalwan) & Kyle Sohn (ksohn3) & Safae Merigh (smerigh) & Omer Chaudhry (mchaud11)
 
-Total time: 20 hours
+Total time this week: 10 hours 
 
-Github Repo: https://github.com/
+Github Repo: https://github.com/cs0320-s2023/commerce-project.git
 
 
 ## Project Description
-Added new data sources to our backend API server which allowed us to filter and query redlining data. Developed frontend that would allow for areas to be rendered on an interactive map. Areas could be filtered through bounds and highlighted through queries. Data api calls which the backend allowed for.
-
-
-## Usage
-Start up webapp using `npm start` or `npm run dev` and go to the link in the terminal to use the webapp. The webapp allows for the user to search for areas based on keyword and filter areas based on bounds. Enter desired minLat, maxLat, minLon, maxLon values. You can also enter a keyword. Zoom in and out of map using mouse or web browser's features. Sucessful searches will result in areas being highlighted and improper searches will lead to error messages being outputted. The user can also reset the map to the entire USA map and reset the highlighted areas based on keyword search. Shortcuts are detailed below to do so
-
+See Term Project Specifications
 
 ## Backend
 In the `src` package is `main` and `test`:
-
-
 * `main` project entry point.
-    * `server` includes server handling code for csv and weather
-        * `handlers` contains boundary filtering and query by keyword handlers
-            * `BoundaryHandler.java` allows for geo json data to be filtered based on 4 bounding coordinates. takes in a relative filepath of geoJSON data. If there are no errors, there we be a serialized success output with the resulting features within the requested boundary. Otherwise, exceptions will caught and serialized error messages will be outputted. 
-            * `QueryHandler.java` handles searching for desired value in area description of the entire redlining data. checks if desired value exists and outputs features with the keyword.Otherwise, exceptions will caught and serialized error messages will be outputted.
-        * `utilities` contains utilities used for handling api endpoints
-            * `GeoUtils.java` stores data from GeoJSON
-            * `Serialize.java` serialzies success and error API events
-            * `Unserialize.java` unserializes JSON
-
-* `test` and its subdirectories contains unit testing, fuzz testing, and testing with mocks. tests are self explanatory.
-        * `TestBoundaryHandler.java` contains **fuzz tests** as well
-        * `TestMockBoundary.java` utilizes mock geoJSON data
-        * `TestQueryHandler.java`
-        * `TestMockQuery.java` utilizes mock geoJSON data
-
-### Data
-There are two geoJSON files that are available to use through the following file paths:
-
-* `data` package in the `backend directory` includes jsons.
-    * `fullDownload.json` redlining data
-    * `mockGEO.json` smaller mock dataset which can be used for mock testing
+    * `server` includes server handling code 
+        * `handlers` 
+           
+* `test` and its subdirectories contains unit testing, fuzz testing, and testing with mocks. 
 
 ### API Endpoints
-* `bounds`: returns filtered region. Accepts mandatory `minLat` `minLon` `maxLat` `maxLon` parameters
-    * example: `http://localhost:3232/bounds?minLat=42.020223&maxLat=42.512096&minLon=-83.484421&maxLon=-82.297897`
-* `query`: returns filtered area based on keyword. Accepts mandatory `keyword` parameter
-    * example: `http://localhost:3232/query?keyword=detroit`
-
-   
+* will use:  https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-product-search/ 
 
 ## Frontend
+* `frontend` contains code for rendering the website
 
-* `frontend` contains code for rendering map and overlaying desired redlined regions
-  * `src` direcotry contains `geodata`, `components`, `utils`, `tests` directories and `App.tsx` and `overlays.ts`
-    * `geodata` directory
-      * `fullDownload.json` contains redlinign data
-    * `components` directory contains components for bounds and query search
-  * `tests` contains the DOM and integration testing for the webapp. tests are self explanatory.
-    * `integration.dom.test.tsx` 
-  * `utils` contains a getter for the api response error messages so that they can outputted on the webapp
+  * `src` directory contains `data`, `components`, , `tests` directories and `App.tsx`
 
-  ### Shortcuts
+  * `data` directory contains mock data 
+    * _getProductList.ts_ : provides a list of the different sneakers
+    * _getprices.ts_ : provides a list of the different sneakers´ prices, vendors, and images
 
-  
+  * `components` directory contains components for SearchBar, ProductDescription, SearchResults
+    * _SearchBar.ts_: where the user can type the product he is looking for. A Dropdown menu appears, from which the user can select one product (will extent it to being able to retrieve several ones).
+    * _ProductDescription.ts_: after a user selects a product, its description appeats below the SearchBar. Description includes an image of the product and its name.
+    * _SearchResults.ts_ : shows all the vendors selling the selected product 
 
-## Errors and Bugs
-There are many different errors returned by the API, so documenting them all would entail lot of time for the project. No bugs were indetified. The following errors are outputted in a user-friendly and understanding manner on our webapp. Generally, these errors are returned:
+  * `tests` directory contains tests for the forntend 
+    * _dom.test.tsx_: contains the DOM and integration testing for the webapp.
+
+
+## Errors and Bugs - todo
+No bugs were indentified. The following errors are outputted in a user-friendly and understanding manner on our webapp. Generally, these errors are returned:
 * `error_bad_request`: if the request was ill-formed or one of its fields was ill-formed.
 * `error_datasource`: if the given data source wasn't accessible (e.g., the file didn't exist or the NWS API returned an error for a given location).
 * `error_internal`: an unexpected system error, that ideally should be logged and returned to the developers to check upon.
@@ -75,7 +49,9 @@ There are many different errors returned by the API, so documenting them all wou
 ## Running the Program
 * cd into backend --> src --> main --> server and run `Server.java`
   * go to `localhost:3232` and utilize API endpoints and parameters detailed in the API section of README.
+
 * cd into frontend and run first `npm install` and then `npm start` or `npm run dev`
 * Run `Server.main()` and go to `localhost:3232` and utilize API endpoints and parameters detailed in the API section.
+
 * Run the tests: `npm test` for frontend and `mvn test`
   * run the server before running integration tests

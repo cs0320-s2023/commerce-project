@@ -9,11 +9,11 @@ interface IProduct  {
 
 export const ProductDescription = ({productKey} : IProduct) => {
     const product = getProduct(productKey);
-    const imageURL = product.image;
+    const imageURL = product?.image;
 
     return(
         <div className="product-description" role="product-description">
-            <div>{product.value}</div>
+            <div>{product?.value}</div>
             <img src={imageURL} className="product-image"/>
         </div>
     )
