@@ -47,7 +47,8 @@ public class Server {
 
         String data = "";
         try {
-            Reader reader = new FileReader("backend/src/main/java/edu/brown/cs32/examples/sprint3/data/mockJ4sRTPResponse.json", StandardCharsets.UTF_8);
+            // Reader reader = new FileReader("backend/src/main/java/edu/brown/cs32/examples/sprint3/data/mockJ4sRTPResponse.json", StandardCharsets.UTF_8);
+            Reader reader = new FileReader("backend/src/main/data/mockJ4sSearchResponse.json", StandardCharsets.UTF_8);
             BufferedReader bf = new BufferedReader(reader);
             data = bf.readLine();
             } 
@@ -60,6 +61,7 @@ public class Server {
 //        Spark.get("query", new QueryHandler(data));
 
         // Spark.get("sneakers", new SneakerRTPHandler(data))
+        Spark.get("sneakers", new SneakerSKUHandler(data));
         
         Spark.init();
         Spark.awaitInitialization();

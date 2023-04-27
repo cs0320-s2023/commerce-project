@@ -16,6 +16,7 @@ public class SneakerSKUHandler implements Route {
     private SneakerUtils.SneakerData data;
 
 
+    //gives the sneaker SKU
     public SneakerSKUHandler(String sneakerJSON) {
         try {
             this.sneakerInfo = JSONParser.fromSneakerJson(sneakerJSON);
@@ -24,7 +25,7 @@ public class SneakerSKUHandler implements Route {
         }
     }
 
-    private static String findSneakerSKU(SneakerUtils.SneakerData sneakerData, String sneakerName) {
+    private static String findSneakerSKU(SneakerUtils.SneakerData sneakerInfoData, String sneakerName) {
         for (SneakerUtils.SneakerInfo datum : sneakerData.data()) {
             if (sneakerName.toLowerCase().equals(datum.name().toLowerCase())) {
                 return datum.sku();
@@ -42,7 +43,7 @@ public class SneakerSKUHandler implements Route {
             return edu.brown.cs32.examples.sprint3.server.utilities.Serialize.error("error_bad_request", "keyword parameter is missing");
         }
 
-        String skuNumber = findSneakerSKU(data, sneakerName);
+        String skuNumber = findSneakerSKU(sneakerInfo, sneakerName);
 
 
         if (skuNumber.isBlank()) {
