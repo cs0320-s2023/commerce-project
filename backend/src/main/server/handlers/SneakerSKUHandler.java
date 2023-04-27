@@ -1,10 +1,11 @@
 package server.handlers;
 
+import JsonHandlers.JSONParser;
 import server.utilities.SneakerUtils;
 import spark.Request;
 import spark.Response;
 import spark.Route;
-import edu.brown.cs32.examples.sprint3.JsonHandlers.JSONParser;
+
 import edu.brown.cs32.examples.sprint3.server.utilities.Serialize;
 
 import java.io.IOException;
@@ -19,13 +20,16 @@ public class SneakerSKUHandler implements Route {
     //gives the sneaker SKU
     public SneakerSKUHandler(String sneakerJSON) {
         try {
-            this.sneakerInfo = JSONParser.fromSneakerJson(sneakerJSON);
+//            System.out.println(sneakerJSON);
+            this.data = JSONParser.fromSneakerJson(sneakerJSON);
+//            System.out.println(this.data);
+
         } catch (IOException e) {
             System.err.println("Sneaker Data couldn't be deserialized.");
         }
     }
 
-    private static String findSneakerSKU(SneakerUtils.SneakerData sneakerInfoData, String sneakerName) {
+    private static String findSneakerSKU(SneakerUtils.SneakerData sneakerData, String sneakerName) {
         for (SneakerUtils.SneakerInfo datum : sneakerData.data()) {
             if (sneakerName.toLowerCase().equals(datum.name().toLowerCase())) {
                 return datum.sku();
@@ -37,13 +41,16 @@ public class SneakerSKUHandler implements Route {
 
     @Override
     public Object handle(Request request, Response response) throws Exception {
+        System.out.println(data);
+
         String sneakerName = request.queryParams("name");
 
         if (sneakerName == null || sneakerName.isBlank() || sneakerName == "") {
             return edu.brown.cs32.examples.sprint3.server.utilities.Serialize.error("error_bad_request", "keyword parameter is missing");
         }
 
-        String skuNumber = findSneakerSKU(sneakerInfo, sneakerName);
+        String skuNumber = findSneakerSKU(data, sneakerName);
+        System.out.println(skuNumber);
 
 
         if (skuNumber.isBlank()) {

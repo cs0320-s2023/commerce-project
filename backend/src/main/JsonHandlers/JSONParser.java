@@ -1,4 +1,4 @@
-package edu.brown.cs32.examples.sprint3.JsonHandlers;
+package JsonHandlers;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -7,8 +7,7 @@ import java.nio.file.Path;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 
-import edu.brown.cs32.examples.sprint3.server.utilities.GeoUtils.GeoData;
-import server.utilities.GeoUtils;
+
 import server.utilities.SneakerUtils;
 
 /**
@@ -46,21 +45,12 @@ public class JSONParser<T> {
         Moshi moshi = new Moshi.Builder().build();
         return moshi.adapter(this.object).toJson(input);
     }
-    /**
-     * Method to build GEOdata from a string of JSON
-     *
-     * @param input json string
-     * @return geodata
-     * @throws IOException
-     */
-    public static GeoUtils.GeoData fromJson(String geoJson) throws IOException {
-            Moshi moshi = new Moshi.Builder().build();
-            return  moshi.adapter(GeoData.class).fromJson(geoJson);
-          }
 
-    public static SneakerUtils.SneakerInfo fromSneakerJson(String sneakerJSON) throws IOException {
+
+
+    public static SneakerUtils.SneakerData fromSneakerJson(String sneakerJSON) throws IOException {
         Moshi moshi = new Moshi.Builder().build();
-        return  moshi.adapter(SneakerUtils.SneakerInfo.class).fromJson(sneakerJSON);
+        return  moshi.adapter(SneakerUtils.SneakerData.class).fromJson(sneakerJSON);
     }
     
 }
