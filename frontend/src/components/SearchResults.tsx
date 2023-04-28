@@ -1,22 +1,16 @@
 import {useState} from "react"
 import "../App.css"
 import { getPrices } from "../data/getPrices"
-// Created Interface to avoid have any as a type
-interface IProduct  {
-    productKey: string 
-}
-
-export const SearchResults = ({productKey} : IProduct) => {
-
-    const searchResult = getPrices(productKey);
+import {IProduct} from "../data/getProductList"
 
 
+export const SearchResults = ({productList} : any) => {
     return(
         <div className="search-results" role="search-results">
-            {searchResult.map((product) => (
-                <div className = "product-option" key = {product.vendor}>
-                    <div className="product-vendor">{product.vendor}</div>
-                    <div className="product-price">{product.price}</div>
+            {productList.map((product : any) => (
+                <div className = "product" key = {product.name}>
+                    <img src={product.image} className="product-image"/>
+                    <div className = "product-name"> {product.name} </div>
                 </div>
              ))}
         </div>

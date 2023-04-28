@@ -52,7 +52,7 @@ public class Server {
             data = bf.readLine();
             } 
             catch (IOException e) {
-            System.err.println("Could Not read GEO JSON Data.");
+            System.err.println("Could Not read GEO JSON Data."); // todo - change this
         }
 
     // Setting up the handler for the GET endpoints

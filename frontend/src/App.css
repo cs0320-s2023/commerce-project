@@ -17,6 +17,8 @@
 }
 
 .search-bar-container{
+  margin-top: 1vh;
+
   position: relative;
   background-color: red;
   height: 10vh;
@@ -28,6 +30,29 @@
   color: black;
   z-Index: 1;
   
+}
+
+.new-search-bar{
+  flex-direction: column;
+  font-size: calc(1px + 2vmin);
+}
+
+.input-search-box{
+  width: 100vh;
+  height: 5vh
+}
+
+.button-search-box{
+  height: 5vh;
+  width: 10vh;
+  margin-left: 1vh;
+}
+
+.filter{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .search-bar{
@@ -53,6 +78,26 @@
 .sc-gswNZR.ilZVLX{
   font-size: 20px;
 }
+
+.platforms-container {
+  background-color: pink;
+  text-align: left;
+}
+
+.one-platform {
+  background-color: blueviolet;
+  text-align: left;
+}
+
+.currency-container {
+  background-color: pink;
+  text-align: left;
+}
+.one-currency {
+  background-color: blueviolet;
+  text-align: left;
+}
+
 .product-description{
   background-color: yellow;
   min-height: 20vh;
@@ -68,11 +113,12 @@
   background-color: green;
   min-height: 20vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: calc(1px + 2vmin);
   color: white;
+  flex-wrap: wrap;
 }
 
 .product-option{
@@ -96,7 +142,19 @@
   background-color: pink;
 }
 
+.product{
+  margin-left: 2vh;
+}
+
+.product-name{
+  margin-left: 2vh;
+  margin-bottom: 2vh;
+  background-color: black;
+}
 .product-image{
   width: 200px;
   height: 200px;
+  margin-left: 2vh;
+  margin-top: 2vh;
+
 }
