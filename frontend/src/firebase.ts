@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import {getAuth, GoogleAuthProvider, signInWithPopup} from "firebase/auth";
+import {getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut} from "firebase/auth";
 import { useState, useEffect } from "react";
 
 
@@ -27,11 +27,36 @@ export const auth = getAuth(app);
 
 const provider = new GoogleAuthProvider();
 
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in
+    const name = user.displayName;
+    const email = user.email;
+    const photoUrl = user.photoURL;
+
+    localStorage.setItem('name', name || '');
+    localStorage.setItem('email', email || '');
+    localStorage.setItem('photoUrl', photoUrl || '');
+
+    console.log(`Welcome ${name}!`);
+    console.log(name, email, photoUrl);
+  } else {
+    // User is signed out
+    localStorage.removeItem('name');
+    localStorage.removeItem('email');
+    localStorage.removeItem('photoUrl');
+    console.log('Please sign in');
+    
+  }
+});
+
+
 
 export const signInWithGoogle = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
-        console.log(result);
+        console.log("result");
+        
         
         const name = result.user?.displayName;
         const email = result.user?.email;
@@ -40,12 +65,38 @@ export const signInWithGoogle = () => {
         localStorage.setItem('name', name || '');
         localStorage.setItem('email', email || '');
         localStorage.setItem('photoUrl', photoUrl || '');
-        location.reload();
+        
        
         console.log(name, email, photoUrl);
+        console.log(result);
+
+        location.reload();
+
+        console.log(result);
 
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
+
+  export const signOutWithGoogle = () => {
+    signOut(auth)
+      .then((result) => {
+        console.log(result);
+
+      localStorage.removeItem('name');
+      localStorage.removeItem('email');
+      localStorage.removeItem('photoUrl');
+
+      console.log(localStorage.getItem('name'));
+      location.reload();
+      
+    
+
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };;

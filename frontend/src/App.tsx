@@ -4,7 +4,7 @@ import {ProductDescription} from  "./components"
 import {SearchBar} from "./components"
 import {SearchResults} from "./components"
 import {siteName} from "../src/config"
-import { auth, signInWithGoogle} from "./firebase";
+import { auth, signInWithGoogle, signOutWithGoogle} from "./firebase";
 import { onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 
 
@@ -25,7 +25,13 @@ function App() {
       <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google logo" />
       </button>
 
-      <p className="welcome-message"> Welcome {localStorage.getItem("name")}!</p>
+      <p className="welcome-message"> Welcome {localStorage.getItem('name') ? localStorage.getItem('name') : 'Please sign in'}!</p>
+
+
+      <button onClick={signOutWithGoogle} className="signout-btn">
+      <span className="signout-text">Sign Out!</span>
+      </button>
+
 
 
    
