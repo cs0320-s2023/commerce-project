@@ -18,7 +18,7 @@ export const NewSearchBar  = ({setProductList} : any) => {
         if (cleanTextSearch.length == 0) {
             return;
         } else {
-            setProductList(getProductList(cleanTextSearch));
+            getProductList(cleanTextSearch, setProductList);
         }
     }
 

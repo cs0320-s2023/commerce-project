@@ -92,8 +92,6 @@ export const signInWithGoogle = () => {
 
       console.log(localStorage.getItem('name'));
       location.reload();
-      
-    
 
       })
       .catch((error) => {

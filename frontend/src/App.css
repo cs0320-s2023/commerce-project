@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: left;
+  background-color: yellow;
 }
 
 .App-header {
@@ -156,7 +157,10 @@
   height: 200px;
   margin-left: 2vh;
   margin-top: 2vh;
+}
 
+.signin-container{
+  background-color: grey;
 }
 
 
@@ -169,13 +173,11 @@
   border: 1px solid #737373;
   font-size: 16px;
   font-weight: bold;
-  padding: 8px;
   cursor: pointer;
   width: 120px;
   height: 50px;
-  position: absolute;
-  top: 47px;
-  right: 10px;
+  position: relative;
+
   /* zindex bring button to the front of page */
   z-index: 9999;
 }
@@ -195,6 +197,7 @@
   height: 20px;
   position: relative;
   right: -10px;
+
 }
 
 
@@ -207,16 +210,11 @@
 }
 
 .welcome-message {
-  
+  background-color: pink;
   font-weight: bold;
-  margin-top: 10px;
-
   color: #0f0202;
-
-
   position: relative;
-  right: -695px;
-  top: -520px;
+
 
   pointer-events: none;
   z-index: 9999;

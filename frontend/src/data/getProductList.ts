@@ -5,7 +5,7 @@ export interface IProduct {
     id: string,
     name: string,
     sku: string,
-    image: string,
+    image: string | null,
 }
 
 // const mockProductList : IProduct[] = [
@@ -30,11 +30,32 @@ export interface IProduct {
 //         value: "Adidas Ultra Running Shoes",
 //     },
 //   ];
+import { secretAPIkey } from "./apikey";
 
-export const getProductList = (searchText : string) : IProduct[] => {
+export async function getProductList (searchText : string, setProductList : any)  {
     if (mockingMode) {
         return mockSearch.data; 
     } else {
-        return [];
+        const searchURL = `https://sneakers-real-time-pricing.p.rapidapi.com/sneakers?extended=tru&name=${searchText}`;
+        
+        const options = {  
+            method: 'GET',
+            headers: {
+              'X-RapidAPI-Key': secretAPIkey,
+            },          
+          }
+
+        await fetch(searchURL, options)
+            .then(res => res.json())
+            .then(
+            (result) => {
+                setProductList(result.data)
+            },
+            (error) => {
+                setProductList([])
+            }
+        )
+        
+
     }
 }

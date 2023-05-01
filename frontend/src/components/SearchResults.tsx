@@ -5,6 +5,13 @@ import {IProduct} from "../data/getProductList"
 
 
 export const SearchResults = ({productList} : any) => {
+    if (productList == null) {
+        console.log("productList == null")
+        return <div/>
+    } 
+    console.log("productList is not null")
+    console.log(productList)
+
     return(
         <div className="search-results" role="search-results">
             {productList.map((product : any) => (

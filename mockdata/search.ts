@@ -1,166 +1,167 @@
 export const mockSearch = {
-    "count": 114,
+    "count": 6210,
     "data": [
       {
-        "id": "24581305-6a5d-4463-8dd9-6fc523a86449",
-        "name": "Jordan 4 Retro A Ma Maniére Violet Ore",
-        "image": "https://retailed.fra1.digitaloceanspaces.com/product/jordan-4-retro-a-ma-maniére-violet-ore.webp",
-        "releasedAt": "2022-11-23",
-        "sizing": "Man",
-        "initialPrice": 225,
-        "colorway": "Violet Ore/Medium Ash-Black-Muslin-Burgundy Crush",
-        "sku": "DV6773-220",
-        "createdAt": "2022-11-24T17:42:30+00:00",
-        "updatedAt": null,
+        "id": "d6930cfc-c175-4c89-ac38-fe56a903392d",
+        "name": "adidas Barrowland SPZL Dust Green Signal Orange Night Navy",
+        "image": "https://retailed.fra1.digitaloceanspaces.com/p/adidas-barrowland-spzl-dust-green-signal-orange-night-navy.webp",
+        "releasedAt": "2022-02-03",
+        "sizing": "adidas",
+        "initialPrice": 100,
+        "colorway": "Dust Green/Signal Orange/Night Navy",
+        "sku": "GY3069",
+        "createdAt": "2023-03-09T19:31:44.780013+00:00",
+        "updatedAt": "2023-04-30T21:21:33.247644+00:00",
         "brand": {
-          "id": "8560ea3d-0d41-4e9e-ba8f-6b19022841da",
-          "name": "Jordan"
+          "id": "fc646ebb-9357-4b3f-ba0e-595db1b808ed",
+          "name": "Adidas"
         }
       },
       {
-        "id": "a39e9f24-1a48-43f3-adf0-f6f10bb936e8",
-        "name": "Jordan 1 Retro High OG Chicago Lost and Found",
-        "image": "https://retailed.fra1.digitaloceanspaces.com/product/jordan-1-retro-high-og-chicago-lost-and-found.webp",
-        "releasedAt": "2022-11-19",
-        "sizing": "Man",
-        "initialPrice": 180,
-        "colorway": "Varsity Red/Black-Sail-Muslin",
-        "sku": "DZ5485-612",
-        "createdAt": "2022-12-06T22:21:51.749826+00:00",
-        "updatedAt": null,
+        "id": "74f1a722-e5e2-49c0-a8b5-59d7acb6f4b5",
+        "name": "adidas Luna Rossa 21 Prada Core Black",
+        "image": "https://retailed.fra1.digitaloceanspaces.com/p/adidas-luna-rossa-21-prada-core-black.webp",
+        "releasedAt": "2021-07-19",
+        "sizing": "adidas",
+        "initialPrice": 695,
+        "colorway": "Core Black/Core Black/Red",
+        "sku": "G57868",
+        "createdAt": "2023-02-21T12:20:24.782661+00:00",
+        "updatedAt": "2023-04-30T21:18:11.70597+00:00",
         "brand": {
-          "id": "8560ea3d-0d41-4e9e-ba8f-6b19022841da",
-          "name": "Jordan"
+          "id": "fc646ebb-9357-4b3f-ba0e-595db1b808ed",
+          "name": "Adidas"
         }
       },
       {
-        "id": "9217eefe-902f-453d-995c-5ffb3d874000",
-        "name": "Jordan 4 Retro Midnight Navy",
-        "image": "https://retailed.fra1.digitaloceanspaces.com/product/jordan-4-retro-midnight-navy.webp",
-        "releasedAt": "2022-10-29",
-        "sizing": "Man",
-        "initialPrice": 210,
-        "colorway": "White/Midnight Navy/Light Smoke Grey-Fire Red",
-        "sku": "DH6927-140",
-        "createdAt": "2022-12-06T22:23:56.199349+00:00",
-        "updatedAt": null,
+        "id": "16d781ca-46be-4cdb-8c74-78f225b7f13a",
+        "name": "adidas NMD R2 Summer White",
+        "image": "https://retailed.fra1.digitaloceanspaces.com/p/adidas-nmd-r2-summer-white.webp",
+        "releasedAt": "2018-05-10",
+        "sizing": "adidas",
+        "initialPrice": 130,
+        "colorway": "Crystal White/Grey One/Gum",
+        "sku": "CQ3080",
+        "createdAt": "2023-02-23T13:29:57.184985+00:00",
+        "updatedAt": "2023-04-30T21:38:28.415791+00:00",
         "brand": {
-          "id": "8560ea3d-0d41-4e9e-ba8f-6b19022841da",
-          "name": "Jordan"
+          "id": "fc646ebb-9357-4b3f-ba0e-595db1b808ed",
+          "name": "Adidas"
         }
       },
       {
-        "id": "ef35fafa-0c22-45b9-84ea-05c869af37ba",
-        "name": "Jordan 11 Retro Cherry (2022)",
-        "image": "https://retailed.fra1.digitaloceanspaces.com/product/jordan-11-retro-cherry-2022.webp",
-        "releasedAt": "2022-12-10",
-        "sizing": "Man",
-        "initialPrice": 225,
-        "colorway": "White/Varsity Red/Black",
-        "sku": "CT8012-116",
-        "createdAt": "2022-12-01T17:35:52.586782+00:00",
-        "updatedAt": null,
+        "id": "fe2fc4ab-83bd-482b-bc0b-eb0abb817c3b",
+        "name": "adidas Consortium EQT CSG 91 mita sneakers",
+        "image": "https://retailed.fra1.digitaloceanspaces.com/p/adidas-consortium-eqt-csg-91-mita-sneakers.webp",
+        "releasedAt": "2021-10-02",
+        "sizing": "adidas",
+        "initialPrice": 177,
+        "colorway": "Core Black/EQT Green/Cream White",
+        "sku": "GY5390",
+        "createdAt": "2023-04-27T14:24:59.94738+00:00",
+        "updatedAt": "2023-04-30T21:41:27.660331+00:00",
         "brand": {
-          "id": "8560ea3d-0d41-4e9e-ba8f-6b19022841da",
-          "name": "Jordan"
+          "id": "fc646ebb-9357-4b3f-ba0e-595db1b808ed",
+          "name": "Adidas"
         }
       },
       {
-        "id": "0994f252-8351-4f34-8f74-16d008f7cffe",
-        "name": "Jordan 1 Mid Light Smoke Grey",
-        "image": "https://retailed.fra1.digitaloceanspaces.com/product/jordan-1-mid-light-smoke-grey.webp",
-        "releasedAt": "2020-06-09",
-        "sizing": "Man",
-        "initialPrice": 115,
-        "colorway": "Light Smoke Grey/Black-White",
-        "sku": "554724-092",
-        "createdAt": "2022-12-06T22:25:34.286852+00:00",
-        "updatedAt": null,
-        "brand": {
-          "id": "8560ea3d-0d41-4e9e-ba8f-6b19022841da",
-          "name": "Jordan"
-        }
-      },
-      {
-        "id": "429b4a26-2f4f-4ea1-b6ab-8c1d15e456ff",
-        "name": "Jordan 6 Retro Chrome Metallic Silver",
-        "image": "https://retailed.fra1.digitaloceanspaces.com/product/jordan-6-retro-chrome-metallic-silver.webp",
-        "releasedAt": "2022-11-26",
-        "sizing": "Man",
-        "initialPrice": 200,
-        "colorway": "Black/Metallic Silver-Chrome",
-        "sku": "DX2836-001",
-        "createdAt": "2022-12-06T22:26:02.724118+00:00",
-        "updatedAt": null,
-        "brand": {
-          "id": "8560ea3d-0d41-4e9e-ba8f-6b19022841da",
-          "name": "Jordan"
-        }
-      },
-      {
-        "id": "9ab77690-d338-480a-900a-b4800cfdca3a",
-        "name": "Jordan 4 Retro Military Black",
-        "image": "https://retailed.fra1.digitaloceanspaces.com/product/jordan-4-retro-military-black.webp",
-        "releasedAt": "2022-05-21",
-        "sizing": "Man",
-        "initialPrice": 210,
-        "colorway": "White/Black-Neutral Grey",
-        "sku": "DH6927-111",
-        "createdAt": "2022-12-06T22:28:37.461515+00:00",
-        "updatedAt": null,
-        "brand": {
-          "id": "8560ea3d-0d41-4e9e-ba8f-6b19022841da",
-          "name": "Jordan"
-        }
-      },
-      {
-        "id": "6bfa268e-3aa7-434a-9c77-f3cc1c9754fb",
-        "name": "Jordan 3 Retro Fire Red (2022)",
-        "image": "https://retailed.fra1.digitaloceanspaces.com/product/jordan-3-retro-fire-red-2022.webp",
-        "releasedAt": "2022-09-10",
-        "sizing": "Man",
-        "initialPrice": 210,
-        "colorway": "White/Fire Red/Cement Grey/Black",
-        "sku": "DN3707-160",
-        "createdAt": "2022-12-06T22:30:17.937612+00:00",
-        "updatedAt": null,
-        "brand": {
-          "id": "8560ea3d-0d41-4e9e-ba8f-6b19022841da",
-          "name": "Jordan"
-        }
-      },
-      {
-        "id": "7307b0e7-37ae-45bc-b279-dcfe685d67e3",
-        "name": "Jordan 5 Retro DJ Khaled We The Best Crimson Bliss",
-        "image": "https://retailed.fra1.digitaloceanspaces.com/product/jordan-5-retro-dj-khaled-we-the-best-crimson-bliss.webp",
-        "releasedAt": "2022-11-28",
-        "sizing": "Man",
-        "initialPrice": 225,
-        "colorway": "Crimson Bliss/Leche Blue-Sail",
-        "sku": "DV4982-641",
-        "createdAt": "2022-12-06T22:27:19.140096+00:00",
-        "updatedAt": null,
-        "brand": {
-          "id": "8560ea3d-0d41-4e9e-ba8f-6b19022841da",
-          "name": "Jordan"
-        }
-      },
-      {
-        "id": "3004f1c4-c3a5-44cc-a097-0974697b9ba3",
-        "name": "Jordan 1 Mid White Black Red (2022)",
-        "image": "https://retailed.fra1.digitaloceanspaces.com/product/jordan-1-mid-white-black-red-2022.webp",
-        "releasedAt": "2022-06-01",
-        "sizing": "Man",
+        "id": "e6b0bb5f-7b9a-49fc-98ee-776377762191",
+        "name": "adidas Yeezy Powerphase Simple Brown",
+        "image": "https://retailed.fra1.digitaloceanspaces.com/p/adidas-yeezy-powerphase-simple-brown.webp",
+        "releasedAt": "2019-09-18",
+        "sizing": "adidas",
         "initialPrice": 120,
-        "colorway": "White/Black-Red",
-        "sku": "554724-079",
-        "createdAt": "2022-12-06T22:28:52.661732+00:00",
-        "updatedAt": null,
+        "colorway": "Simple Brown/Simple Brown/Simple Brown",
+        "sku": "FV6129",
+        "createdAt": "2023-02-02T17:27:16.008376+00:00",
+        "updatedAt": "2023-04-30T21:53:31.773454+00:00",
         "brand": {
-          "id": "8560ea3d-0d41-4e9e-ba8f-6b19022841da",
-          "name": "Jordan"
+          "id": "fc646ebb-9357-4b3f-ba0e-595db1b808ed",
+          "name": "Adidas"
+        }
+      },
+      {
+        "id": "7946ef52-3b1c-4913-9cdb-07ca5a6fb493",
+        "name": "adidas Yeezy Boost 950 Pirate Black",
+        "image": "https://retailed.fra1.digitaloceanspaces.com/p/adidas-yeezy-boost-950-pirate-black.webp",
+        "releasedAt": "2015-10-29",
+        "sizing": "adidas",
+        "initialPrice": 585,
+        "colorway": "Pirate Black/Pirate Black-Pirate Black",
+        "sku": "AQ4831",
+        "createdAt": "2023-02-02T17:14:55.586316+00:00",
+        "updatedAt": "2023-04-30T21:55:34.742291+00:00",
+        "brand": {
+          "id": "fc646ebb-9357-4b3f-ba0e-595db1b808ed",
+          "name": "Adidas"
+        }
+      },
+      {
+        "id": "fdf9a4b4-9f54-44c6-8fe8-f132f90965cb",
+        "name": "adidas Twinstrike Adv White Purple Teal",
+        "image": "https://retailed.fra1.digitaloceanspaces.com/p/adidas-twinstrike-adv-white-purple-teal.webp",
+        "releasedAt": "2018-04-01",
+        "sizing": "adidas",
+        "initialPrice": 180,
+        "colorway": "Cloud White/Real Purple/Real Teal",
+        "sku": "CM8096",
+        "createdAt": "2023-04-27T09:34:04.510858+00:00",
+        "updatedAt": "2023-04-30T21:56:35.440364+00:00",
+        "brand": {
+          "id": "fc646ebb-9357-4b3f-ba0e-595db1b808ed",
+          "name": "Adidas"
+        }
+      },
+      {
+        "id": "f7d5d2a8-2621-4bc4-a4c6-a6729261cd12",
+        "name": "adidas Climacool 02/17 Night Cargo/Trace Olive/White",
+        "image": "https://retailed.fra1.digitaloceanspaces.com/p/adidas-climacool-02-17-night-cargo-trace-olive-white.webp",
+        "releasedAt": null,
+        "sizing": "adidas",
+        "initialPrice": 100,
+        "colorway": "Night Cargo/Trace Olive/White",
+        "sku": "CG3345",
+        "createdAt": "2023-04-02T16:37:09.032382+00:00",
+        "updatedAt": "2023-04-30T21:56:22.83509+00:00",
+        "brand": {
+          "id": "fc646ebb-9357-4b3f-ba0e-595db1b808ed",
+          "name": "Adidas"
+        }
+      },
+      {
+        "id": "219243bb-8d1b-4411-b0bd-9e58dd6c028b",
+        "name": "adidas Continental 80 Leopard",
+        "image": null,
+        "releasedAt": null,
+        "sizing": "adidas",
+        "initialPrice": 100,
+        "colorway": "Core Black/Footwear White/Gum",
+        "sku": "F33994",
+        "createdAt": "2023-04-27T09:26:53.837149+00:00",
+        "updatedAt": "2023-04-30T21:33:46.67363+00:00",
+        "brand": {
+          "id": "fc646ebb-9357-4b3f-ba0e-595db1b808ed",
+          "name": "Adidas"
+        }
+      },
+      {
+        "id": "e96a280f-b9d6-4fb1-b8f7-c16006711551",
+        "name": "adidas NMD R1 V2 Black Pink Yellow (Youth)",
+        "image": "https://retailed.fra1.digitaloceanspaces.com/p/adidas-nmd-r1-v2-black-pink-yellow-youth.webp",
+        "releasedAt": null,
+        "sizing": "adidas",
+        "initialPrice": null,
+        "colorway": "Black/Pink/Yellow",
+        "sku": "FY1254",
+        "createdAt": "2023-02-26T17:11:05.526714+00:00",
+        "updatedAt": "2023-04-29T23:34:09.432996+00:00",
+        "brand": {
+          "id": "fc646ebb-9357-4b3f-ba0e-595db1b808ed",
+          "name": "Adidas"
         }
       }
     ],
     "error": null
+
   }
