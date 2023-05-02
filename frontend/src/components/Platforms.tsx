@@ -7,6 +7,7 @@ export const Platforms  = () => {
 
     // const platforms = mockPlatforms.data;
     const platforms = retrievePlatforms();
+    
     if (platforms == null) {
         return <div className="platforms-container">Loading Platforms</div>
     } 
