@@ -42,4 +42,19 @@ public class SneakerUtils {
 
         ){}
 
+        public record RTPdata(
+                @Json(name = "data") List<RTPdtypes> data,
+                @Json(name = "error") String error
+        ){}
+
+        public record RTPdtypes(
+                @Json(name = "platformName") String platformName,
+                @Json(name = "lastPriceEur") int lastPriceEur,
+                @Json(name = "minPriceEur") int minPriceEur,
+                @Json(name = "avgPriceEur") int avgPriceEur,
+                @Json(name = "lastPriceUsd") int lastPriceUsd,
+                @Json(name = "minPriceUsd") int minPriceUsd,
+                @Json(name = "avgPriceUsd") int avgPriceUsd
+        ){}
+
 }

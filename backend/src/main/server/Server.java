@@ -52,10 +52,22 @@ public class Server {
             Reader reader = new FileReader("backend/src/main/data/mockJ4sSearchResponse.json", StandardCharsets.UTF_8);
             BufferedReader bf = new BufferedReader(reader);
             data = bf.readLine();
-            System.out.println(data + "this is data");
+            //System.out.println(data + "this is data");
             } 
             catch (IOException e) {
-            System.err.println("Could Not read GEO JSON Data."); // todo - change this
+            System.err.println("Could Not read JSON Data."); // todo - change this
+        }
+
+        String ddata = "";
+        try {
+
+            Reader rreader = new FileReader("backend/src/main/data/mockJ4sRTPResponse.json", StandardCharsets.UTF_8);
+            BufferedReader bff = new BufferedReader(rreader);
+            ddata = bff.readLine();
+            //System.out.println(data + "this is data");
+            } 
+            catch (IOException e) {
+            System.err.println("Could Not read JSON Data."); // todo - change this
         }
 
     // Setting up the handler for the GET endpoints
@@ -63,7 +75,9 @@ public class Server {
 //        Spark.get("query", new QueryHandler(data));
 
         // Spark.get("sneakers", new SneakerRTPHandler(data))
-        Spark.get("sneakers", new SneakerSKUHandler(data));
+        Spark.get("sneakersku", new SneakerSKUHandler(data));
+
+        Spark.get("sneakersprice", new SneakerPriceHandler(ddata));
         
         Spark.init();
         Spark.awaitInitialization();
