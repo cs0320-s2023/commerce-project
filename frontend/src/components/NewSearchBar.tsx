@@ -1,24 +1,23 @@
-import {useEffect, useState} from "react"
+import {useContext, useEffect, useState} from "react"
 import React, { Component } from "react";
 import "../App.css"
 import ReactSearchBox from "react-search-box";
 import {siteName} from "../config"
 import {getProductList} from "../data/getProductList"
+import { PageContext } from "../App";
 
-interface IProduct  {
-    productKey: string 
-}
-
-export const NewSearchBar  = ({setProductList} : any) => {
+export const NewSearchBar  = () => {
 
     const [textSearch, setTextSearch] = useState("");
+    const {dispatch} = useContext(PageContext);
 
     const searchForSneakers = () => {
         const cleanTextSearch= textSearch.trim();
         if (cleanTextSearch.length == 0) {
             return;
         } else {
-            getProductList(cleanTextSearch, setProductList);
+            console.log("NewSearchBar.searchForSneakers")
+            getProductList(cleanTextSearch, dispatch);
         }
     }
 

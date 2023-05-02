@@ -245,3 +245,7 @@
   color: #fff;
 }
 
+.error-message{
+  background-color: red;
+  font-weight: bold;
+}

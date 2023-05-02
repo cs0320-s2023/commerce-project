@@ -1,10 +1,14 @@
-import {useState} from "react"
+import {useContext, useState} from "react"
 import "../App.css"
 import { getPrices } from "../data/getPrices"
-import {IProduct} from "../data/getProductList"
+import { PageContext } from "../App"
 
 
-export const SearchResults = ({productList} : any) => {
+export const SearchResults = () => {
+
+    const {pageState} = useContext(PageContext);
+    const productList = pageState?.productList;
+
     if (productList == null) {
         console.log("productList == null")
         return <div/>

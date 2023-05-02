@@ -15,7 +15,7 @@ export const Size  = () => {
                 <div className="title-sizes">Your Sizes:</div>
                 <div className="list-container">
                     {sizes.map((size) => (
-                        <div className = "one-currency">
+                        <div className = "one-currency" key={size}>
                             <input value={size} type="checkbox" />
                             <span>{size} </span>
                         </div>

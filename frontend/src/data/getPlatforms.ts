@@ -6,6 +6,6 @@ export const retrievePlatforms = () => {
     if (mockingMode) {
         return mockPlatforms.data;
     } else {
-        return null;
+        return mockPlatforms.data;
     }
 }

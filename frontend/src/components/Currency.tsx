@@ -15,7 +15,7 @@ export const Currency  = () => {
                 <div className="title-currency">Your Currencies:</div>
                 <div className="list-container">
                     {currencies.map((currency) => (
-                        <div className = "one-currency">
+                        <div className = "one-currency" key={currency}>
                             <input value={currency} type="checkbox" />
                             <span>{currency} </span>
                         </div>
