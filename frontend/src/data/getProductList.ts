@@ -2,7 +2,6 @@ import { mockSearch } from "../../../mockdata/search";
 import { mockingMode } from "./mockingMode";
 import { secretAPIkey } from "./apikey";
 import { isServerSuccessResponse, isServerErrorResponse } from "./typePredicate";
-import { defaultPageState } from "./dataTypes";
 
 
 const backendURL = "https://sneakers-real-time-pricing.p.rapidapi.com"
@@ -19,14 +18,11 @@ export async function getProductList (searchText : string, dispatch : any)  {
     
     if (mockingMode) {
 
-        console.log("getProductList.mockingmMode 1")
-
         const action = {
             type : "searchSuccess",
             payload : mockSearch.data,
         }
         dispatch(action) ;
-        console.log("getProductList.mockingmMode 2")
 
     } else {
 
@@ -40,6 +36,8 @@ export async function getProductList (searchText : string, dispatch : any)  {
                         type : "searchSuccess",
                         payload : result.data
                     };
+
+                    console.log("Payload = " + action.payload)
                     dispatch(action) ;
                 
 

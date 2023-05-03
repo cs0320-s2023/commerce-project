@@ -1,20 +1,22 @@
-import {useContext, useState} from "react"
-import "../App.css"
-import { getPrices } from "../data/getPrices"
+import { useContext } from "react"
 import { PageContext } from "../App"
 
+import "../App.css"
 
 export const SearchResults = () => {
 
     const {pageState} = useContext(PageContext);
-    const productList = pageState?.productList;
 
-    if (productList == null) {
-        console.log("productList == null")
+    // DEFENSIVE PROG: If no pageState  is defined yet, we return an empty div
+    if ((pageState == null) || (pageState == undefined)){
         return <div/>
     } 
-    console.log("productList is not null")
-    console.log(productList)
+    const productList = pageState.productList;
+
+    // DEFENSIVE PROG: If no product list is defined yet, we return an empty div
+    if ((productList == null) || (productList == undefined)){
+        return <div/>
+    } 
 
     return(
         <div className="search-results" role="search-results">

@@ -16,7 +16,6 @@ export const NewSearchBar  = () => {
         if (cleanTextSearch.length == 0) {
             return;
         } else {
-            console.log("NewSearchBar.searchForSneakers")
             getProductList(cleanTextSearch, dispatch);
         }
     }

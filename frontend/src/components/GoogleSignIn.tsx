@@ -1,30 +1,28 @@
-import {useEffect, useState} from "react"
-import React, { Component } from "react";
+import { signInWithGoogle, signOutWithGoogle} from "../firebase"
 import "../App.css"
-import { auth, signInWithGoogle, signOutWithGoogle} from "../firebase"
-import { onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 
 export const GoogleSignIn  = () => {
 
 
+    // TSX to display when the user is signed out.
     const showSignIn = () => {
 
         return( 
-        <button onClick={signInWithGoogle} className="google-btn">
-            <span className="google-text">Sign in!</span>
-            <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google logo" />
-        </button>
+            <button onClick={signInWithGoogle} className="google-btn">
+                <span className="google-text">Sign in!</span>
+                <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google logo" />
+            </button>
         )
     } 
 
+    // TSX to display when the user is signed in.
     const showSignOut = () => {
 
         return( 
             <button onClick={signOutWithGoogle} className="google-btn">
-            <span className="signout-text">Sign Out!</span>
-            <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google logo" />
-
-        </button>
+                <span className="signout-text">Sign Out!</span>
+                <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google logo" />
+            </button>
         )
     } 
 
