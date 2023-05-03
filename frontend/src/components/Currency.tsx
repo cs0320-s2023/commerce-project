@@ -28,20 +28,6 @@ export const Currency  = () => {
               <span>{currency} </span>
             </div> */}
 
-          <ButtonGroup>
-            <ToggleButton
-              id="toggle-checkbox"
-              type="checkbox"
-              variant="outline-primary"
-              checked={checked}
-              value="1"
-              onChange={(e) => {
-                setChecked(e.currentTarget.checked);
-              }}
-            >
-              Check
-            </ToggleButton>
-          </ButtonGroup>
           <Switch
             defaultChecked={true}
             checkedChildren="EUR"
@@ -77,13 +63,6 @@ export const Currency  = () => {
             checkedChildren="CHF"
             unCheckedChildren="CHF"
           ></Switch>
-
-          <Breadcrumb>
-            <Breadcrumb.Item>currency1</Breadcrumb.Item>
-            <Breadcrumb.Item>currency2</Breadcrumb.Item>
-            <Breadcrumb.Item active>currency3</Breadcrumb.Item>
-            <Breadcrumb.Item active>currency4</Breadcrumb.Item>
-          </Breadcrumb>
         </div>
       </div>
 
