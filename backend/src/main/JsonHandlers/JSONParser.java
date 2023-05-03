@@ -53,4 +53,8 @@ public class JSONParser<T> {
         return  moshi.adapter(SneakerUtils.SneakerData.class).fromJson(sneakerJSON);
     }
     
+    public static SneakerUtils.RTPData fromRTPSneakerJson(String sneakerJSON) throws IOException {
+        Moshi moshi = new Moshi.Builder().build();
+        return  moshi.adapter(SneakerUtils.RTPData.class).fromJson(sneakerJSON);
+    }
 }

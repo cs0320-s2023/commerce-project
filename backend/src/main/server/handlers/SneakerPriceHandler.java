@@ -21,7 +21,7 @@ public class SneakerPriceHandler implements Route {
     public SneakerPriceHandler(String data){
         try {
             //            System.out.println(sneakerJSON);
-                        this.RTPdata = JSONParser.fromSneakerJson(data);
+                        this.RTPdata = JSONParser.fromRTPSneakerJson(data);
             //            System.out.println(this.data);
             
                     } catch (IOException e) {
