@@ -10,7 +10,7 @@ export const Currency  = () => {
 
     const currencies = mockCurrencies.data;
     if (currencies == null) {
-        return <div className="platforms-container">Loading Currencies</div>
+        return <div className="currency-container">Loading Currencies</div>
     } 
 
     const [checked, setChecked] = useState(false);
@@ -19,7 +19,7 @@ export const Currency  = () => {
 
 
     return (
-      <div className="currencies-container" role="currencies-container">
+      <div className="currency-container" role="currency-container">
         <Alert variant = "" className ="title-currency">Your Currencies:</Alert>
         <div className="list-container">
           {/* {currencies.map((currency) => (

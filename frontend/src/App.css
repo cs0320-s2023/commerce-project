@@ -51,12 +51,21 @@
   margin-left: 1vh;
 }
 
+
 .filter{
+  max-width: min-content;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: left;
+  padding: 5px;
+  background:magenta
 }
+
+.results-filter{
+  display: flex;
+  flex-direction: row; 
+}
+
 
 .search-bar{
   position: relative;
@@ -85,6 +94,8 @@
 .platforms-container {
   background-color: pink;
   text-align: left;
+  padding-bottom: 10px;
+
 }
 
 .one-platform {
@@ -92,9 +103,17 @@
   text-align: left;
 }
 
+.size-container {
+  background-color: pink;
+  text-align: left;
+  padding-bottom: 10px;
+}
+
 .currency-container {
   background-color: pink;
   text-align: left;
+  padding-bottom: 10px;
+
 }
 .one-currency {
   background-color: blueviolet;
@@ -113,7 +132,7 @@
 }
 
 .search-results{
-  background-color: green;
+  background-color: white;
   min-height: 20vh;
   display: flex;
   flex-direction: row;
@@ -190,22 +209,31 @@
 
 .product{
   margin-left: 2vh;
+  max-width: 250px;
+  padding-top: 5px;
+  min-width: 100px;
 }
 
 .product-name{
   margin-left: 2vh;
   margin-bottom: 2vh;
-  background-color: black;
+  background-color: rgb(16, 14, 14);
 }
 .product-image{
   width: 200px;
   height: 200px;
-  margin-left: 2vh;
-  margin-top: 2vh;
 }
 
 .signin-container{
   background-color: grey;
+}
+
+.card-img-product-image{
+  width: fit-content;
+}
+#product-image-wrapper{
+  width:200px;
+  min-height: 1000px;
 }
 
 

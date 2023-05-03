@@ -1,4 +1,4 @@
-import { mockSearch } from "../../../mockdata/search";
+import { mockPriceStats } from "../../../mockdata/priceStats";
 import { mockingMode } from "./mockingMode";
 import { secretAPIkey } from "./apikey";
 import { isServerSuccessResponse, isServerErrorResponse } from "./typePredicate";
@@ -12,28 +12,29 @@ const options = {
     },          
   }
 
+
 const backendURL2 = "http://localhost:3232"
 
-export async function getProductList (searchText : string, dispatch : any)  {
+export async function getPriceStats (sku : string, dispatch : any)  {
     
     if (mockingMode) {
 
         const action = {
-            type : "searchSuccess",
-            payload : mockSearch.data,
+            type : "priceStatsSuccess",
+            payload : mockPriceStats.data,
         }
         dispatch(action) ;
 
     } else {
 
-        const url = backendURL + "/sneakers?extended=true&name=" + searchText;
+        const url = backendURL + "/sneakers/prices_stats?sku=" + sku;
 
         await fetch(url, options)
             .then(res => res.json())
             .then((result) => {
                 if (isServerSuccessResponse(result)) {
                     const action = {
-                        type : "searchSuccess",
+                        type : "priceStatsSuccess",
                         payload : result.data
                     };
 
@@ -43,7 +44,7 @@ export async function getProductList (searchText : string, dispatch : any)  {
 
                 } else if (isServerErrorResponse(result)) {
                     const action = {
-                        type : "searchFailure",
+                        type : "priceStatsFailure",
                         payload : result.message
                     }; 
                     dispatch(action) ;
@@ -51,8 +52,8 @@ export async function getProductList (searchText : string, dispatch : any)  {
 
                 } else {
                     const action = {
-                        type : "searchFailure",
-                        payload : "Error while trying to contact server"
+                        type : "priceStatsFailure",
+                        payload : "Error while trying to contact server for prices stats"
                     };
                     dispatch(action) ;
                   
@@ -61,7 +62,7 @@ export async function getProductList (searchText : string, dispatch : any)  {
             (error) => {
              
                 const action = {
-                    type : "searchFailure",
+                    type : "priceStatsFailure",
                     payload : error
                 };
 
