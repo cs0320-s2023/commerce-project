@@ -1,6 +1,6 @@
 import { mockSearch } from "../../../mockdata/search";
 import { mockingMode } from "./mockingMode";
-import { secretAPIkey } from "./apikey";
+import { secretAPIKey } from "./apikey";
 import { isServerSuccessResponse, isServerErrorResponse } from "./typePredicate";
 import { defaultPageState } from "./dataTypes";
 
@@ -9,9 +9,39 @@ const backendURL = "https://sneakers-real-time-pricing.p.rapidapi.com"
 const options = {  
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': secretAPIkey,
+      'X-RapidAPI-Key': secretAPIKey,
     },          
   }
+
+export interface IProduct {
+    id: string,
+    name: string,
+    sku: string,
+    image: string | null,
+}
+
+// const mockProductList : IProduct[] = [
+//     {
+//         key: "Gazelle-bold-shoes",
+//         value: "Nike gazelle bold shoes",
+//     },
+//     {
+//         key: "Samba-og-shoes",
+//         value: "Adidas Samba OG Shoes",
+//     },
+//     {
+//         key: "nizza-platform-shoes",
+//         value: "Puma Nizza Platform Shoes",
+//     },
+//     {
+//         key: "vegan-cycling-shoes",
+//         value: "Adidas Vegan Cycling Shoes",
+//     },
+//     {
+//         key: "ultra-4d-running-shoes",
+//         value: "Adidas Ultra Running Shoes",
+//     },
+//   ];
 
 const backendURL2 = "http://localhost:3232"
 

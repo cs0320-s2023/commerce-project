@@ -2,6 +2,7 @@ import {useEffect, useState} from "react"
 import React, { Component } from "react";
 import "../App.css"
 import { retrievePlatforms } from "../data/getPlatforms";
+import {Alert} from "react-bootstrap"
 
 export const Platforms  = () => {
 
@@ -9,7 +10,7 @@ export const Platforms  = () => {
     const platforms = retrievePlatforms();
     
     if (platforms == null) {
-        return <div className="platforms-container">Loading Platforms</div>
+        return <Alert variant = "" className="platforms-container">Loading Platforms!</Alert>
     } 
 
     return(
