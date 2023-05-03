@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import {getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut} from "firebase/auth";
+import {getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut, User} from "firebase/auth";
 import { useState, useEffect } from "react";
 
 
@@ -27,6 +27,9 @@ export const auth = getAuth(app);
 
 const provider = new GoogleAuthProvider();
 
+export let userSignedIn = false
+
+
 onAuthStateChanged(auth, (user) => {
   if (user) {
     // User is signed in
@@ -37,6 +40,7 @@ onAuthStateChanged(auth, (user) => {
     localStorage.setItem('name', name || '');
     localStorage.setItem('email', email || '');
     localStorage.setItem('photoUrl', photoUrl || '');
+    userSignedIn = true;
 
     console.log(`Welcome ${name}!`);
     console.log(name, email, photoUrl);
@@ -46,6 +50,7 @@ onAuthStateChanged(auth, (user) => {
     localStorage.removeItem('email');
     localStorage.removeItem('photoUrl');
     console.log('Please sign in');
+    userSignedIn = false;
     
   }
 });

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useReducer, createContext} from "react";
 import "./App.css";
-import {Currency, ProductDescription, Size} from  "./components"
+import {Currency, ProductDescription, Size, wishlist} from  "./components"
 import {SearchResults} from "./components"
 import {siteName} from "../src/config"
 import { Platforms } from "./components/Platforms";
@@ -10,6 +10,8 @@ import { GoogleSignIn } from "./components";
 import {ErrorMessage} from "./components/ErrorMessage"
 import {reducer} from "./data/reducer";
 import { defaultPageState, initialContext } from "./data/dataTypes";
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
 
 export const PageContext = createContext(initialContext);
 
@@ -26,7 +28,7 @@ function App() {
         <GoogleSignIn />
         <NewSearchBar />
         <Filter />
-        <SearchResults />      
+        <SearchResults />    
       </div>
     </PageContext.Provider>
   );}
