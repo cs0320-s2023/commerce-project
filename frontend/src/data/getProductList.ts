@@ -1,6 +1,6 @@
 import { mockSearch } from "../../../mockdata/search";
 import { mockingMode } from "./mockingMode";
-import { secretAPIkey } from "./apikey";
+import { secretAPIKey } from "./apikey";
 import { isServerSuccessResponse, isServerErrorResponse } from "./typePredicate";
 
 
@@ -8,7 +8,7 @@ const backendURL = "https://sneakers-real-time-pricing.p.rapidapi.com"
 const options = {  
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': secretAPIkey,
+      'X-RapidAPI-Key': secretAPIKey,
     },          
   }
 

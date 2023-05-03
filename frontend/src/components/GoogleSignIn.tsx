@@ -1,6 +1,7 @@
 import { signInWithGoogle, signOutWithGoogle} from "../firebase"
 import "../App.css"
 import {Alert, Button, Breadcrumb} from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 export const GoogleSignIn  = () => {
 
