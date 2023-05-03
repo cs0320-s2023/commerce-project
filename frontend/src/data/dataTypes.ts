@@ -6,15 +6,24 @@ export interface IProduct {
     image: string | null,
 }
 
+export interface IPriceStat {
+    platformName: string,
+    minPriceUsd: number,
+    avgPriceUsd: number,
+    lastPriceUsd: number,
+}
+
 export interface IPageState {
     errorMessage: string,
     productList: IProduct[],
+    selectedProductPriceStats: IPriceStat[],
     userName : string
 }
 
 export const defaultPageState : IPageState = { 
     errorMessage: "",
     productList: [],
+    selectedProductPriceStats: [],
     userName : ""
 };
 

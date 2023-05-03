@@ -9,11 +9,11 @@ export const Size  = () => {
 
     const sizes = mockSizes.data;
     if (sizes == null) {
-        return <div className="sizes-container">Loading Sizes</div>
+        return <div className="size-container">Loading Sizes</div>
     } 
 
     return (
-      <div className="sizes-container" role="sizes-container">
+      <div className="size-container" role="size-container">
         <Alert variant = "" className="title-sizes">Your Sizes:</Alert>
         <div className="list-container">
           {/* {sizes.map((size) => (

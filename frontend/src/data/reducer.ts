@@ -4,12 +4,8 @@ export function reducer(state : IPageState, action : IPageStateAction) {
     const {type, payload} =  action;
     const username = localStorage.getItem('name');
 
-    console.log("reducer called with type = " + type)
-
     switch (type) {
         case "searchSuccess" :
-
-            console.log("searchSuccess data.length = " + payload.length)
 
             return {
                 ...state, 
@@ -26,6 +22,25 @@ export function reducer(state : IPageState, action : IPageStateAction) {
                 errorMessage : payload,
                 userName: username
             }
+
+        case "priceStatsSuccess" :
+
+            return {
+                ...state, 
+                selectedProductPriceStats : payload,
+                errorMessage : "",
+                userName: username
+            }
+        
+        case "priceStatsFailure" :
+
+            return {
+                ...state, 
+                selectedProductPriceStats : [],
+                errorMessage : payload,
+                userName: username
+            }
+
 
         default :
             throw new Error("unhandled reducer action")

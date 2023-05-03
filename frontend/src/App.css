@@ -51,9 +51,11 @@
 
 .filter{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  max-width: 200px;
+  padding: 5px
 }
 
 .search-bar{
@@ -83,6 +85,7 @@
 .platforms-container {
   background-color: pink;
   text-align: left;
+  padding-bottom: 10px;
 }
 
 .one-platform {
@@ -90,10 +93,18 @@
   text-align: left;
 }
 
+.size-container {
+  background-color: pink;
+  text-align: left;
+  padding-bottom: 10px;
+}
+
 .currency-container {
   background-color: pink;
   text-align: left;
+  padding-bottom: 10px;
 }
+
 .one-currency {
   background-color: blueviolet;
   text-align: left;
@@ -111,7 +122,7 @@
 }
 
 .search-results{
-  background-color: green;
+  background-color: white;
   min-height: 20vh;
   display: flex;
   flex-direction: row;
@@ -253,4 +264,34 @@
 .error-message{
   background-color: red;
   font-weight: bold;
+}
+
+.price-stats-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.price-stats {
+  padding: 10px;
+}
+
+.price-platform-name{
+  font-weight: bold;
+}
+
+.results-filter{
+  display: flex;
+  flex-direction: row; 
+}
+
+
+.wishlist-btn {
+  transition-duration: 0.4s;
+  border:0cm;
+  background-color:unset; 
+
+}
+
+.wishlist-btn:hover {
+  background-color: grey; 
 }

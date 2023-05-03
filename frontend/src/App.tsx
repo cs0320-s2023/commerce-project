@@ -7,7 +7,8 @@ import { Platforms } from "./components/Platforms";
 import { NewSearchBar } from "./components/NewSearchBar";
 import { Filter } from "./components/Filter";
 import { GoogleSignIn } from "./components";
-import {ErrorMessage} from "./components/ErrorMessage"
+import {ErrorMessage} from "./components"
+import {PriceStats} from "./components/"
 import {reducer} from "./data/reducer";
 import { defaultPageState, initialContext } from "./data/dataTypes";
 
@@ -25,8 +26,11 @@ function App() {
         <ErrorMessage />
         <GoogleSignIn />
         <NewSearchBar />
-        <Filter />
-        <SearchResults />      
+        <div className="results-filter" id="results-filter" role="results-filter">
+          <Filter />
+          <SearchResults />      
+          <PriceStats />     
+        </div> 
       </div>
     </PageContext.Provider>
   );}
