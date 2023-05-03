@@ -4,10 +4,11 @@ export const mockCurrencies = {
      "priceEur", 
      "priceGbp",
      "priceUsd",
-     "pricePln",
-     "priceChf",
-     "priceDkk",
-     "priceSek",
     ],
+    "currencies": [
+      "Euros 💶", 
+      "Pounds 💷",
+      "US Dollars 💵",
+     ],
     "error": null
   }

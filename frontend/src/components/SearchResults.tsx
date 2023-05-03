@@ -28,6 +28,7 @@ export const SearchResults = () => {
       }
       
     const [wishlist, setWishlist] = useState<Product[]>([]);
+    const [showMessage, setShowMessage] = useState(false);
 
       
     function handleAddToWishlist(product: Product) {
@@ -35,6 +36,15 @@ export const SearchResults = () => {
           alert("You must sign in first!");
           return;
         }
+
+        setShowMessage(true);
+
+        setTimeout(() => {
+          setShowMessage(false);
+        }, 2000); // hide the message after 2 seconds
+
+        //alert("Yay! Added shoe to your favs");
+
         setWishlist([...wishlist, product]);
     }
 
@@ -48,7 +58,8 @@ export const SearchResults = () => {
       }
 
       const [isPanelOpen, setIsPanelOpen] = useState(false);
-    
+      const [isWishlistOpen, setIsWishlistOpen] = useState(false);
+
       const handleOpenPanel = () => {
         setIsPanelOpen(true);
         document.body.classList.add("wishlist-panel-open");
@@ -57,6 +68,17 @@ export const SearchResults = () => {
       const handleClosePanel = () => {
         setIsPanelOpen(false);
         document.body.classList.remove("wishlist-panel-open");
+      };
+
+      
+      const showWishlistButton = () => {
+        setIsWishlistOpen(true);
+        document.body.classList.add("viewwishlist-btn");
+      };
+      
+      const hideWishlistButton = () => {
+        setIsWishlistOpen(false);
+        document.body.classList.remove("viewwishlist-btn");
       };
 
 
@@ -71,32 +93,45 @@ export const SearchResults = () => {
     // onClick={() => handleAddToWishlist(product)}
 
     return(
+
         <div className="search-results" role="search-results">
+        {/* <button className="viewwishlist-btn"onClick={handleOpenPanel}>View Wishlist</button> */}
+        {userSignedIn ? <button className="viewwishlist-btn" onClick={handleOpenPanel}>Your Favs ❤️</button> : null}
+        <br></br>
         {productList.map((product : any) => (
                 <div className = "product" key = {product.name} >
                   <Card style={{ color: "#000" }} className="product-image-wrapper">
                     <Card.Img src={product.image} className="product-image" onClick={() => {getSelectedPriceStats(product.sku)}} />
-                    <button className="wishlist-btn" onClick={() => handleAddToWishlist(product)}>❤️</button>
+                    
+                        <button className="wishlist-btn" onClick={() => handleAddToWishlist(product)}>❤️</button>
+                                     
                     <Card.Title className="product-name">{product.name}</Card.Title> 
                   </Card>
                 </div>
         ))}
 
 
-        <button className="viewwishlist-btn"onClick={handleOpenPanel}>View Wishlist</button>
+        
         {isPanelOpen && (
           <div className="wishlist-panel open">
-            <button onClick={handleClosePanel}>Close</button>
+            <button className="wishlist-panel-close-btn" onClick={handleClosePanel}>Close</button>
             <h2>My Wishlist</h2>
             {wishlist.map((product) => (
               <div className="product" key={product.name}>
-                <div className="product-image-wrapper">
-                  <img src={product.image} className="product-image" />
+
+                <Card style={{ color: "#000" }} className="product-image-wrapper">
+                    <Card.Img src={product.image} className="product-image" />                                     
+                    <Card.Title className="product-name">{product.name}</Card.Title> 
+                    <button className= "handleRemoveFromWishlistBtn" onClick={() => handleRemoveFromWishlist(product)}>
+                         Remove
+                     </button>
+                </Card>
+
+                {/* <div className="product-image-wrapper-wishlist">
+                  <img src={product.image?product.image:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Running_shoe_icon.png/640px-Running_shoe_icon.png"} className="product-image" />
                 </div>
-                <div className="product-name">{product.name}</div>
-                <button onClick={() => handleRemoveFromWishlist(product)}>
-                REMOVE
-              </button>
+                <div className="product-name">{product.name}</div> */}
+                
               </div>
             ))}
 
@@ -126,6 +161,5 @@ export const SearchResults = () => {
     
 }
 export default SearchResults;
-
 
 

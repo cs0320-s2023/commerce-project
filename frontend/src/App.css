@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: left;
-  background-color: yellow;
+  /*background-color: yellow;*/
   position: relative;
 }
 
@@ -21,7 +21,6 @@
 
 .search-bar-container{
   margin-top: 1vh;
-
   position: relative;
   background-color: red;
   height: 10vh;
@@ -32,12 +31,23 @@
   font-size: calc(1px + 2vmin);
   color: black;
   z-Index: 1;
-  
+}
+
+.webpage-title{
+  font:100px;
+  font-weight: bolder;
+}
+
+.webpage-subtitle{
+  font:10px;
+  font-style: italic;
 }
 
 .new-search-bar{
   flex-direction: column;
   font-size: calc(1px + 2vmin);
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .input-search-box{
@@ -58,7 +68,6 @@
   flex-direction: column;
   align-items: left;
   padding: 5px;
-  background:magenta
 }
 
 .results-filter{
@@ -84,7 +93,6 @@
   z-index: 2;
   background-color: white;
   border: 1px solid black;
-  padding: 10px;
 }
 
 .sc-gswNZR.ilZVLX{
@@ -92,10 +100,9 @@
 }
 
 .platforms-container {
-  background-color: pink;
   text-align: left;
   padding-bottom: 10px;
-
+  max-width:120px;
 }
 
 .one-platform {
@@ -104,15 +111,24 @@
 }
 
 .size-container {
-  background-color: pink;
   text-align: left;
   padding-bottom: 10px;
+  max-width:120px;
+}
+
+.title-filter{
+text-align: left;
+font-size: small;
+}
+
+.filter-switch{
+  width: 100px;
 }
 
 .currency-container {
-  background-color: pink;
   text-align: left;
   padding-bottom: 10px;
+  max-width:120px;
 
 }
 .one-currency {
@@ -121,18 +137,16 @@
 }
 
 .product-description{
-  background-color: yellow;
+  /*background-color: yellow;*/
   min-height: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(1px + 2vmin);
-  color: black;
 }
 
 .search-results{
-  background-color: white;
   min-height: 20vh;
   display: flex;
   flex-direction: row;
@@ -145,6 +159,9 @@
 .product-image-wrapper {
   position: relative;
   display: inline-block;
+  min-height: 300px;
+  justify-content: center;
+  align-items: center;
 }
 
 .product-image {
@@ -155,13 +172,11 @@
 .wishlist-btn {
   position: absolute;
   top: 22px;
-  right: 0;
+  right: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #7e0c0c;
-  border: 2px solid #e74c3c;
-  color: #e74c3c;
+  background-color: white;
   font-size: 24px;
   font-weight: bold;
   text-align: center;
@@ -170,6 +185,26 @@
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  border:none;
+}
+
+.viewwishlist-btn {
+  border-color: black;
+  background-color:white;
+  color: black;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 8px;
+  cursor: pointer;
+  width: fit-content;
+  height: 50px;
+  top: 90px;
+  right: 70px;
+  
+  border-radius: 100px;
+ 
+  /* zindex bring button to the front of page */
+  z-index: 99099;
 }
 
 .wishlist-btn:hover {
@@ -186,8 +221,11 @@
   transform: translateY(5px);
 }
 
+.wishlist-panel-close-btn{
+  border-radius: 100px;
+}
+
 .product-option{
-  background-color: green;
   min-height: 5vh;
   display: flex;
   flex-direction: row;
@@ -215,10 +253,8 @@
 }
 
 .product-name{
-  margin-left: 2vh;
-  margin-bottom: 2vh;
-  background-color: rgb(16, 14, 14);
-  color: white;
+  font-size: small;
+  color: black;
 }
 .product-image{
   width: 200px;
@@ -226,7 +262,9 @@
 }
 
 .signin-container{
-  background-color: grey;
+  align-items: center;
+  text-align: center;
+  
 }
 
 .card-img-product-image{
@@ -243,7 +281,6 @@
   display: inline-block;
   background-color: #fff;
   color: #737373;
-  border-radius: 4px;
   border: 1px solid #737373;
   font-size: 16px;
   font-weight: bold;
@@ -251,10 +288,29 @@
   width: 150px;
   height: 50px;
   position: relative;
-
+  padding-bottom: 5px;
   /* zindex bring button to the front of page */
   z-index: 9999;
 }
+
+
+.signout-btn {
+  display: inline-block;
+  background-color: #fff;
+  color: #737373;
+  border-radius: 4px;
+  border: 1px solid #737373;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px;
+  cursor: pointer;
+  width: 120px;
+  height: 50px;
+  position: absolute;
+  /* zindex bring button to the front of page */
+  z-index: 9999;
+}
+
 
 /* Button hover styles */
 .google-btn:hover {
@@ -283,35 +339,13 @@
 }
 
 .welcome-message {
-  background-color: pink;
   font-weight: bold;
   color: #0f0202;
   position: relative;
-
-
   pointer-events: none;
   z-index: 9999;
-
 }
 
-
-.signout-btn {
-  display: inline-block;
-  background-color: #fff;
-  color: #737373;
-  border-radius: 4px;
-  border: 1px solid #737373;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 8px;
-  cursor: pointer;
-  width: 120px;
-  height: 50px;
-  position: absolute;
-
-  /* zindex bring button to the front of page */
-  z-index: 9999;
-}
 
 /* Button hover styles */
 .signout-btn:hover {
@@ -330,7 +364,7 @@
   right: 0;
   bottom: 0;
   width: 300px;
-  background-color: rgb(197, 24, 24);
+  background-color: white;
   z-index: 1;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease-in-out;
@@ -338,39 +372,24 @@
   overflow-y: auto;
   padding: 20px;
   z-index: 9999;
-  
-
 }
 
 .wishlist-panel.open {
   transform: translateX(0);
 }
 
-
-
-.viewwishlist-btn {
-  display: inline-block;
-  background-color: #fff;
-  color: #737373;
-  border-radius: 4px;
-  border: 1px solid #737373;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 8px;
-  cursor: pointer;
-  width: 120px;
-  height: 50px;
-  position: fixed;
-  top: 90px;
-  right: 70px;
-
-  /* zindex bring button to the front of page */
-  z-index: 9999;
+.handleRemoveFromWishlistBtn{
+  border-radius: 100px;
+  background-color: white;
+  max-width: fit-content;
 }
+
+
+
 
 /* Button hover styles */
 .viewwishlist-btn:hover {
-  background-color: #890def;
+  background-color: red;
   color: #fff;
 }
 

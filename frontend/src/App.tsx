@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useReducer, createContext} from "react";
 import "./App.css";
-import {Currency, ProductDescription, Size, wishlist} from  "./components"
+import {Currency, ProductDescription, Size} from  "./components"
 import {SearchResults} from "./components"
 import {siteName} from "../src/config"
 import { Platforms } from "./components/Platforms";
@@ -24,8 +24,12 @@ function App() {
   return (
     <PageContext.Provider value = {{ pageState, dispatch}}>
       <div className="app" id="appID" role="app">
-        {siteName}
+      <h1 className="webpage-title">👟{siteName}👟</h1>
+      <h3 className="webpage-subtitle">Find the shoe that fits your foot... and your budget!</h3>
+      <h3 className="webpage-subtitle">No more hidden fees or taxes 🤑. Prices you see are what you pay 😀.</h3>
+
         <ErrorMessage />
+        <br></br>
         <GoogleSignIn />
         <NewSearchBar />
         {/* <Filter />

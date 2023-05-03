@@ -27,7 +27,7 @@ export const NewSearchBar  = () => {
             role = "input-search-box"
             type="text"
             id="header-search"
-            placeholder="Search Sneakers"
+            placeholder="Lots of delicious deals to discover 🤤 Search your favorite Sneakers!"
             onChange = {(event) => {setTextSearch(event.target.value)}}
         />
         <button 

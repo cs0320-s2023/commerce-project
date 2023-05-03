@@ -16,7 +16,9 @@ export const Platforms  = () => {
 
     return (
       <div className="platforms-container" role="platforms-container">
-        <Alert variant = "" className="title">Your Platforms:</Alert>
+          <p className ="title-filter">Narrow your search to your fav. platforms</p>
+
+        {/* <Alert variant = "" className="title">Your Platforms:</Alert> */}
         <div className="list-container">
           {/* {platforms.map((platform) => (
                         <div className = "one-platform" key={platform.id}>
@@ -24,7 +26,19 @@ export const Platforms  = () => {
                             <span>{platform.name} </span>
                         </div>
                     ))} */}
-          <Switch
+
+        {platforms.map((platform) => (
+            <Switch className="filter-switch"
+            key = {platform.name}
+
+            defaultChecked={true}
+            checkedChildren={platform.name}
+            unCheckedChildren={platform.name}
+          ></Switch>
+            )
+          )}
+
+          {/* <Switch
             defaultChecked={true}
             checkedChildren="stockx"
             unCheckedChildren="stockx"
@@ -58,7 +72,7 @@ export const Platforms  = () => {
             defaultChecked={true}
             checkedChildren="laced"
             unCheckedChildren="laced"
-          ></Switch>
+          ></Switch> */}
         </div>
       </div>
     );

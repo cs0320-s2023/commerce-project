@@ -3,7 +3,7 @@ export interface IProduct {
     id: string,
     name: string,
     sku: string,
-    image: string | null,
+    image: string | undefined,
 }
 
 export interface IPriceStat {
@@ -13,18 +13,25 @@ export interface IPriceStat {
     lastPriceUsd: number,
 }
 
+export interface IWishList {
+    products: IProduct[]
+}
+
 export interface IPageState {
     errorMessage: string,
     productList: IProduct[],
     selectedProductPriceStats: IPriceStat[],
-    userName : string
+    userName : string,
+    IWishList : IProduct[]
+
 }
 
 export const defaultPageState : IPageState = { 
     errorMessage: "",
     productList: [],
     selectedProductPriceStats: [],
-    userName : ""
+    userName : "",
+    IWishList : []
 };
 
 export interface IInitialPageContext {

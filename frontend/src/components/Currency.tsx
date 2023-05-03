@@ -8,7 +8,9 @@ import {Alert} from "react-bootstrap"
 
 export const Currency  = () => {
 
-    const currencies = mockCurrencies.data;
+    //const currencies = mockCurrencies.data;
+    const currencies = mockCurrencies.currencies;
+
     if (currencies == null) {
         return <div className="currency-container">Loading Currencies</div>
     } 
@@ -20,7 +22,9 @@ export const Currency  = () => {
 
     return (
       <div className="currency-container" role="currency-container">
-        <Alert variant = "" className ="title-currency">Your Currencies:</Alert>
+        <p className ="title-filter">Display prices in:</p>
+
+        {/* <Alert variant = "" className ="title-currency">Display prices in:</Alert> */}
         <div className="list-container">
           {/* {currencies.map((currency) => (
             <div className="one-currency">
@@ -28,41 +32,17 @@ export const Currency  = () => {
               <span>{currency} </span>
             </div> */}
 
-          <Switch
+            
+          {currencies.map((currency) => (
+            <Switch className="filter-switch"
+            key = {currency}
             defaultChecked={true}
-            checkedChildren="EUR"
-            unCheckedChildren="EUR"
+            checkedChildren={currency}
+            unCheckedChildren={currency}
           ></Switch>
-          <Switch
-            defaultChecked={true}
-            checkedChildren="GDP"
-            unCheckedChildren="GDP"
-          ></Switch>
-          <Switch
-            defaultChecked={true}
-            checkedChildren="USD"
-            unCheckedChildren="USD"
-          ></Switch>
-          <Switch
-            defaultChecked={true}
-            checkedChildren="PLN"
-            unCheckedChildren="PLN"
-          ></Switch>
-          <Switch
-            defaultChecked={true}
-            checkedChildren="CHF"
-            unCheckedChildren="CHF"
-          ></Switch>
-          <Switch
-            defaultChecked={true}
-            checkedChildren="DKK"
-            unCheckedChildren="SEK"
-          ></Switch>
-          <Switch
-            defaultChecked={true}
-            checkedChildren="CHF"
-            unCheckedChildren="CHF"
-          ></Switch>
+            )
+          )}
+
         </div>
       </div>
 

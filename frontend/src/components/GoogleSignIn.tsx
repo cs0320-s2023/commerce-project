@@ -33,7 +33,9 @@ export const GoogleSignIn  = () => {
   
     return(
             <div className="signin-container" role="signin-container">
-                <Alert variant = "dark" className="welcome-message"> Welcome, {localStorage.getItem('name') ? localStorage.getItem('name') : 'please sign in'}!</Alert>
+                <p className="welcome-message">  {localStorage.getItem('name') ? "Hey " + localStorage.getItem('name') : "Why aren't you logged in yet 🤨?"}</p>
+
+                {/* <Alert variant = "light" className="welcome-message"> Welcome, {localStorage.getItem('name') ? localStorage.getItem('name') : 'please sign in'}!</Alert> */}
                 {signedIn?showSignOut():showSignIn()}
             </div>
     );

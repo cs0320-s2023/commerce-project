@@ -14,7 +14,9 @@ export const Size  = () => {
 
     return (
       <div className="size-container" role="size-container">
-        <Alert variant = "" className="title-sizes">Your Sizes:</Alert>
+        <p className ="title-filter">Pick your size chart </p>
+
+        {/* <Alert variant = "" className="title-sizes">Your Sizes:</Alert> */}
         <div className="list-container">
           {/* {sizes.map((size) => (
                         <div className = "one-currency">
@@ -23,26 +25,18 @@ export const Size  = () => {
                             <span>{size} </span>
                         </div> */}
           {/* )) */}
-          <Switch
+
+          {sizes.map((size) => (
+            <Switch className="filter-switch"
+            key = {size}
+
             defaultChecked={true}
-            checkedChildren="EU"
-            unCheckedChildren="EU"
+            checkedChildren={size}
+            unCheckedChildren={size}
           ></Switch>
-          <Switch
-            defaultChecked={true}
-            checkedChildren="JP"
-            unCheckedChildren="JP"
-          ></Switch>
-          <Switch
-            defaultChecked={true}
-            checkedChildren="UK"
-            unCheckedChildren="UK"
-          ></Switch>
-          <Switch
-            defaultChecked={true}
-            checkedChildren="US"
-            unCheckedChildren="US"
-          ></Switch>
+            )
+          )}
+
         </div>
       </div>
     );
