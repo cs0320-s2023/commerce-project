@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useReducer, createContext} from "react";
 import "./App.css";
 import {Currency, ProductDescription, Size} from  "./components"
-import {SearchBar} from "./components"
+// import {SearchBar} from "./components"
 import {SearchResults} from "./components"
 import {siteName} from "../src/config"
 import { Platforms } from "./components/Platforms";

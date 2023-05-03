@@ -121,6 +121,11 @@
   color: white;
   flex-wrap: wrap;
 }
+.wishlist {
+  position: relative;
+  top: 1150;
+  right: 900;
+}
 
 .product-option{
   background-color: green;
