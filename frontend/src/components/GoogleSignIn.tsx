@@ -1,5 +1,6 @@
 import { signInWithGoogle, signOutWithGoogle} from "../firebase"
 import "../App.css"
+import {Alert, Button, Breadcrumb} from 'react-bootstrap'
 
 export const GoogleSignIn  = () => {
 
@@ -8,10 +9,10 @@ export const GoogleSignIn  = () => {
     const showSignIn = () => {
 
         return( 
-            <button onClick={signInWithGoogle} className="google-btn">
+            <Button onClick={signInWithGoogle} className="google-btn">
                 <span className="google-text">Sign in!</span>
                 <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google logo" />
-            </button>
+            </Button>
         )
     } 
 
@@ -19,10 +20,10 @@ export const GoogleSignIn  = () => {
     const showSignOut = () => {
 
         return( 
-            <button onClick={signOutWithGoogle} className="google-btn">
+            <Button onClick={signOutWithGoogle} className="google-btn">
                 <span className="signout-text">Sign Out!</span>
                 <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google logo" />
-            </button>
+            </Button>
         )
     } 
 
@@ -31,8 +32,7 @@ export const GoogleSignIn  = () => {
   
     return(
             <div className="signin-container" role="signin-container">
-                <div className="welcome-message"> Welcome {localStorage.getItem('name') ? localStorage.getItem('name') : 'Please sign in'}!</div>
-    
+                <Alert variant = "dark" className="welcome-message"> Welcome, {localStorage.getItem('name') ? localStorage.getItem('name') : 'please sign in'}!</Alert>
                 {signedIn?showSignOut():showSignIn()}
             </div>
     );

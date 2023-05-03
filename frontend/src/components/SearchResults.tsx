@@ -24,6 +24,7 @@ export const SearchResults = () => {
                 <div className = "product" key = {product.name}>
                     <img src={product.image} className="product-image"/>
                     <div className = "product-name"> {product.name} </div>
+                    <button className = "wishlist"> ❤️ </button>
                 </div>
              ))}
         </div>

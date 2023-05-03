@@ -12,6 +12,12 @@ const options = {
     },          
   }
 
+export interface IProduct {
+    id: string,
+    name: string,
+    sku: string,
+    image: string | null,
+}
 const backendURL2 = "http://localhost:3232"
 
 export async function getProductList (searchText : string, dispatch : any)  {
