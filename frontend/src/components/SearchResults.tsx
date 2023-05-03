@@ -18,13 +18,15 @@ export const SearchResults = () => {
 
     return(
         <div className="search-results" role="search-results">
-            {productList.map((product : any) => (
-                <div className = "product" key = {product.name}>
-                    <img src={product.image} className="product-image"/>
-                    <div className = "product-name"> {product.name} </div>
-                    <button className = "wishlist"> ❤️ </button>
-                </div>
-             ))}
+        {productList.map((product: any) => (
+            <div className="product" key={product.name}>
+            <div className="product-image-wrapper">
+                <img src={product.image} className="product-image" />
+                <button className="wishlist-btn">❤️</button>
+            </div>
+            <div className="product-name">{product.name}</div>
+            </div>
+        ))}
         </div>
     )
 }
