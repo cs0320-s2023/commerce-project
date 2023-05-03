@@ -17,3 +17,18 @@ export const defaultPageState : IPageState = {
     productList: [],
     userName : ""
 };
+
+export interface IInitialPageContext {
+    pageState: IPageState,
+    dispatch: any
+  }
+  
+export const initialContext : IInitialPageContext = {
+    pageState: defaultPageState,
+    dispatch: undefined
+  }
+  
+export interface IPageStateAction {
+    type : string ;
+    payload : any ;
+}

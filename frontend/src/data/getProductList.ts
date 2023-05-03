@@ -2,7 +2,6 @@ import { mockSearch } from "../../../mockdata/search";
 import { mockingMode } from "./mockingMode";
 import { secretAPIkey } from "./apikey";
 import { isServerSuccessResponse, isServerErrorResponse } from "./typePredicate";
-import { defaultPageState } from "./dataTypes";
 
 
 const backendURL = "https://sneakers-real-time-pricing.p.rapidapi.com"
@@ -19,44 +18,17 @@ export interface IProduct {
     sku: string,
     image: string | null,
 }
-
-// const mockProductList : IProduct[] = [
-//     {
-//         key: "Gazelle-bold-shoes",
-//         value: "Nike gazelle bold shoes",
-//     },
-//     {
-//         key: "Samba-og-shoes",
-//         value: "Adidas Samba OG Shoes",
-//     },
-//     {
-//         key: "nizza-platform-shoes",
-//         value: "Puma Nizza Platform Shoes",
-//     },
-//     {
-//         key: "vegan-cycling-shoes",
-//         value: "Adidas Vegan Cycling Shoes",
-//     },
-//     {
-//         key: "ultra-4d-running-shoes",
-//         value: "Adidas Ultra Running Shoes",
-//     },
-//   ];
-
 const backendURL2 = "http://localhost:3232"
 
 export async function getProductList (searchText : string, dispatch : any)  {
     
     if (mockingMode) {
 
-        console.log("getProductList.mockingmMode 1")
-
         const action = {
             type : "searchSuccess",
             payload : mockSearch.data,
         }
         dispatch(action) ;
-        console.log("getProductList.mockingmMode 2")
 
     } else {
 
@@ -70,6 +42,8 @@ export async function getProductList (searchText : string, dispatch : any)  {
                         type : "searchSuccess",
                         payload : result.data
                     };
+
+                    console.log("Payload = " + action.payload)
                     dispatch(action) ;
                 
 
