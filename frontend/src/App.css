@@ -384,9 +384,6 @@ font-size: small;
   max-width: fit-content;
 }
 
-
-
-
 /* Button hover styles */
 .viewwishlist-btn:hover {
   background-color: red;
@@ -394,3 +391,22 @@ font-size: small;
 }
 
 
+.price-panel-open {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 300px;
+  background-color: white;
+  z-index: 1;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(100%);
+  overflow-y: auto;
+  padding: 20px;
+  z-index: 9999;
+}
+
+.price-panel-open.open {
+  transform: translateX(0);
+}

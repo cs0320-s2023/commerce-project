@@ -29,7 +29,10 @@ export const SearchResults = () => {
       
     const [wishlist, setWishlist] = useState<Product[]>([]);
     const [showMessage, setShowMessage] = useState(false);
+    const [isPanelOpen, setIsPanelOpen] = useState(false);
+    const [isWishlistOpen, setIsWishlistOpen] = useState(false);
 
+    // HANDLE WISHLIST
       
     function handleAddToWishlist(product: Product) {
         if (!userSignedIn) {
@@ -55,31 +58,29 @@ export const SearchResults = () => {
           newWishlist.splice(index, 1);
           setWishlist(newWishlist);
         }
-      }
+    }
 
-      const [isPanelOpen, setIsPanelOpen] = useState(false);
-      const [isWishlistOpen, setIsWishlistOpen] = useState(false);
-
-      const handleOpenPanel = () => {
-        setIsPanelOpen(true);
-        document.body.classList.add("wishlist-panel-open");
-      };
+    const handleOpenPanel = () => {
+    setIsPanelOpen(true);
+    document.body.classList.add("wishlist-panel-open");
+    };
       
-      const handleClosePanel = () => {
+    const handleClosePanel = () => {
         setIsPanelOpen(false);
         document.body.classList.remove("wishlist-panel-open");
-      };
-
-      
-      const showWishlistButton = () => {
+    };
+ 
+    const showWishlistButton = () => {
         setIsWishlistOpen(true);
         document.body.classList.add("viewwishlist-btn");
-      };
-      
-      const hideWishlistButton = () => {
+    };
+    
+    const hideWishlistButton = () => {
         setIsWishlistOpen(false);
         document.body.classList.remove("viewwishlist-btn");
-      };
+    };
+
+    // HANDLE PRICES PANEL
 
 
     const getSelectedPriceStats = (sku: string) => {
@@ -87,6 +88,7 @@ export const SearchResults = () => {
         if ((sku == null) || (sku == undefined) || (sku.length == 0)) {
             return;
         } else {
+            //handleOpenPanel()
             getPriceStats(sku, dispatch);
         }
     }
@@ -97,6 +99,7 @@ export const SearchResults = () => {
         <div className="search-results" role="search-results">
         {/* <button className="viewwishlist-btn"onClick={handleOpenPanel}>View Wishlist</button> */}
         {userSignedIn ? <button className="viewwishlist-btn" onClick={handleOpenPanel}>Your Favs ❤️</button> : null}
+        
         <br></br>
         {productList.map((product : any) => (
                 <div className = "product" key = {product.name} >

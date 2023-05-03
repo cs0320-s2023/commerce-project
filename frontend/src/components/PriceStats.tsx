@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { PageContext } from "../App"
+import {Card} from 'react-bootstrap'
 
 import "../App.css"
 
@@ -19,15 +20,26 @@ export const PriceStats = () => {
     } 
 
     return(
+        // <div className="price-stats-container" role="price-stats">
+        //     {priceStats.map((priceEntry : any) => (
+        //         <div className = "price-stats" key = {priceEntry.platformName}>
+        //             <div className = "price-platform-name"> {priceEntry.platformName} </div>
+        //             <div className = "price-price"> Min: {priceEntry.minPriceUsd} </div>
+        //             <div className = "price-price"> Avg: {priceEntry.avgPriceUsd} </div>
+        //             <div className = "price-price"> Last: {priceEntry.lastPriceUsd} </div>
+        //         </div>
+        //      ))}
+        // </div>
+
         <div className="price-stats-container" role="price-stats">
-            {priceStats.map((priceEntry : any) => (
-                <div className = "price-stats" key = {priceEntry.platformName}>
-                    <div className = "price-platform-name"> {priceEntry.platformName} </div>
+        {priceStats.map((priceEntry : any) => (
+            <Card style={{ color: "#000" }} className = "price-stats" key = {priceEntry.platformName}>        
+            <Card.Title className="product-name">{priceEntry.platformName}</Card.Title> 
                     <div className = "price-price"> Min: {priceEntry.minPriceUsd} </div>
-                    <div className = "price-price"> Avg: {priceEntry.avgPriceUsd} </div>
-                    <div className = "price-price"> Last: {priceEntry.lastPriceUsd} </div>
-                </div>
-             ))}
+                     <div className = "price-price"> Avg: {priceEntry.avgPriceUsd} </div>
+                     <div className = "price-price"> Last: {priceEntry.lastPriceUsd} </div>
+            </Card>
+        ))}
         </div>
     )
 }
