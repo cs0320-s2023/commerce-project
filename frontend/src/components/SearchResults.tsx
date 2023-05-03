@@ -20,19 +20,35 @@ export const SearchResults = () => {
         return <div/>
     } 
 
-    return (
-      <div className="search-results" role="search-results">
-        {productList.map((product: any) => (
-          <div className="product" key={product.name}>
-            <Card style={{ color: "#000" }} className="product-image-wrapper">
-              <Card.Img src={product.image} className="product-image" />
-              <button className="wishlist-btn">❤️</button>
+    const getSelectedPriceStats = (sku: string) => {
 
-              <Card.Title className="product-name">{product.name}</Card.Title> 
-            </Card>
-          </div>
-        ))}
-      </div>
-    );
+        if ((sku == null) || (sku == undefined) || (sku.length == 0)) {
+            return;
+        } else {
+            getPriceStats(sku, dispatch);
+        }
+    }
+
+    return(
+        <div className="search-results" role="search-results">
+            {productList.map((product : any) => (
+                <div className = "product" key = {product.name} >
+                    {/* <img src={product.image} className="product-image"/>    
+
+                    <div className = "name+like"> 
+                        <button className = "wishlist-btn"> ❤️ </button>
+                        <div className = "product-name"> {produconClick={() => {getSelectedPriceStats(product.sku)}}t.name} </div>
+
+                    </div> */}
+
+                  <Card style={{ color: "#000" }} className="product-image-wrapper">
+                    <Card.Img src={product.image} className="product-image" onClick={() => {getSelectedPriceStats(product.sku)}} />
+                    <button className="wishlist-btn">❤️</button>
+                    <Card.Title className="product-name">{product.name}</Card.Title> 
+                  </Card>
+                </div>
+             ))}
+        </div> 
+    )
 }
 

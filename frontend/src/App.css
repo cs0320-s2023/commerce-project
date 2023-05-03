@@ -49,14 +49,21 @@
   margin-left: 1vh;
 }
 
+
 .filter{
+  max-width: min-content;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 200px;
-  padding: 5px
+  align-items: left;
+  padding: 5px;
+  background:magenta
 }
+
+.results-filter{
+  display: flex;
+  flex-direction: row; 
+}
+
 
 .search-bar{
   position: relative;
@@ -86,6 +93,7 @@
   background-color: pink;
   text-align: left;
   padding-bottom: 10px;
+
 }
 
 .one-platform {
@@ -103,8 +111,8 @@
   background-color: pink;
   text-align: left;
   padding-bottom: 10px;
-}
 
+}
 .one-currency {
   background-color: blueviolet;
   text-align: left;
@@ -199,6 +207,9 @@
 
 .product{
   margin-left: 2vh;
+  max-width: 250px;
+  padding-top: 5px;
+  min-width: 100px;
 }
 
 .product-name{
@@ -209,12 +220,18 @@
 .product-image{
   width: 200px;
   height: 200px;
-  margin-left: 2vh;
-  margin-top: 2vh;
 }
 
 .signin-container{
   background-color: grey;
+}
+
+.card-img-product-image{
+  width: fit-content;
+}
+#product-image-wrapper{
+  width:200px;
+  min-height: 1000px;
 }
 
 
@@ -317,11 +334,6 @@
   font-weight: bold;
 }
 
-.results-filter{
-  display: flex;
-  flex-direction: row; 
-}
-
 
 .wishlist-btn {
   transition-duration: 0.4s;
@@ -333,3 +345,11 @@
 .wishlist-btn:hover {
   background-color: grey; 
 }
+
+
+.product-image-wrapper {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
+
