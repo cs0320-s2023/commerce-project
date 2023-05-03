@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { PageContext } from "../App"
+import {Card} from 'react-bootstrap'
 
 import "../App.css"
 
@@ -18,18 +19,19 @@ export const SearchResults = () => {
         return <div/>
     } 
 
-    return(
-        <div className="search-results" role="search-results">
+    return (
+      <div className="search-results" role="search-results">
         {productList.map((product: any) => (
-            <div className="product" key={product.name}>
-            <div className="product-image-wrapper">
-                <img src={product.image} className="product-image" />
-                <button className="wishlist-btn">❤️</button>
-            </div>
-            <div className="product-name">{product.name}</div>
-            </div>
+          <div className="product" key={product.name}>
+            <Card style={{ color: "#000" }} className="product-image-wrapper">
+              <Card.Img src={product.image} className="product-image" />
+              <button className="wishlist-btn">❤️</button>
+
+              <Card.Title className="product-name">{product.name}</Card.Title> 
+            </Card>
+          </div>
         ))}
-        </div>
-    )
+      </div>
+    );
 }
 

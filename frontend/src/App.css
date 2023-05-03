@@ -111,7 +111,7 @@
 }
 
 .search-results{
-  background-color: green;
+  background-color: white;
   min-height: 20vh;
   display: flex;
   flex-direction: row;
@@ -193,7 +193,7 @@
 .product-name{
   margin-left: 2vh;
   margin-bottom: 2vh;
-  background-color: black;
+  background-color: white;
 }
 .product-image{
   width: 200px;
