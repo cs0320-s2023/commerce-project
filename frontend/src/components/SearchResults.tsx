@@ -1,11 +1,12 @@
-import { useContext, useState } from "react"
+import { useContext, useState, useEffect } from "react"
 import { PageContext } from "../App"
 import { getPriceStats } from "../data/getPriceStats"
 import {Card} from 'react-bootstrap'
 import { ProductPriceStats } from "./ProductPriceStats"
 
 import "../App.css"
-import { userSignedIn } from "../firebase";
+import { auth, db, userSignedIn } from "../firebase";
+import { collection, addDoc, doc, setDoc, deleteDoc, onSnapshot } from "firebase/firestore"
 
 
 export const SearchResults = () => {
@@ -33,6 +34,26 @@ export const SearchResults = () => {
     const [isPanelOpen, setIsPanelOpen] = useState(false);
     const [isWishlistOpen, setIsWishlistOpen] = useState(false);
 
+    useEffect(() => {
+        const user = auth.currentUser;
+        if (user) {
+          const unsubscribe = onSnapshot(
+            collection(db, "users", user.uid, "wishlist"),
+            (snapshot) => {
+              const wishlistData: Product[] = [];
+              snapshot.forEach((doc) => {
+                wishlistData.push(doc.data() as Product);
+              });
+              setWishlist(wishlistData);
+            }
+          );
+          return () => unsubscribe();
+        }
+      }, [userSignedIn]);
+
+
+
+
     // HANDLE WISHLIST
       
     function handleAddToWishlist(product: Product) {
@@ -40,7 +61,31 @@ export const SearchResults = () => {
           alert("You must sign in first!");
           return;
         }
+        
+        // const user = auth.currentUser;
+        // if (user) {
+        //     const uid = user.uid;
+        //     const wishlistRef = collection(db, "users", uid, "wishlist");
+        //     addDoc(wishlistRef, {
+        //     name: product.name,
+        //     image: product.image
+        //     });
+        // }
 
+
+        const user = auth.currentUser;
+        if (user) {
+            const uid = user.uid;
+            const wishlistRef = collection(db, "users", uid, "wishlist");
+            const docRef = doc(wishlistRef, product.name); // Use product name as document ID
+            setDoc(docRef, {
+            name: product.name,
+            image: product.image
+            });
+        }
+        
+        
+        
         setShowMessage(true);
 
         setTimeout(() => {
@@ -49,21 +94,37 @@ export const SearchResults = () => {
 
         //alert("Yay! Added shoe to your favs");
 
-        setWishlist([...wishlist, product]);
+        // setWishlist([...wishlist, product]);
     }
 
     function handleRemoveFromWishlist(product: Product) {
         const index = wishlist.findIndex((item) => item.name === product.name);
         if (index !== -1) {
-          const newWishlist = [...wishlist];
-          newWishlist.splice(index, 1);
-          setWishlist(newWishlist);
+        
+        const user = auth.currentUser;
+        if (user) {
+        const uid = user.uid;
+        const wishlistRef = collection(db, "users", uid, "wishlist");
+        const docRef = doc(wishlistRef, product.name); // Use product name as document ID
+        deleteDoc(docRef); // Remove document with corresponding product name
+        }
+
+
+
+        //   const newWishlist = [...wishlist];
+        //   newWishlist.splice(index, 1);
+        //   setWishlist(newWishlist);
         }
     }
 
     const handleOpenPanel = () => {
     setIsPanelOpen(true);
     document.body.classList.add("wishlist-panel-open");
+    if (!userSignedIn) {
+        setIsPanelOpen(false);
+        alert("You must sign in first to add items to your wishlist!");
+    }
+
     };
       
     const handleClosePanel = () => {
@@ -99,7 +160,7 @@ export const SearchResults = () => {
 
         <div className="search-results" role="search-results">
         {/* <button className="viewwishlist-btn"onClick={handleOpenPanel}>View Wishlist</button> */}
-        {userSignedIn ? <button className="viewwishlist-btn" onClick={handleOpenPanel}>Your Favs ❤️</button> : null}
+         <button className="viewwishlist-btn" onClick={handleOpenPanel}>Your Favs ❤️</button>
         
         {productList.map((product : any) => (
                   <Card style={{ color: "#000" }} className="product-card">
@@ -133,11 +194,6 @@ export const SearchResults = () => {
                      </button>
                 </Card>
 
-                {/* <div className="product-image-wrapper-wishlist">
-                  <img src={product.image?product.image:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Running_shoe_icon.png/640px-Running_shoe_icon.png"} className="product-image" />
-                </div>
-                <div className="product-name">{product.name}</div> */}
-                
               </div>
             ))}
 
@@ -145,24 +201,6 @@ export const SearchResults = () => {
           </div>
         )}
         </div>
-            // {productList.map((product : any) => (
-            //     <div className = "product" key = {product.name} >
-            //         {/* <img src={product.image} className="product-image"/>    
-
-            //         <div className = "name+like"> 
-            //             <button className = "wishlist-btn"> ❤️ </button>
-            //             <div className = "product-name"> {produconClick={() => {getSelectedPriceStats(product.sku)}}t.name} </div>
-
-            //         </div> */}
-
-            //       <Card style={{ color: "#000" }} className="product-image-wrapper">
-            //         <Card.Img src={product.image} className="product-image" onClick={() => {getSelectedPriceStats(product.sku)}} />
-            //         <button className="wishlist-btn">❤️</button>
-            //         <Card.Title className="product-name">{product.name}</Card.Title> 
-            //       </Card>
-            //     </div>
-            //  ))}
-        // </div> 
     )
     
 }

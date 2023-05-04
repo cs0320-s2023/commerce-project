@@ -1,8 +1,9 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
+import { FirebaseApp, initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import {getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut, User} from "firebase/auth";
 import { useState, useEffect } from "react";
+import { getFirestore, collection, addDoc, setDoc, doc } from "firebase/firestore";
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -13,6 +14,7 @@ import { useState, useEffect } from "react";
 const firebaseConfig = {
   apiKey: "AIzaSyCYcSuozs_BSEDoZtemPot2gPsfrt3P6O0",
   authDomain: "sneakerbargains-15b15.firebaseapp.com",
+  databaseURL: "https://sneakerbargains-15b15-default-rtdb.firebaseio.com",
   projectId: "sneakerbargains-15b15",
   storageBucket: "sneakerbargains-15b15.appspot.com",
   messagingSenderId: "1056538510538",
@@ -21,13 +23,14 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+export const app = initializeApp(firebaseConfig);
+export const analytics = getAnalytics(app);
 export const auth = getAuth(app);
+export const db = getFirestore(app);
 
 const provider = new GoogleAuthProvider();
 
-export let userSignedIn = false
+export let userSignedIn = false;
 
 
 onAuthStateChanged(auth, (user) => {
@@ -40,6 +43,8 @@ onAuthStateChanged(auth, (user) => {
     localStorage.setItem('name', name || '');
     localStorage.setItem('email', email || '');
     localStorage.setItem('photoUrl', photoUrl || '');
+
+    
     userSignedIn = true;
 
     console.log(`Welcome ${name}!`);
@@ -59,18 +64,25 @@ onAuthStateChanged(auth, (user) => {
 
 export const signInWithGoogle = () => {
     signInWithPopup(auth, provider)
-      .then((result) => {
+      .then( async (result) => {
         console.log("result");
         
         
         const name = result.user?.displayName;
         const email = result.user?.email;
         const photoUrl = result.user?.photoURL;
+        const uid = result.user?.uid; // Get the user's unique ID
 
         localStorage.setItem('name', name || '');
         localStorage.setItem('email', email || '');
         localStorage.setItem('photoUrl', photoUrl || '');
-        
+
+        // adding user to database
+        await setDoc(doc(db, "users", uid), {
+          name: name,
+          email: email,
+          uid: uid
+        });
        
         console.log(name, email, photoUrl);
         console.log(result);
@@ -103,3 +115,6 @@ export const signInWithGoogle = () => {
         console.log(error);
       });
   };;
+
+
+
