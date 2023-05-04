@@ -22,6 +22,7 @@ export async function getPriceStats (sku : string, dispatch : any)  {
         const action = {
             type : "priceStatsSuccess",
             payload : mockPriceStats.data,
+            sku: sku
         }
         dispatch(action) ;
 
@@ -35,10 +36,9 @@ export async function getPriceStats (sku : string, dispatch : any)  {
                 if (isServerSuccessResponse(result)) {
                     const action = {
                         type : "priceStatsSuccess",
-                        payload : result.data
+                        payload : result.data,
+                        sku: sku
                     };
-
-                    console.log("Payload = " + action.payload)
                     dispatch(action) ;
                 
 

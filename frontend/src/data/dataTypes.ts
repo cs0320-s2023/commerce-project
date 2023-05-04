@@ -47,4 +47,7 @@ export const initialContext : IInitialPageContext = {
 export interface IPageStateAction {
     type : string ;
     payload : any ;
+    sku: string;
 }
+
+export const mapProductPrice = new Map<string, IPriceStat[]>();

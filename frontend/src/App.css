@@ -149,12 +149,13 @@ font-size: small;
 .search-results{
   min-height: 20vh;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: left;
   justify-content: center;
   font-size: calc(1px + 2vmin);
   color: white;
   flex-wrap: wrap;
+  width: 100%;
 }
 .product-image-wrapper {
   position: relative;
@@ -162,17 +163,14 @@ font-size: small;
   min-height: 300px;
   justify-content: center;
   align-items: center;
+  
 }
 
-.product-image {
-  display: block;
-  width: 100%;
-}
 
 .wishlist-btn {
   position: absolute;
-  top: 22px;
-  right: 4px;
+  top: 2px;
+  left: 180px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -242,29 +240,110 @@ font-size: small;
 
 .product-price{
   width: 100px;
-  background-color: pink;
 }
 
-.product{
-  margin-left: 2vh;
-  max-width: 250px;
-  padding-top: 5px;
-  min-width: 100px;
+.price-stats-container{
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 30px;
+  width: 100%;
 }
 
-.product-name{
+.price-stats{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.price-column-header{
+  display: flex;
+  width: 25%;
   font-size: small;
   color: black;
+  font-weight: bold;
+  justify-content: left;
+  border-bottom-style: dotted;
+}
+
+.price-column{
+  display: flex;
+  width: 25%;
+  justify-content: left;
+  border-bottom-style: dotted;
+}
+
+.get-price-stats {
+  display: flex;
+  font-size: small;
+  color: blue;
+  justify-content: left;
+}
+
+.get-price-stats:hover {
+  font-size:large;
+  cursor: pointer;
+}
+
+
+.price-stats-card{
+  width: 70vh;
+  padding-left: 10px;
+
+}
+
+.product-card{
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.product-container{
+  margin-left: 2vh;
+  padding-top: 5px;
+  display: flex;
+  width: 100%;
+  align-items: left;
+}
+
+.product-details{
+  padding-left: 10px;
+  width: 100%;
+}
+
+.price-column-header {
+  font-size: small;
+  color: black;
+  font-weight: bold;
+  width: 20%;
+}
+
+.price-column {
+  font-size: small;
+  color: black;
+  width: 20%;
+}
+
+
+.product-name{
+  font-size:larger;
+  color: black;
+  font-weight: bold;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
 }
 .product-image{
-  width: 200px;
-  height: 200px;
+  width: 210px;
+  height: 210px;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-right-color: grey;
+  padding-right: 10px;
+  margin-bottom: 2px;
 }
 
 .signin-container{
   align-items: center;
   text-align: center;
-  
 }
 
 .card-img-product-image{
@@ -409,4 +488,8 @@ font-size: small;
 
 .price-panel-open.open {
   transform: translateX(0);
+}
+
+.prices-close-btn{
+  color: green;
 }

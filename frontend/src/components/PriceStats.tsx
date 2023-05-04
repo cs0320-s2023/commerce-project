@@ -19,6 +19,12 @@ export const PriceStats = () => {
         return <div/>
     } 
 
+
+    const closePrices = () => {
+        console.log("closing");
+
+    };
+
     return(
         // <div className="price-stats-container" role="price-stats">
         //     {priceStats.map((priceEntry : any) => (
@@ -30,16 +36,21 @@ export const PriceStats = () => {
         //         </div>
         //      ))}
         // </div>
-
+        <div>
+         {/* <button className="prices-close-btn" onClick={closePrices}>Close Prices</button>
+ 
+         <p className="message-with-prices"> Here are your prices 🤗 </p> */}
         <div className="price-stats-container" role="price-stats">
+       
         {priceStats.map((priceEntry : any) => (
-            <Card style={{ color: "#000" }} className = "price-stats" key = {priceEntry.platformName}>        
-            <Card.Title className="product-name">{priceEntry.platformName}</Card.Title> 
+            <Card style={{ color: "#000" }} className = "price-stats-card" key = {priceEntry.platformName}>        
+            <Card.Title className="product-name-card-title">{priceEntry.platformName}</Card.Title> 
                     <div className = "price-price"> Min: {priceEntry.minPriceUsd} </div>
                      <div className = "price-price"> Avg: {priceEntry.avgPriceUsd} </div>
                      <div className = "price-price"> Last: {priceEntry.lastPriceUsd} </div>
             </Card>
         ))}
+        </div>
         </div>
     )
 }

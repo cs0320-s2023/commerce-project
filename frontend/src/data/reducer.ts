@@ -1,7 +1,7 @@
-import {IPageState, IPageStateAction } from "./dataTypes";
+import {IPageState, IPageStateAction, mapProductPrice } from "./dataTypes";
 
 export function reducer(state : IPageState, action : IPageStateAction) {
-    const {type, payload} =  action;
+    const {type, sku, payload} =  action;
     const username = localStorage.getItem('name');
 
     switch (type) {
@@ -25,11 +25,11 @@ export function reducer(state : IPageState, action : IPageStateAction) {
 
         case "priceStatsSuccess" :
 
+            mapProductPrice.set(sku, payload);
+
             return {
                 ...state, 
-                selectedProductPriceStats : payload,
                 errorMessage : "",
-                userName: username
             }
         
         case "priceStatsFailure" :

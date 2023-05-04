@@ -32,12 +32,13 @@ function App() {
         <br></br>
         <GoogleSignIn />
         <NewSearchBar />
+        <PriceStats /> 
         {/* <Filter />
         <SearchResults />     */}
         <div className="results-filter" id="results-filter" role="results-filter">
           <Filter />
           <SearchResults />      
-          <PriceStats />     
+             
         </div> 
       </div>
     </PageContext.Provider>

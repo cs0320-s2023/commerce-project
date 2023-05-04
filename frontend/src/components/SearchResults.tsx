@@ -2,6 +2,7 @@ import { useContext, useState } from "react"
 import { PageContext } from "../App"
 import { getPriceStats } from "../data/getPriceStats"
 import {Card} from 'react-bootstrap'
+import { ProductPriceStats } from "./ProductPriceStats"
 
 import "../App.css"
 import { userSignedIn } from "../firebase";
@@ -100,17 +101,19 @@ export const SearchResults = () => {
         {/* <button className="viewwishlist-btn"onClick={handleOpenPanel}>View Wishlist</button> */}
         {userSignedIn ? <button className="viewwishlist-btn" onClick={handleOpenPanel}>Your Favs ❤️</button> : null}
         
-        <br></br>
         {productList.map((product : any) => (
-                <div className = "product" key = {product.name} >
-                  <Card style={{ color: "#000" }} className="product-image-wrapper">
-                    <Card.Img src={product.image} className="product-image" onClick={() => {getSelectedPriceStats(product.sku)}} />
-                    
-                        <button className="wishlist-btn" onClick={() => handleAddToWishlist(product)}>❤️</button>
-                                     
-                    <Card.Title className="product-name">{product.name}</Card.Title> 
+                  <Card style={{ color: "#000" }} className="product-card">
+                    <div className="product-container">
+                        <div className = "product-image">
+                            <img src={product.image} className="product-image" onClick={() => {getSelectedPriceStats(product.sku)}} />                    
+                            <button className="wishlist-btn" onClick={() => handleAddToWishlist(product)}>❤️</button>                                    
+                        </div>
+                        <div className = "product-details">
+                            <span className="product-name">{product.name}</span>
+                            <ProductPriceStats sku={product.sku} />
+                        </div>
+                    </div>
                   </Card>
-                </div>
         ))}
 
 
