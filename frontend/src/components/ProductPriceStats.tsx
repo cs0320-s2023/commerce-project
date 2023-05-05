@@ -1,9 +1,10 @@
 import { useContext } from "react"
-import { mapProductPrice } from "../data/dataTypes"
+import { IPriceStat, mapProductPrice } from "../data/dataTypes"
 import { getPriceStats } from "../data/getPriceStats"
 import { PageContext } from "../App"
 
 import "../App.css"
+import { platform } from "os"
 
 export const ProductPriceStats = ({sku}: any) => {
 
@@ -14,7 +15,6 @@ export const ProductPriceStats = ({sku}: any) => {
         if ((sku == null) || (sku == undefined) || (sku.length == 0)) {
             return;
         } else {
-            //handleOpenPanel()
             getPriceStats(sku, dispatch);
         }
     }
@@ -24,12 +24,31 @@ export const ProductPriceStats = ({sku}: any) => {
         return <div/>
     }
 
-    const priceStats = mapProductPrice.get(sku);
+    const priceAllStats = mapProductPrice.get(sku);
 
-    if ((priceStats == null) || (priceStats == undefined)){
+    if ((priceAllStats == null) || (priceAllStats == undefined)){
         return <div className="get-price-stats" onClick={() => getSelectedPriceStats(sku)}>Get price stats</div>
     }
 
+    const filterPlatforms = (priceStat: IPriceStat) => {
+
+            let selected = false;
+
+            pageState.platforms.forEach ((platform) => {
+                console.log("comparing " + priceStat.platformName + " with " + platform.name)
+
+                if (priceStat.platformName == platform.name) 
+                    //console.log("Found and platform selected = " + platform.selected)
+                    selected = platform.selected;
+                })
+
+            return selected;
+       }
+    
+
+    const priceStats = priceAllStats.filter(filterPlatforms)
+    console.log(priceStats);
+    
     return(
         <div className="price-stats-container" role="price-stats">
             <div className = "price-stats">

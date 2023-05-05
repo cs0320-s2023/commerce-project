@@ -41,6 +41,17 @@ export function reducer(state : IPageState, action : IPageStateAction) {
                 userName: username
             }
 
+        case "getPlatformsSuccess":
+            return {
+                ...state, 
+                platforms : payload,
+            }
+        
+        case "filterPlatforms":
+            return {
+                ...state, 
+                errorMessage : state.errorMessage + " ",
+            }
 
         default :
             throw new Error("unhandled reducer action")

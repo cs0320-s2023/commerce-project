@@ -1,14 +1,58 @@
-import {useEffect, useState} from "react"
+import {useContext, useState} from "react"
 import React, { Component } from "react";
 import "../App.css"
 import { retrievePlatforms } from "../data/getPlatforms";
-import {Alert} from "react-bootstrap"
+import {Alert, Tooltip} from "react-bootstrap"
 import {Switch} from "antd";
+import { PageContext } from "../App"
+import { IPlatform } from "../data/dataTypes";
+import { platform } from "os";
+
+const PlatformToggleSwitch = ({name}: any) => {
+
+  const {pageState, dispatch} = useContext(PageContext);
+
+  const [checked, setChecked] = useState(true);
+
+  const handleChange = (checked: boolean, event: any) => {
+    console.log(name + " selected is " + checked) ;
+    setChecked(checked);
+    
+    pageState.platforms.forEach((platform) => {
+      if (platform.name === name) {
+        platform.selected = checked;
+      
+        const action = {
+          type : "filterPlatforms",
+        }
+        dispatch(action) ;
+
+        return;
+      }
+    })
+
+  }
+
+  return (
+    <Switch className="filter-switch"
+      id = {name}
+      checked = {checked}
+      checkedChildren={name}
+      unCheckedChildren={name}
+      onClick={handleChange}
+    />
+  )
+
+}
+
 
 export const Platforms  = () => {
 
-    // const platforms = mockPlatforms.data;
-    const platforms = retrievePlatforms();
+  const {pageState, dispatch} = useContext(PageContext);
+
+    const platforms = pageState.platforms;
+
+    retrievePlatforms(platforms, dispatch);
     
     if (platforms == null) {
         return <Alert variant = "" className="platforms-container">Loading Platforms!</Alert>
@@ -27,52 +71,10 @@ export const Platforms  = () => {
                         </div>
                     ))} */}
 
-        {platforms.map((platform) => (
-            <Switch className="filter-switch"
-            key = {platform.name}
+        {platforms.map((platform: IPlatform) => (
+          <PlatformToggleSwitch name={platform.name} key={platform.name} />
+        ))}
 
-            defaultChecked={true}
-            checkedChildren={platform.name}
-            unCheckedChildren={platform.name}
-          ></Switch>
-            )
-          )}
-
-          {/* <Switch
-            defaultChecked={true}
-            checkedChildren="stockx"
-            unCheckedChildren="stockx"
-          ></Switch>
-          <Switch
-            defaultChecked={true}
-            checkedChildren="alias"
-            unCheckedChildren="alias"
-          ></Switch>
-          <Switch
-            defaultChecked={true}
-            checkedChildren="restocks"
-            unCheckedChildren="restocks"
-          ></Switch>
-          <Switch
-            defaultChecked={true}
-            checkedChildren="hypeboost"
-            unCheckedChildren="hypeboost"
-          ></Switch>
-          <Switch
-            defaultChecked={true}
-            checkedChildren="klekt"
-            unCheckedChildren="klekt"
-          ></Switch>
-          <Switch
-            defaultChecked={true}
-            checkedChildren="kikikickz"
-            unCheckedChildren="kikikicz"
-          ></Switch>
-          <Switch
-            defaultChecked={true}
-            checkedChildren="laced"
-            unCheckedChildren="laced"
-          ></Switch> */}
         </div>
       </div>
     );

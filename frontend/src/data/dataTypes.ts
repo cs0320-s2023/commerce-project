@@ -22,8 +22,13 @@ export interface IPageState {
     productList: IProduct[],
     selectedProductPriceStats: IPriceStat[],
     userName : string,
-    IWishList : IProduct[]
+    IWishList : IProduct[],
+    platforms: IPlatform[]
+}
 
+export interface IPlatform {
+    name: string,
+    selected: boolean
 }
 
 export const defaultPageState : IPageState = { 
@@ -31,7 +36,8 @@ export const defaultPageState : IPageState = {
     productList: [],
     selectedProductPriceStats: [],
     userName : "",
-    IWishList : []
+    IWishList : [],
+    platforms: []
 };
 
 export interface IInitialPageContext {

@@ -23,12 +23,12 @@ export const Filter = ({setProductKey} : any) => { //todo
               <Col>
                 <Platforms />
               </Col>
-              <Col>
+              {/* <Col>
                 <Currency />
-              </Col>
+              </Col> 
               <Col>
                 <Size />
-              </Col>
+              </Col>*/}
             </div>
           </Row>
         </Container>

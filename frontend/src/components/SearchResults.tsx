@@ -163,7 +163,7 @@ export const SearchResults = () => {
          <button className="viewwishlist-btn" onClick={handleOpenPanel}>Your Favs ❤️</button>
         
         {productList.map((product : any) => (
-                  <Card style={{ color: "#000" }} className="product-card">
+                  <Card style={{ color: "#000" }} className="product-card" key = {product.sku}>
                     <div className="product-container">
                         <div className = "product-image">
                             <img src={product.image} className="product-image" onClick={() => {getSelectedPriceStats(product.sku)}} />                    
