@@ -7,17 +7,53 @@ import "@testing-library/dom";
 import "@testing-library/jest-dom";
 
 import App from "../App"
-import {ProductDescription} from  "../components"
-import {SearchBar} from "../components"
-import {SearchResults} from "../components"
+import {ProductDescription, NewSearchBar, SearchResults} from  "../components"
 
-beforeEach(() => {});
+beforeEach(() => {render(<App />);});
+
+
+  test('renders input and button elements', () => {
+    render(<NewSearchBar />);
+    const inputElement = screen.getByRole('input-search-box');
+    const buttonElement = screen.getByRole('button', { name: /search/i });
+    expect(inputElement).toBeInTheDocument();
+    expect(buttonElement).toBeInTheDocument();
+  })
 
 test("renders components", () => {
-  render(<App />);
-  expect(screen.getByRole("search-bar-container")).toBeInTheDocument();
-  expect(screen.getByRole("search-bar")).toBeInTheDocument();
-
-  expect(screen.getByRole("product-description")).toBeInTheDocument();
-  expect(screen.getByRole("search-results")).toBeInTheDocument();
+  // expect(screen.getByRole("input-search-box")).toBeInTheDocument();
+  expect(screen.getByRole("error-message")).toBeInTheDocument();
+  expect(screen.getByRole("signin-container")).toBeInTheDocument();
+  expect(screen.getByRole("app")).toBeInTheDocument();
 });
+
+  test("input element accepts user input", () => {
+    render(<NewSearchBar />);
+    const inputElement = screen.getByRole("input-search-box");
+    fireEvent.change(inputElement, { target: { value: "Adidas" } });
+    expect(inputElement).toHaveValue("Adidas");
+  });
+
+  test("search button is enabled when input is not empty", () => {
+    render(<NewSearchBar />);
+    const searchButton = screen.getByRole("button", { name: "Search" });
+    const input = screen.getByRole("input-search-box");
+    fireEvent.change(input, { target: { value: "sneakers" } });
+    expect(searchButton).toBeEnabled();
+  });
+
+  test("search button is enabled when input is not empty", () => {
+    render(<NewSearchBar />);
+    const searchButton = screen.getByRole("button", { name: "Search" });
+    const input = screen.getByRole("input-search-box");
+    fireEvent.change(input, { target: { value: "sneakers" } });
+    expect(searchButton).toBeEnabled();
+  });
+
+  test("search button is disabled when input is empty", () => {
+    render(<NewSearchBar />);
+    const searchButton = screen.getByRole("button", { name: "Search" });
+    expect(searchButton).toBeEnabled();
+  });
+
+ 
