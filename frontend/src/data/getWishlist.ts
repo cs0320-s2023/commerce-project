@@ -31,3 +31,5 @@ export async function handleRemoveFromWishlist3 (product : IProduct, dispatch : 
     dispatch(action) ;
 
   } 
+
+  

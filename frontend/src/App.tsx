@@ -31,8 +31,8 @@ function App() {
       <div className="app" id="appID" role="app">
       <h1 className="webpage-title">👟{siteName}👟</h1>
   
-      <h3 aria-label="Find the shoe that fits your foot and budget!"  className="webpage-subtitle">Find the shoe that fits your foot... and your budget!</h3>
-      <h3 aria-label="No more hidden fees or taxes. Prices you see are what you pay!" className="webpage-subtitle">No more hidden fees or taxes 🤑. Prices you see are what you pay 😀.</h3>
+      <h3 className="webpage-subtitle">Find the shoe that fits your foot... and your budget!</h3>
+      <h3 className="webpage-subtitle">No more hidden fees or taxes 🤑. Prices you see are what you pay 😀.</h3>
 
       <ErrorMessage />
       <GoogleSignIn />
