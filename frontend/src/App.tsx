@@ -24,7 +24,7 @@ function App() {
   const username = localStorage.getItem('name');
   const signedIn1 = (username != undefined) && (username.length) > 0;
 
-  const signedIn = true;
+//  const signedIn = true;
 
   return (
     <PageContext.Provider value = {{ pageState, dispatch}}>
