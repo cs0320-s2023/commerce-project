@@ -20,17 +20,26 @@ export const NewSearchBar  = () => {
         }
     }
 
+    const handleKeyPress = (event: { key: string; }) => {
+        if (event.key === "Enter") {
+            searchForSneakers();
+        }
+    }
+
     return(
     <div className="new-search-bar">
         <input
+            aria-label="Press Enter or the button to Search" 
             className = "input-search-box"
             role = "input-search-box"
             type="text"
             id="header-search"
             placeholder="Lots of delicious deals to discover 🤤 Search your favorite Sneakers!"
             onChange = {(event) => {setTextSearch(event.target.value)}}
+            onKeyDown = {handleKeyPress}
         />
-        <button 
+        <button
+        aria-label="Press Enter or the button to Search" 
         className = "button-search-box"
         onClick = {searchForSneakers}
         type="submit">

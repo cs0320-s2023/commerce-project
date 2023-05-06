@@ -59,7 +59,7 @@ export const Platforms  = () => {
     } 
 
     return (
-      <div className="platforms-container" role="platforms-container">
+      <div aria-label="Press tab to go through the platfroms and space to toggle the switches." className="platforms-container" role="platforms-container">
           <div className ="title-filter">Platforms</div>
           <div className ="subtitle-filter">Narrow your search to your favorite platforms</div>
 

@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { IPriceStat, mapProductPrice } from "../data/dataTypes"
 import { getPriceStats } from "../data/getPriceStats"
 import { PageContext } from "../App"
@@ -24,13 +24,29 @@ export const ProductPriceStats = ({sku}: any) => {
 
     // DEFENSIVE PROG: If no price stats list is defined yet, we return an empty div
     if ((mapProductPrice == null) || (mapProductPrice == undefined)){
-        return <div/>
+        return <div>No Prices Exist</div>
     }
 
     const priceAllStats = mapProductPrice.get(sku);
 
     if ((priceAllStats == null) || (priceAllStats == undefined)){
-        return <div className="get-price-stats" onClick={() => getSelectedPriceStats(sku)}>Get price stats</div>
+        const handleClick = () => getSelectedPriceStats(sku);
+        useEffect(() => {
+            const handleKeyDown = (event: { ctrlKey: any; keyCode: number; }) => {
+                if (event.ctrlKey && event.keyCode === 80) { // ctrl+p
+                    handleClick();
+                }
+            };
+            document.addEventListener('keydown', handleKeyDown);
+            return () => {
+                document.removeEventListener('keydown', handleKeyDown);
+            };
+        }, [handleClick]);
+        return (
+            <button tabIndex={0} className="get-price-stats" onClick={handleClick}>
+                Get Price Stats
+            </button>
+        );
     }
 
     const filterPlatforms = (priceStat: IPriceStat) => {
@@ -66,7 +82,7 @@ export const ProductPriceStats = ({sku}: any) => {
    
     return(
         <div className="price-stats-container" role="price-stats">
-            <div className = "price-stats">
+            <div className = "price-stats" >
                 <div className = "price-platform-column">Platform</div>
                 <div className = "price-column-header"> Range </div>
                 <div className = "price-column-header"> Min </div>
@@ -79,7 +95,7 @@ export const ProductPriceStats = ({sku}: any) => {
                      <div className = "price-platform-column"> {priceEntry.platformName} </div>
                      <Box  className = "price-column">
                         <Slider 
-                            getAriaLabel={() => 'Price Range range'}
+                            getAriaLabel={() => `Displayed is the Price Range.`}
                             min = {minRange * 0.95}
                             max = {maxRange * 1.05}
                             value={getEntryRange(priceEntry)}

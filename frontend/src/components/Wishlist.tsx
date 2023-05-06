@@ -19,11 +19,7 @@ export const Wishlist  = () => {
         payload : null,
     }
 
-    interface Product {
-        name: string;
-        image: string;
-    }
-
+    
     const [isPanelOpen, setIsPanelOpen] = useState(false);
 
     const [wishlist, setWishlist] = useState<IProduct[]>([]);
@@ -51,10 +47,10 @@ export const Wishlist  = () => {
     return(
         <div className="search-results" role="search-results">
 
-        <button className="viewwishlist-btn"onClick={handleOpenPanel}>View Wishlist</button>
+        <button aria-label="Press enter to open the wishlist." className="viewwishlist-btn" onClick={handleOpenPanel}>View Wishlist</button>
         {isPanelOpen && (
           <div className="wishlist-panel open">
-            <button onClick={handleClosePanel}>Close</button>
+            <button aria-label="Press Enter to close the wishlist." onClick={handleClosePanel}>Close</button>
             <h2>My Wishlist</h2>
             {wishlist.map((product) => (
               <div className="product" key={product.name}>

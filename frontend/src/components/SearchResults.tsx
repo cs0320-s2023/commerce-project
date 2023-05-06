@@ -156,6 +156,15 @@ export const SearchResults = () => {
     }
     // onClick={() => handleAddToWishlist(product)}
 
+
+    document.addEventListener('keydown', (event) => {
+      if (event.ctrlKey && event.key === 'w') {
+          handleOpenPanel();
+      } else if (event.ctrlKey && event.key === 'c') {
+          handleClosePanel();
+      }
+  });
+
     return(
 
         <div className="search-results" role="search-results">
@@ -163,11 +172,12 @@ export const SearchResults = () => {
          <button className="viewwishlist-btn" onClick={handleOpenPanel}>Your Favs ❤️</button>
         
         {productList.map((product : any) => (
-                  <Card style={{ color: "#000" }} className="product-card" key = {product.sku}>
+                  <Card style={{ color: "#000" }} className="product-card" key = {product.sku}
+                  tabIndex={0} aria-label={product.name}>
                     <div className="product-container">
                         <div className = "product-image">
                             <img src={product.image} className="product-image" onClick={() => {getSelectedPriceStats(product.sku)}} />                    
-                            <button className="wishlist-btn" onClick={() => handleAddToWishlist(product)}>❤️</button>                                    
+                            <button aria-label="Press Enter to add selected shoe to wishlist" className="wishlist-btn" onClick={() => handleAddToWishlist(product)}>❤️</button>                                    
                         </div>
                         <div className = "product-details">
                             <span className="product-name">{product.name}</span>
@@ -184,12 +194,12 @@ export const SearchResults = () => {
             <button className="wishlist-panel-close-btn" onClick={handleClosePanel}>Close</button>
             <h2>My Wishlist</h2>
             {wishlist.map((product) => (
-              <div className="product" key={product.name}>
+              <div className="product" key={product.name} tabIndex={0}>
 
                 <Card style={{ color: "#000" }} className="product-image-wrapper">
                     <Card.Img src={product.image} className="product-image" />                                     
                     <Card.Title className="product-name">{product.name}</Card.Title> 
-                    <button className= "handleRemoveFromWishlistBtn" onClick={() => handleRemoveFromWishlist(product)}>
+                    <button aria-label="Press enter to remove item from wishlist." className= "handleRemoveFromWishlistBtn" onClick={() => handleRemoveFromWishlist(product)}>
                          Remove
                      </button>
                 </Card>

@@ -301,6 +301,8 @@
   font-size: small;
   color: blue;
   justify-content: left;
+  background-color: #fff;
+  border-radius: 15px;
 }
 
 .get-price-stats:hover {
