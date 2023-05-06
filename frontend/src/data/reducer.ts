@@ -1,6 +1,7 @@
+import { Reducer } from 'react'
 import {IPageState, IPageStateAction, mapProductPrice } from "./dataTypes";
 
-export function reducer(state : IPageState, action : IPageStateAction) {
+export const reducer: Reducer<IPageState, IPageStateAction> = (state : IPageState, action : IPageStateAction) => {
     const {type, sku, payload} =  action;
     const username = localStorage.getItem('name');
 

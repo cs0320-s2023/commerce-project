@@ -43,18 +43,14 @@ onAuthStateChanged(auth, (user) => {
     localStorage.setItem('name', name || '');
     localStorage.setItem('email', email || '');
     localStorage.setItem('photoUrl', photoUrl || '');
-
     
     userSignedIn = true;
 
-    console.log(`Welcome ${name}!`);
-    console.log(name, email, photoUrl);
   } else {
     // User is signed out
     localStorage.removeItem('name');
     localStorage.removeItem('email');
     localStorage.removeItem('photoUrl');
-    console.log('Please sign in');
     userSignedIn = false;
     
   }

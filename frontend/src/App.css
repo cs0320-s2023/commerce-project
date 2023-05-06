@@ -103,6 +103,9 @@
   text-align: left;
   padding-bottom: 10px;
   max-width:120px;
+  margin-left: 10px;
+  background-color:lightsteelblue;
+  padding-left: 10px;
 }
 
 .one-platform {
@@ -117,9 +120,16 @@
 }
 
 .title-filter{
-text-align: left;
-font-size: small;
+  text-align: left;
+  font-size:medium;
+  font-weight: bold;
 }
+.subtitle-filter{
+  text-align: left;
+  font-size:xx-small;
+  margin-left: 5px;
+  margin-bottom: 10px;
+  }
 
 .filter-switch{
   width: 100px;
@@ -149,13 +159,15 @@ font-size: small;
 .search-results{
   min-height: 20vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: left;
   justify-content: center;
   font-size: calc(1px + 2vmin);
   color: white;
   flex-wrap: wrap;
   width: 100%;
+  border-style: solid;
+
 }
 .product-image-wrapper {
   position: relative;
@@ -198,7 +210,7 @@ font-size: small;
   height: 50px;
   top: 90px;
   right: 70px;
-  
+  margin-bottom: 10px;
   border-radius: 100px;
  
   /* zindex bring button to the front of page */
@@ -257,18 +269,30 @@ font-size: small;
 
 .price-column-header{
   display: flex;
-  width: 25%;
+  width: 20%;
   font-size: small;
   color: black;
   font-weight: bold;
-  justify-content: left;
+  justify-content: center;
   border-bottom-style: dotted;
 }
 
+.price-platform-column{
+  display: flex;
+  width: 20%;
+  justify-content: left;
+  border-bottom-style: dotted;
+  font-size: small;
+  color: black;
+  font-weight: bold;
+
+}
+
+
 .price-column{
   display: flex;
-  width: 25%;
-  justify-content: left;
+  width: 20%;
+  justify-content: center;
   border-bottom-style: dotted;
 }
 

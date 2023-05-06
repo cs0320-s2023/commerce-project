@@ -21,7 +21,7 @@ export interface IPageState {
     errorMessage: string,
     productList: IProduct[],
     selectedProductPriceStats: IPriceStat[],
-    userName : string,
+    userName : string | null,
     IWishList : IProduct[],
     platforms: IPlatform[]
 }

@@ -1,4 +1,4 @@
-import {useContext, useState} from "react"
+import {useContext, useEffect, useState} from "react"
 import React, { Component } from "react";
 import "../App.css"
 import { retrievePlatforms } from "../data/getPlatforms";
@@ -15,9 +15,7 @@ const PlatformToggleSwitch = ({name}: any) => {
   const [checked, setChecked] = useState(true);
 
   const handleChange = (checked: boolean, event: any) => {
-    console.log(name + " selected is " + checked) ;
-    setChecked(checked);
-    
+    setChecked(checked);    
     pageState.platforms.forEach((platform) => {
       if (platform.name === name) {
         platform.selected = checked;
@@ -45,35 +43,31 @@ const PlatformToggleSwitch = ({name}: any) => {
 
 }
 
-
 export const Platforms  = () => {
 
-  const {pageState, dispatch} = useContext(PageContext);
+    const {pageState, dispatch} = useContext(PageContext);
 
     const platforms = pageState.platforms;
 
-    retrievePlatforms(platforms, dispatch);
-    
+    useEffect (() => {
+        retrievePlatforms(platforms, dispatch);
+      }
+    )
+
     if (platforms == null) {
         return <Alert variant = "" className="platforms-container">Loading Platforms!</Alert>
     } 
 
     return (
       <div className="platforms-container" role="platforms-container">
-          <p className ="title-filter">Narrow your search to your fav. platforms</p>
+          <div className ="title-filter">Platforms</div>
+          <div className ="subtitle-filter">Narrow your search to your favorite platforms</div>
 
         {/* <Alert variant = "" className="title">Your Platforms:</Alert> */}
         <div className="list-container">
-          {/* {platforms.map((platform) => (
-                        <div className = "one-platform" key={platform.id}>
-                            <input value={platform.name} type="checkbox" />
-                            <span>{platform.name} </span>
-                        </div>
-                    ))} */}
-
-        {platforms.map((platform: IPlatform) => (
-          <PlatformToggleSwitch name={platform.name} key={platform.name} />
-        ))}
+          {platforms.map((platform: IPlatform) => (
+            <PlatformToggleSwitch name={platform.name} key={platform.name} />
+          ))}
 
         </div>
       </div>

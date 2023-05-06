@@ -1,6 +1,6 @@
 import {mockingMode} from "./mockingMode";
 import {mockPlatforms} from "../../../mockdata/platforms";
-import { secretAPIkey } from "./apikey";
+import { secretAPIkey } from "./apikey"
 import { isServerSuccessResponse, isServerErrorResponse } from "./typePredicate";
 import { IPlatform } from "./dataTypes";
 import { platform } from "os";
@@ -22,9 +22,14 @@ export async function retrievePlatforms (platforms: IPlatform[], dispatch : any)
 
     if (mockingMode) {
 
+        let plaforms : IPlatform[] = [];
+        mockPlatforms.data.forEach( (platform) => {
+            plaforms.push({name: platform.name, selected: true})
+        })
+
         const action = {
             type : "getPlatformsSuccess",
-            payload : mockPlatforms.data,
+            payload : plaforms
         }
         dispatch(action) ;
 

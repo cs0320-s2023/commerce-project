@@ -21,25 +21,34 @@ function App() {
   // Ignore the red underlining for now
   const [pageState, dispatch] = useReducer(reducer, defaultPageState);
 
+  const username = localStorage.getItem('name');
+  const signedIn1 = (username != undefined) && (username.length) > 0;
+
+  const signedIn = true;
+
   return (
     <PageContext.Provider value = {{ pageState, dispatch}}>
       <div className="app" id="appID" role="app">
       <h1 className="webpage-title">👟{siteName}👟</h1>
+  
       <h3 className="webpage-subtitle">Find the shoe that fits your foot... and your budget!</h3>
       <h3 className="webpage-subtitle">No more hidden fees or taxes 🤑. Prices you see are what you pay 😀.</h3>
 
-        <ErrorMessage />
-        <br></br>
-        <GoogleSignIn />
-        <NewSearchBar />
-        <PriceStats /> 
-        {/* <Filter />
-        <SearchResults />     */}
-        <div className="results-filter" id="results-filter" role="results-filter">
-          <Filter />
-          <SearchResults />      
-             
-        </div> 
+      <ErrorMessage />
+      <GoogleSignIn />
+
+      {signedIn?
+        <>
+          <NewSearchBar />
+          <PriceStats /> 
+          <div className="results-filter" id="results-filter" role="results-filter">
+            <Platforms />
+            <SearchResults />                   
+          </div> 
+        </> : 
+        <>
+        </>
+      }
       </div>
     </PageContext.Provider>
   );}

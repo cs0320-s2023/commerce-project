@@ -1,7 +1,8 @@
 import { signInWithGoogle, signOutWithGoogle} from "../firebase"
-import "../App.css"
-import {Alert, Button, Breadcrumb} from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
+
 import 'bootstrap/dist/css/bootstrap.min.css'
+import "../App.css"
 
 export const GoogleSignIn  = () => {
 
@@ -34,8 +35,6 @@ export const GoogleSignIn  = () => {
     return(
             <div className="signin-container" role="signin-container">
                 <p className="welcome-message">  {localStorage.getItem('name') ? "Hey " + localStorage.getItem('name') : "Why aren't you logged in yet 🤨?"}</p>
-
-                {/* <Alert variant = "light" className="welcome-message"> Welcome, {localStorage.getItem('name') ? localStorage.getItem('name') : 'please sign in'}!</Alert> */}
                 {signedIn?showSignOut():showSignIn()}
             </div>
     );
