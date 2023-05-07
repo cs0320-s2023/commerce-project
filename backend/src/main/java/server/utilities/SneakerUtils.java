@@ -2,10 +2,21 @@ package server.utilities;
 
 import com.squareup.moshi.Json;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class SneakerUtils {
+
+        public record Platform(
+                @Json(name = "id") String id,
+                @Json(name = "name") String name
+        ){}
+
+        public record Platforms(
+                @Json(name = "count") Integer count,
+                @Json(name = "error") String error,
+                @Json(name = "data") List<Platform> data
+        ){}
+
 
         public record SneakerData(
                 @Json(name = "count") String count,

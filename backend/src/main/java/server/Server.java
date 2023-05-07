@@ -7,6 +7,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
+
+import server.handlers.SneakerPlatformsHandler;
+import server.handlers.SneakerPriceHandler;
 import server.handlers.SneakerSKUHandler;
 
 import static spark.Spark.after;
@@ -21,6 +24,8 @@ import static spark.Spark.after;
 public class Server {
     public static void main(String[] args) {
 
+        // True if we want to respond to RAPIDAPI calls in Mocking Mode
+        final Boolean mockingMode = false;
 
         Spark.port(3232);
         /*
@@ -78,6 +83,8 @@ public class Server {
         Spark.get("sneakersku", new SneakerSKUHandler(data));
 
         Spark.get("sneakersprice", new SneakerPriceHandler(ddata));
+
+        Spark.get("platforms", new SneakerPlatformsHandler(mockingMode));
         
         Spark.init();
         Spark.awaitInitialization();

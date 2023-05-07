@@ -31,14 +31,15 @@ public class SneakerPriceHandler implements Route {
             
                 private static String findLowestLastPrice(SneakerUtils.RTPdata RTPData) {
                     int i = 1000000000;
-                    SneakerUtils.RTPdtypes d;
+                    SneakerUtils.RTPdtypes d = RTPData.data().get(0);
+
                     for (SneakerUtils.RTPdtypes datum : RTPData.data()) {
-                        if (datum.lastPriceEur()<i) {
+                        if (datum.lastPriceUsd()<i) {
                             d = datum;
                         }
                     }
-                    return d;
-
+                    return String.valueOf(d.lastPriceUsd());
+    
     }
 
     @Override
