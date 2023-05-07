@@ -1,11 +1,6 @@
 import { getPrices, getProduct } from "../data/getPrices";
-import {
-  handleAddToWishlist3,
-  handleRemoveFromWishlist3,
-} from "../data/getWishlist";
 import { IProduct } from "../data/dataTypes";
 import { userSignedIn } from "../firebase";
-import { getPriceStats } from "../data/getPriceStats";
 import { mockPriceStats } from "../../../mockdata/priceStats";
 import { getProductList } from "../data/getProductList";
 import { secretAPIKey } from "../data/apikey";

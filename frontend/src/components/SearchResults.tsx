@@ -3,7 +3,6 @@ import { PageContext } from "../App"
 import { getPriceStats } from "../data/getPriceStats"
 import {Card} from 'react-bootstrap'
 import { ProductPriceStats } from "./ProductPriceStats"
-
 import "../App.css"
 import { auth, db, userSignedIn } from "../firebase";
 import { collection, addDoc, doc, setDoc, deleteDoc, onSnapshot } from "firebase/firestore"

@@ -41,6 +41,7 @@ export const NewSearchBar  = () => {
         <button
         aria-label="Press Enter or the button to Search" 
         className = "button-search-box"
+        role = "search-button"
         onClick = {searchForSneakers}
         type="submit">
             Search
