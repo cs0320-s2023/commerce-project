@@ -1,4 +1,4 @@
-export const mockPlatforms = {
+{
     "count": 7,
     "data": [
       {

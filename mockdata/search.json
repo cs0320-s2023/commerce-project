@@ -1,4 +1,4 @@
-export const mockSearch = {
+{
     "count": 6210,
     "data": [
       {

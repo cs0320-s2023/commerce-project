@@ -1,17 +1,14 @@
 import React, { useEffect, useState, useReducer, createContext } from "react";
 import "./App.css";
-import { Currency, ProductDescription, Size } from "./components";
 import { SearchResults } from "./components";
 import { siteName } from "../src/config";
 import { Platforms } from "./components/Platforms";
 import { NewSearchBar } from "./components/NewSearchBar";
-import { Filter } from "./components/Filter";
 import { GoogleSignIn } from "./components";
 import { ErrorMessage } from "./components";
 import { PriceStats } from "./components/";
 import { reducer } from "./data/reducer";
 import { defaultPageState, initialContext } from "./data/dataTypes";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 export const PageContext = createContext(initialContext);
 
@@ -20,9 +17,9 @@ function App() {
   const [pageState, dispatch] = useReducer(reducer, defaultPageState);
 
   const username = localStorage.getItem("name");
-  const signedIn1 = username != undefined && username.length > 0;
 
-  //  const signedIn = true;
+//  const signedIn = username != undefined && username.length > 0;  // Good one
+  const signedIn = true;  // Safae test
 
   return (
     <PageContext.Provider value={{ pageState, dispatch }}>
@@ -39,7 +36,7 @@ function App() {
         <ErrorMessage />
         <GoogleSignIn />
 
-        {signedIn1 ? (
+        {signedIn ? (
           <>
             <NewSearchBar />
             <PriceStats />

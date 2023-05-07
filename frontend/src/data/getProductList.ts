@@ -1,4 +1,4 @@
-import { mockSearch } from "../../../mockdata/search";
+import mockSearch from "../../../mockdata/search.json";
 import { mockingMode } from "./mockingMode";
 import { secretAPIKey } from "./apikey";
 import { isServerSuccessResponse, isServerErrorResponse } from "./typePredicate";

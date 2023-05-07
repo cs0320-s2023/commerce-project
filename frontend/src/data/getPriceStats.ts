@@ -1,4 +1,4 @@
-import { mockPriceStats } from "../../../mockdata/priceStats";
+import  mockPriceStats  from "../../../mockdata/priceStats.json";
 import { mockingMode } from "./mockingMode";
 import { secretAPIKey } from "./apikey";
 import { isServerSuccessResponse, isServerErrorResponse } from "./typePredicate";
