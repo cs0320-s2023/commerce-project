@@ -1,14 +1,14 @@
 import { getPrices, getProduct } from "../data/getPrices";
-import {
-  handleAddToWishlist3,
-  handleRemoveFromWishlist3,
-} from "../data/getWishlist";
+// import {
+//   handleAddToWishlist3,
+//   handleRemoveFromWishlist3,
+// } from "../data/getWishlist";
 import { IProduct } from "../data/dataTypes";
 import { userSignedIn } from "../firebase";
 import { getPriceStats } from "../data/getPriceStats";
-import { mockPriceStats } from "../../../mockdata/priceStats";
+import  mockPriceStats  from "../../../mockdata/priceStats.json";
 import { getProductList } from "../data/getProductList";
-import { secretAPIKey } from "../data/apikey";
+import { secretAPIkey } from "../data/apikey";
 
 describe("getPrices", () => {
   it("should return prices for a valid product key", () => {
@@ -161,7 +161,7 @@ describe("getPriceStats", () => {
     const options = {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": secretAPIKey,
+        "X-RapidAPI-Key": secretAPIkey,
       },
     };
     afterEach(() => {
