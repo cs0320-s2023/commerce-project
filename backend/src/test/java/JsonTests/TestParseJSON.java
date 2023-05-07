@@ -1,6 +1,6 @@
-package edu.brown.cs32.examples.sprint3.JsonTests;
+package JsonTests;
 
-import edu.brown.cs32.examples.sprint3.JsonHandlers.ParseJSON;
+import JsonHandlers.ParseJSON;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;

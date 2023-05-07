@@ -1,9 +1,9 @@
-package edu.brown.cs32.examples.sprint3.utilities;
+package utilities;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import edu.brown.cs32.examples.sprint3.server.utilities.Serialize;
-import edu.brown.cs32.examples.sprint3.server.utilities.Unserialize;
+import server.utilities.Serialize;
+import server.utilities.Unserialize;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

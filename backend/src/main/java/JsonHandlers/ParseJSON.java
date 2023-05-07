@@ -1,4 +1,4 @@
-package edu.brown.cs32.examples.sprint3.JsonHandlers;
+package JsonHandlers;
 
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;

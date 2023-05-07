@@ -6,7 +6,7 @@ import spark.Request;
 import spark.Response;
 import spark.Route;
 
-import edu.brown.cs32.examples.sprint3.server.utilities.Serialize;
+import server.utilities.Serialize;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -48,7 +48,7 @@ public class SneakerPriceHandler implements Route {
         // String sneaker = request.queryParams("name");
 
         // if (sneakerName == null || sneakerName.isBlank() || sneakerName == "") {
-        //     return edu.brown.cs32.examples.sprint3.server.utilities.Serialize.error("error_bad_request", "keyword parameter is missing");
+        //     return server.utilities.Serialize.error("error_bad_request", "keyword parameter is missing");
         // }
 
         String product = findLowestLastPrice(RTPdata);

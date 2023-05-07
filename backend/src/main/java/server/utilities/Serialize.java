@@ -1,4 +1,4 @@
-package edu.brown.cs32.examples.sprint3.server.utilities;
+package server.utilities;
 
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
