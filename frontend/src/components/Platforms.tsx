@@ -1,7 +1,7 @@
 import {useContext, useEffect, useState} from "react"
 import React, { Component } from "react";
 import "../App.css"
-import { retrievePlatforms } from "../data/getPlatforms";
+import { getPlatforms } from "../data/getPlatforms";
 import {Alert, Tooltip} from "react-bootstrap"
 import {Switch} from "antd";
 import { PageContext } from "../App"
@@ -50,7 +50,7 @@ export const Platforms  = () => {
     const platforms = pageState.platforms;
 
     useEffect (() => {
-        retrievePlatforms(platforms, dispatch);
+      getPlatforms(platforms, dispatch);
       }
     )
 

@@ -1,18 +1,7 @@
-import mockSearch from "../../../mockdata/search.json";
+import mockSearch from "../../../mockdata/productList.json";
 import { mockingMode } from "./mockingMode";
-import { secretAPIKey } from "./apikey";
+import {backendURL} from "./backend.config";
 import { isServerSuccessResponse, isServerErrorResponse } from "./typePredicate";
-
-
-const backendURL = "https://sneakers-real-time-pricing.p.rapidapi.com"
-const options = {  
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': secretAPIKey,
-    },          
-  }
-
-const backendURL2 = "http://localhost:3232"
 
 export async function getProductList (searchText : string, dispatch : any)  {
     
@@ -26,12 +15,15 @@ export async function getProductList (searchText : string, dispatch : any)  {
 
     } else {
 
-        const url = backendURL + "/sneakers?extended=true&name=" + searchText;
+        const url = backendURL + "/sneakers?name=" + searchText;
 
-        await fetch(url, options)
+        await fetch(url)
             .then(res => res.json())
-            .then((result) => {
-                if (isServerSuccessResponse(result)) {
+            .then((result_raw: any) => {
+                if (isServerSuccessResponse(result_raw)) {
+
+                    const result : any = result_raw.data;
+
                     const action = {
                         type : "searchSuccess",
                         payload : result.data
@@ -41,10 +33,10 @@ export async function getProductList (searchText : string, dispatch : any)  {
                     dispatch(action) ;
                 
 
-                } else if (isServerErrorResponse(result)) {
+                } else if (isServerErrorResponse(result_raw)) {
                     const action = {
                         type : "searchFailure",
-                        payload : result.message
+                        payload : result_raw.message
                     }; 
                     dispatch(action) ;
                 

@@ -13,3 +13,4 @@ pom.xml.bak
 node_modules/
 apikey.ts
 firebase.config.ts
+backend/src/main/java/server/handlers/HTTP/rapidapi.java

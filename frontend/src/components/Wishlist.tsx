@@ -3,7 +3,6 @@ import { useContext } from "react"
 
 import React, { Component } from "react";
 import "../App.css"
-import { retrievePlatforms } from "../data/getPlatforms";
 import {Alert} from "react-bootstrap"
 import {Switch} from "antd";
 import { userSignedIn } from "../firebase";

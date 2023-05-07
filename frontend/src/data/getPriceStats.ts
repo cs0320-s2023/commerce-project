@@ -1,19 +1,8 @@
 import  mockPriceStats  from "../../../mockdata/priceStats.json";
 import { mockingMode } from "./mockingMode";
-import { secretAPIKey } from "./apikey";
 import { isServerSuccessResponse, isServerErrorResponse } from "./typePredicate";
+import {backendURL} from "./backend.config";
 
-
-const backendURL = "https://sneakers-real-time-pricing.p.rapidapi.com"
-const options = {  
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': secretAPIKey,
-    },          
-  }
-
-
-const backendURL2 = "http://localhost:3232"
 
 export async function getPriceStats (sku : string, dispatch : any)  {
     
@@ -28,12 +17,15 @@ export async function getPriceStats (sku : string, dispatch : any)  {
 
     } else {
 
-        const url = backendURL + "/sneakers/prices_stats?sku=" + sku;
+        const url = backendURL + "/prices_stats?sku=" + sku;
 
-        await fetch(url, options)
+        await fetch(url)
             .then(res => res.json())
-            .then((result) => {
-                if (isServerSuccessResponse(result)) {
+            .then((result_raw: any) => {
+                if (isServerSuccessResponse(result_raw)) {
+
+                    const result : any = result_raw.data;
+
                     const action = {
                         type : "priceStatsSuccess",
                         payload : result.data,
