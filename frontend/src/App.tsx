@@ -18,8 +18,8 @@ function App() {
 
   const username = localStorage.getItem("name");
 
-//  const signedIn = username != undefined && username.length > 0;  // Good one
-  const signedIn = true;  // Safae test
+  const signedIn = username != undefined && username.length > 0;  // Good one
+  // const signedIn = true;  // Safae test
 
   return (
     <PageContext.Provider value={{ pageState, dispatch }}>
