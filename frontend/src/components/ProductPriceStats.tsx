@@ -58,7 +58,8 @@ export const ProductPriceStats = ({sku}: any) => {
      * @returns [min, max]
      */
     const getEntryRange = (priceEntry: any) => {
-        return [priceEntry.minPriceUsd, priceEntry.avgPriceUsd > priceEntry.maxPriceUsd? priceEntry.avgPriceUsd: priceEntry.maxPriceUsd]
+        return [priceEntry.minPriceUsd + getPlatformFees(priceEntry), 
+            priceEntry.avgPriceUsd + getPlatformFees(priceEntry) > priceEntry.maxPriceUsd + getPlatformFees(priceEntry)? priceEntry.avgPriceUsd + getPlatformFees(priceEntry): priceEntry.maxPriceUsd + getPlatformFees(priceEntry)]
     }
 
 
