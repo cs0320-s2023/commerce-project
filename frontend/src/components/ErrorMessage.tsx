@@ -18,7 +18,7 @@ export const ErrorMessage  = () => {
 
 
     return(
-            <div aria-label= {errorMessage}  className="error-message" role="error-message">
+            <div aria-label={errorMessage}  className="error-message" role="error-message">
                <span>{errorMessage}</span>
             </div>
     );

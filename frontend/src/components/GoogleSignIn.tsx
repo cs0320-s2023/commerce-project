@@ -45,7 +45,7 @@ export const GoogleSignIn  = () => {
   
     return(
             <div className="signin-container" role="signin-container">
-                <p className="welcome-message">  {localStorage.getItem('name') ? "Hey " + localStorage.getItem('name') : "Why aren't you logged in yet 🤨?"}</p>
+                <p className="welcome-message">  {localStorage.getItem('name') ? "Hey " + localStorage.getItem('name') + "!" : "Why aren't you logged in yet 🤨?"}</p>
                 {signedIn?showSignOut():showSignIn()}
             </div>
     );

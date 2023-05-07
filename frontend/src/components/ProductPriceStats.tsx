@@ -14,7 +14,7 @@ export const ProductPriceStats = ({sku}: any) => {
     const {pageState, dispatch} = useContext(PageContext);
 
     const getSelectedPriceStats = (sku: string) => {
-
+        // defensive programming
         if ((sku == null) || (sku == undefined) || (sku.length == 0)) {
             return;
         } else {
@@ -22,7 +22,7 @@ export const ProductPriceStats = ({sku}: any) => {
         }
     }
 
-    // DEFENSIVE PROG: If no price stats list is defined yet, we return an empty div
+    // DEFENSIVE PROG: If no price stats list is defined yet, we return an error message
     if ((mapProductPrice == null) || (mapProductPrice == undefined)){
         return <div>No Prices Exist</div>
     }

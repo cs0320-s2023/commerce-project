@@ -7,6 +7,7 @@ import { ProductPriceStats } from "./ProductPriceStats"
 import "../App.css"
 import { auth, db, userSignedIn } from "../firebase";
 import { collection, addDoc, doc, setDoc, deleteDoc, onSnapshot } from "firebase/firestore"
+import { IWishlistProduct } from "../data/dataTypes"
 
 
 export const SearchResults = () => {
@@ -23,26 +24,40 @@ export const SearchResults = () => {
     if ((productList == null) || (productList == undefined)){
         return <div/>
     }
-    
-    interface Product {
-        name: string;
-        image: string;
-      }
+
+    // DEFENSIVE PROGRAMMING - MAKING SURE WE HAVE A VALID PRODUCT LIST
+    function isIWishlistProduct(obj: any): obj is IWishlistProduct {
+      return typeof obj.name === 'string' && typeof obj.image === 'string';
+    }
       
-    const [wishlist, setWishlist] = useState<Product[]>([]);
+    const [wishlist, setWishlist] = useState<IWishlistProduct[]>([]);
     const [showMessage, setShowMessage] = useState(false);
     const [isPanelOpen, setIsPanelOpen] = useState(false);
     const [isWishlistOpen, setIsWishlistOpen] = useState(false);
 
+    const noImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png";
+    
     useEffect(() => {
         const user = auth.currentUser;
         if (user) {
           const unsubscribe = onSnapshot(
             collection(db, "users", user.uid, "wishlist"),
             (snapshot) => {
-              const wishlistData: Product[] = [];
+              const wishlistData: IWishlistProduct[] = [];
               snapshot.forEach((doc) => {
-                wishlistData.push(doc.data() as Product);
+                // wishlistData.push(doc.data() as IWishlistProduct);
+                
+                // defensive programming
+                const data = doc.data();
+                if (!data.image) {
+                  data.image = noImage;
+                }
+                // defensive programming
+                if (isIWishlistProduct(data)) {
+                  console.log("shoe is a valid IWishlistProduct");
+                  wishlistData.push(data);
+                }
+
               });
               setWishlist(wishlistData);
             }
@@ -56,7 +71,7 @@ export const SearchResults = () => {
 
     // HANDLE WISHLIST
       
-    function handleAddToWishlist(product: Product) {
+    function handleAddToWishlist(product: IWishlistProduct) {
         if (!userSignedIn) {
           alert("You must sign in first!");
           return;
@@ -77,7 +92,11 @@ export const SearchResults = () => {
         if (user) {
             const uid = user.uid;
             const wishlistRef = collection(db, "users", uid, "wishlist");
-            const docRef = doc(wishlistRef, product.name); // Use product name as document ID
+            
+            const docId = encodeURIComponent(product.name); // Encode the product name
+            const docRef = doc(wishlistRef, docId);
+
+            // const docRef = doc(wishlistRef, product.name); // Use product name as document ID
             setDoc(docRef, {
             name: product.name,
             image: product.image
@@ -97,7 +116,7 @@ export const SearchResults = () => {
         // setWishlist([...wishlist, product]);
     }
 
-    function handleRemoveFromWishlist(product: Product) {
+    function handleRemoveFromWishlist(product: IWishlistProduct) {
         const index = wishlist.findIndex((item) => item.name === product.name);
         if (index !== -1) {
         
@@ -176,7 +195,7 @@ export const SearchResults = () => {
                   tabIndex={0} aria-label={product.name}>
                     <div className="product-container">
                         <div className = "product-image">
-                            <img src={product.image} className="product-image" onClick={() => {getSelectedPriceStats(product.sku)}} />                    
+                        <img src={product.image ? product.image : noImage} className="product-image" onClick={() => {getSelectedPriceStats(product.sku)}} />                    
                             <button aria-label="Press Enter to add selected shoe to wishlist" className="wishlist-btn" onClick={() => handleAddToWishlist(product)}>❤️</button>                                    
                         </div>
                         <div className = "product-details">

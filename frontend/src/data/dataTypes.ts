@@ -6,6 +6,11 @@ export interface IProduct {
     image: string | undefined,
 }
 
+export interface IWishlistProduct {
+    name: string;
+    image: string;
+  }
+
 export interface IPriceStat {
     platformName: string,
     minPriceUsd: number,
