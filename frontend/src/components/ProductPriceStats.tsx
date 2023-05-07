@@ -12,6 +12,16 @@ import "../App.css"
  * @param sku: The SKU of the product whose Price Stats will be displayed.
  * @returns 
  */
+
+// Shipping costs for each platform. Can be fetched in realtime from API later.
+const aliasShippingCost = 14.50;
+const hypeboostShippingCost = 10;
+const kikikickzShippingCost = 4.90;
+const klektShippingCost = 45;
+const lacedShippingCost = 7;
+const restocksShippingCost = 10;
+const stockxShippingCost = 32.95;
+
 export const ProductPriceStats = ({sku}: any) => {
 
     // Get the Page State and Reducer's dispatch function from the global PageContext
@@ -59,6 +69,42 @@ export const ProductPriceStats = ({sku}: any) => {
         return [priceEntry.minPriceUsd, priceEntry.avgPriceUsd > priceEntry.maxPriceUsd? priceEntry.avgPriceUsd: priceEntry.maxPriceUsd]
     }
 
+    const getEntryRangeWithShipping = (priceEntry: any) => {
+        const min = (priceEntry.platformName === 'alias'
+        ? priceEntry.minPriceUsd + aliasShippingCost
+        : priceEntry.platformName === 'hypeboost'
+        ? priceEntry.minPriceUsd + hypeboostShippingCost
+        : priceEntry.platformName === 'stockx'
+        ? priceEntry.minPriceUsd + stockxShippingCost
+        : priceEntry.platformName === 'klekt'
+        ? priceEntry.minPriceUsd + klektShippingCost
+        : priceEntry.platformName === 'kikikickz'
+        ? priceEntry.minPriceUsd + kikikickzShippingCost
+        : priceEntry.platformName === 'laced'
+        ? priceEntry.minPriceUsd + lacedShippingCost
+        : priceEntry.platformName === 'restocks'
+        ? priceEntry.minPriceUsd + restocksShippingCost
+        : priceEntry.minPriceUsd);
+
+        const max = (priceEntry.platformName === 'alias'
+        ? priceEntry.maxPriceUsd + aliasShippingCost
+        : priceEntry.platformName === 'hypeboost'
+        ? priceEntry.maxPriceUsd + hypeboostShippingCost
+        : priceEntry.platformName === 'stockx'
+        ? priceEntry.maxPriceUsd + stockxShippingCost
+        : priceEntry.platformName === 'klekt'
+        ? priceEntry.maxPriceUsd + klektShippingCost
+        : priceEntry.platformName === 'kikikickz'
+        ? priceEntry.maxPriceUsd + kikikickzShippingCost
+        : priceEntry.platformName === 'laced'
+        ? priceEntry.maxPriceUsd + lacedShippingCost
+        : priceEntry.platformName === 'restocks'
+        ? priceEntry.maxPriceUsd + restocksShippingCost
+        : priceEntry.maxPriceUsd);
+
+        return [min, max]
+    }
+
 
     // Once the backend returns data, the reducer will populate a map between the products and the price stats.
     // If no price stats list is defined yet, we return an empty div (Defensive Programmming)
@@ -71,7 +117,8 @@ export const ProductPriceStats = ({sku}: any) => {
 
     // If no Price Stats are available for this product, give the user a way to request them.
     if ((priceAllStats == null) || (priceAllStats == undefined)){
-        return <div className="get-price-stats" onClick={() => getSelectedPriceStats(sku)}>Get price stats</div>
+        return <button aria-label="Press Enter to get price stats" tabIndex={0} 
+        className="get-price-stats" onClick={() => getSelectedPriceStats(sku)}>Get Price Stats</button>
     }
 
     // Filter out the selected platforms.
@@ -103,17 +150,65 @@ export const ProductPriceStats = ({sku}: any) => {
                      <div className = "price-platform-column"> {priceEntry.platformName} </div>
                      <Box  className = "price-column">
                         <Slider 
-                            getAriaLabel={() => 'Price Range range'}
+                            getAriaLabel={() => 'Price Range Slider'}
                             min = {minRange * 0.95}
-                            max = {maxRange * 1.05}
-                            value={getEntryRange(priceEntry)}
+                            max = {maxRange * 1.15}
+                            value={getEntryRangeWithShipping(priceEntry)}
                             valueLabelDisplay="auto"
                         />
                     </Box>
 
-                     <div className = "price-column"> {priceEntry.minPriceUsd}  </div>
-                     <div className = "price-column"> {priceEntry.avgPriceUsd}  </div>
-                     <div className = "price-column"> {priceEntry.maxPriceUsd} </div>
+                     <div className = "price-column"> {priceEntry.platformName === 'alias'
+                                                        ? priceEntry.minPriceUsd + aliasShippingCost
+                                                        : priceEntry.platformName === 'hypeboost'
+                                                        ? priceEntry.minPriceUsd + hypeboostShippingCost
+                                                        : priceEntry.platformName === 'stockx'
+                                                        ? priceEntry.minPriceUsd + stockxShippingCost
+                                                        : priceEntry.platformName === 'klekt'
+                                                        ? priceEntry.minPriceUsd + klektShippingCost
+                                                        : priceEntry.platformName === 'kikikickz'
+                                                        ? priceEntry.minPriceUsd + kikikickzShippingCost
+                                                        : priceEntry.platformName === 'laced'
+                                                        ? priceEntry.minPriceUsd + lacedShippingCost
+                                                        : priceEntry.platformName === 'restocks'
+                                                        ? priceEntry.minPriceUsd + restocksShippingCost
+                                                        : priceEntry.minPriceUsd
+                                                    }  </div>
+                     <div className = "price-column"> {
+                                                        priceEntry.platformName === 'alias'
+                                                        ? priceEntry.avgPriceUsd + aliasShippingCost
+                                                        : priceEntry.platformName === 'hypeboost'
+                                                        ? priceEntry.avgPriceUsd + hypeboostShippingCost
+                                                        : priceEntry.platformName === 'stockx'
+                                                        ? priceEntry.avgPriceUsd + stockxShippingCost
+                                                        : priceEntry.platformName === 'klekt'
+                                                        ? priceEntry.avgPriceUsd + klektShippingCost
+                                                        : priceEntry.platformName === 'kikikickz'
+                                                        ? priceEntry.avgPriceUsd + kikikickzShippingCost
+                                                        : priceEntry.platformName === 'laced'
+                                                        ? priceEntry.avgPriceUsd + lacedShippingCost
+                                                        : priceEntry.platformName === 'restocks'
+                                                        ? priceEntry.avgPriceUsd + restocksShippingCost
+                                                        : priceEntry.avgPriceUsd
+                     }  
+                     </div>
+                     <div className = "price-column"> {
+                                                        priceEntry.platformName === 'alias'
+                                                        ? priceEntry.maxPriceUsd + aliasShippingCost
+                                                        : priceEntry.platformName === 'hypeboost'
+                                                        ? priceEntry.maxPriceUsd + hypeboostShippingCost
+                                                        : priceEntry.platformName === 'stockx'
+                                                        ? priceEntry.maxPriceUsd + stockxShippingCost
+                                                        : priceEntry.platformName === 'klekt'
+                                                        ? priceEntry.maxPriceUsd + klektShippingCost
+                                                        : priceEntry.platformName === 'kikikickz'
+                                                        ? priceEntry.maxPriceUsd + kikikickzShippingCost
+                                                        : priceEntry.platformName === 'laced'
+                                                        ? priceEntry.maxPriceUsd + lacedShippingCost
+                                                        : priceEntry.platformName === 'restocks'
+                                                        ? priceEntry.maxPriceUsd + restocksShippingCost
+                                                        : priceEntry.maxPriceUsd                                    
+                     } </div>
                  </div>
               ))}
          </div>        
