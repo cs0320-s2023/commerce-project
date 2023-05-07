@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { IPriceStat, mapProductPrice } from "../data/dataTypes"
 import { getPriceStats } from "../data/getPriceStats"
 import { PageContext } from "../App"
-import  fees  from "../../../mockdata/fees.json";
+import  fees  from "../../../mockdata/shippingData.json";
 
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
@@ -88,7 +88,7 @@ export const ProductPriceStats = ({sku}: any) => {
         const platformName = priceEntry.platformName;
         for (var entry of fees.data) {
             if (entry.platformName == platformName) {
-                return entry.fees;
+                return entry.shippingFee;
             }
         }
         return 0;
@@ -132,3 +132,4 @@ export const ProductPriceStats = ({sku}: any) => {
          </div>        
         )
 }
+
