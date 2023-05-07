@@ -6,7 +6,6 @@ import spark.Route;
 import server.handlers.HTTP.PriceStatsProxy;
 import server.utilities.Serialize;
 import server.utilities.SneakerUtils.RTPdata;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -37,8 +36,6 @@ public class SneakerPriceStatsHandler implements Route {
     public Object handle(Request request, Response response) throws Exception {
 
         try {
-
-
             String sku = request.queryParams("sku");
             if ((sku == null) || (sku.trim().length()==0))
                 throw new Exception("Missing product sku search criteria.");

@@ -1,6 +1,6 @@
 package server.handlers.HTTP;
-import server.utilities.SneakerUtils.RTPdata;
 
+import server.utilities.SneakerUtils.RTPdata;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -27,7 +27,7 @@ public class PriceStatsHTTP {
         if (urlConnection.getResponseCode() == 200) {
             urlConnection.connect();
             String strResponse = getHTTPResponseString(urlConnection);
-            System.out.print(strResponse);
+            //System.out.print(strResponse);
             urlConnection.disconnect();
             Moshi moshi = new Moshi.Builder().build();
             return moshi.adapter(RTPdata.class).fromJson(strResponse);

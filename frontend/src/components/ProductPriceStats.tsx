@@ -2,6 +2,8 @@ import { useContext } from "react"
 import { IPriceStat, mapProductPrice } from "../data/dataTypes"
 import { getPriceStats } from "../data/getPriceStats"
 import { PageContext } from "../App"
+import  fees  from "../../../mockdata/fees.json";
+
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 
@@ -77,15 +79,26 @@ export const ProductPriceStats = ({sku}: any) => {
     // Filter out the selected platforms.
     const priceStats = priceAllStats.filter(filterPlatforms)
 
-
     // Calculate the min and max of all platforms.  This will be used to set a common range for 
     // the slide bars.
     let minRange = 999999;
     let maxRange = 0;
+
+    const getPlatformFees = (priceEntry : IPriceStat) => {
+        const platformName = priceEntry.platformName;
+        for (var entry of fees.data) {
+            if (entry.platformName == platformName) {
+                return entry.fees;
+            }
+        }
+        return 0;
+    }
+
+   
+
     priceStats.forEach( (priceEntry: any) => {
-        minRange = (minRange < priceEntry.minPriceUsd)  ? minRange : priceEntry.minPriceUsd;
-        maxRange = (maxRange > priceEntry.avgPriceUsd)  ? maxRange : priceEntry.avgPriceUsd;
-        maxRange = (maxRange > priceEntry.maxPriceUsd) ? maxRange : priceEntry.maxPriceUsd;
+        minRange = (minRange < priceEntry.minPriceUsd) ? minRange : priceEntry.minPriceUsd + getPlatformFees(priceEntry);
+        maxRange = (maxRange > priceEntry.maxPriceUsd) ? maxRange : priceEntry.maxPriceUsd + getPlatformFees(priceEntry);
     })
    
     return(
@@ -111,9 +124,9 @@ export const ProductPriceStats = ({sku}: any) => {
                         />
                     </Box>
 
-                     <div className = "price-column"> {priceEntry.minPriceUsd}  </div>
-                     <div className = "price-column"> {priceEntry.avgPriceUsd}  </div>
-                     <div className = "price-column"> {priceEntry.maxPriceUsd} </div>
+                     <div className = "price-column"> {priceEntry.minPriceUsd + getPlatformFees(priceEntry)} </div>
+                     <div className = "price-column"> {priceEntry.avgPriceUsd + getPlatformFees(priceEntry)} </div>
+                     <div className = "price-column"> {priceEntry.maxPriceUsd + getPlatformFees(priceEntry)} </div>
                  </div>
               ))}
          </div>        
