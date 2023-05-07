@@ -24,7 +24,7 @@ public class ProductListProxy {
         .maximumSize(100)                          // maximum 100 records can be cached
         .expireAfterAccess(60, TimeUnit.MINUTES)      // cache will expire after 60 minutes of access
         .recordStats()
-        .build(new CacheLoader<String, SneakerData>() {      // build the cacheloader
+        .build(new CacheLoader<String, SneakerData>() {        // build the cacheloader
           @Override
           public SneakerData load(String productName) throws Exception {
             //make the expensive call

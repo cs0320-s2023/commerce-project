@@ -66,11 +66,7 @@ export const SearchResults = () => {
         }
       }, [userSignedIn]);
 
-
-
-
-    // HANDLE WISHLIST
-      
+    // HANDLE WISHLIST      
     function handleAddToWishlist(product: IWishlistProduct) {
         if (!userSignedIn) {
           alert("You must sign in first!");
@@ -87,7 +83,6 @@ export const SearchResults = () => {
         //     });
         // }
 
-
         const user = auth.currentUser;
         if (user) {
             const uid = user.uid;
@@ -102,8 +97,6 @@ export const SearchResults = () => {
             image: product.image
             });
         }
-        
-        
         
         setShowMessage(true);
 
@@ -127,8 +120,6 @@ export const SearchResults = () => {
         const docRef = doc(wishlistRef, product.name); // Use product name as document ID
         deleteDoc(docRef); // Remove document with corresponding product name
         }
-
-
 
         //   const newWishlist = [...wishlist];
         //   newWishlist.splice(index, 1);
@@ -195,6 +186,8 @@ export const SearchResults = () => {
                   tabIndex={0} aria-label={product.name}>
                     <div className="product-container">
                         <div className = "product-image">
+                        <span>{product.sku}</span>
+
                         <img src={product.image ? product.image : noImage} className="product-image" onClick={() => {getSelectedPriceStats(product.sku)}} />                    
                             <button aria-label="Press Enter to add selected shoe to wishlist" className="wishlist-btn" onClick={() => handleAddToWishlist(product)}>❤️</button>                                    
                         </div>

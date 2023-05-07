@@ -1,13 +1,11 @@
 package server;
 
 import spark.Spark;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
-
 import server.handlers.SneakerPlatformsHandler;
 import server.handlers.SneakerPriceHandler;
 import server.handlers.SneakerPriceStatsHandler;
@@ -52,40 +50,38 @@ public class Server {
             response.header("Access-Control-Allow-Methods", "*");
         });
 
-
         String data = "";
         try {
-
             Reader reader = new FileReader("backend/src/main/data/mockJ4sSearchResponse.json", StandardCharsets.UTF_8);
             BufferedReader bf = new BufferedReader(reader);
             data = bf.readLine();
             //System.out.println(data + "this is data");
-            } 
-            catch (IOException e) {
+            bf.close();
+        } catch (IOException e) {
             System.err.println("Could Not read JSON Data."); // todo - change this
         }
 
         String ddata = "";
         try {
-
             Reader rreader = new FileReader("backend/src/main/data/mockJ4sRTPResponse.json", StandardCharsets.UTF_8);
             BufferedReader bff = new BufferedReader(rreader);
             ddata = bff.readLine();
             //System.out.println(data + "this is data");
-            } 
-            catch (IOException e) {
+            bff.close();
+        } catch (IOException e) {
             System.err.println("Could Not read JSON Data."); // todo - change this
         }
 
     // Setting up the handler for the GET endpoints
-//        Spark.get("bounds", new BoundaryHandler(data));
-//        Spark.get("query", new QueryHandler(data));
-
-        // Spark.get("sneakers", new SneakerRTPHandler(data))
+    // Spark.get("bounds", new BoundaryHandler(data));
+    // Spark.get("query", new QueryHandler(data));
+    // Spark.get("sneakers", new SneakerRTPHandler(data))
+    
+        // omer
         Spark.get("sneakersku", new SneakerSKUHandler(data));
+        Spark.get("sneakersprice", new SneakerPriceHandler(ddata)); 
 
-        Spark.get("sneakersprice", new SneakerPriceHandler(ddata));
-
+        // safae
         Spark.get("platforms", new SneakerPlatformsHandler(mockingMode));
         Spark.get("sneakers", new SneakerProductListHandler(mockingMode));
         Spark.get("price_stats", new SneakerPriceStatsHandler(mockingMode));

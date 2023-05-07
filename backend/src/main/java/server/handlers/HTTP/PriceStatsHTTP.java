@@ -19,7 +19,7 @@ public class PriceStatsHTTP {
 
     try {
         // Compose URL
-        URL request = new URL("https://sneakers-real-time-pricing.p.rapidapi.com/sneakers/sku="+sku);
+        URL request = new URL("https://sneakers-real-time-pricing.p.rapidapi.com/sneakers/prices_stats?sku="+sku);
 
         HttpURLConnection urlConnection = (HttpURLConnection) request.openConnection();
         urlConnection.setRequestProperty("X-RapidAPI-Key", rapidapi.apiKey);
@@ -27,6 +27,7 @@ public class PriceStatsHTTP {
         if (urlConnection.getResponseCode() == 200) {
             urlConnection.connect();
             String strResponse = getHTTPResponseString(urlConnection);
+            System.out.print(strResponse);
             urlConnection.disconnect();
             Moshi moshi = new Moshi.Builder().build();
             return moshi.adapter(RTPdata.class).fromJson(strResponse);
@@ -36,7 +37,7 @@ public class PriceStatsHTTP {
 
     } catch (Exception e) {
 
-      throw new Exception("Error while retrieving sneader data (Price Stats): " + e.getMessage());
+      throw new Exception("Error while retrieving sneaker data (Price Stats): " + e.getMessage());
     }
   }
   /**

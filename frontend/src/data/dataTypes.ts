@@ -15,7 +15,7 @@ export interface IPriceStat {
     platformName: string,
     minPriceUsd: number,
     avgPriceUsd: number,
-    lastPriceUsd: number,
+    maxPriceUsd: number,
 }
 
 export interface IWishList {

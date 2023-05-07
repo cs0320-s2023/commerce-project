@@ -56,7 +56,7 @@ export const ProductPriceStats = ({sku}: any) => {
      * @returns [min, max]
      */
     const getEntryRange = (priceEntry: any) => {
-        return [priceEntry.minPriceUsd, priceEntry.avgPriceUsd > priceEntry.lastPriceUsd? priceEntry.avgPriceUsd: priceEntry.lastPriceUsd]
+        return [priceEntry.minPriceUsd, priceEntry.avgPriceUsd > priceEntry.maxPriceUsd? priceEntry.avgPriceUsd: priceEntry.maxPriceUsd]
     }
 
 
@@ -85,7 +85,7 @@ export const ProductPriceStats = ({sku}: any) => {
     priceStats.forEach( (priceEntry: any) => {
         minRange = (minRange < priceEntry.minPriceUsd)  ? minRange : priceEntry.minPriceUsd;
         maxRange = (maxRange > priceEntry.avgPriceUsd)  ? maxRange : priceEntry.avgPriceUsd;
-        maxRange = (maxRange > priceEntry.lastPriceUsd) ? maxRange : priceEntry.lastPriceUsd;
+        maxRange = (maxRange > priceEntry.maxPriceUsd) ? maxRange : priceEntry.maxPriceUsd;
     })
    
     return(
@@ -95,7 +95,7 @@ export const ProductPriceStats = ({sku}: any) => {
                 <div className = "price-column-header">Range</div>
                 <div className = "price-column-header">Min</div>
                 <div className = "price-column-header">Avg</div>
-                <div className = "price-column-header">Last</div>                
+                <div className = "price-column-header">Max</div>                
             </div>
 
              {priceStats.map((priceEntry : any) => (
@@ -113,7 +113,7 @@ export const ProductPriceStats = ({sku}: any) => {
 
                      <div className = "price-column"> {priceEntry.minPriceUsd}  </div>
                      <div className = "price-column"> {priceEntry.avgPriceUsd}  </div>
-                     <div className = "price-column"> {priceEntry.lastPriceUsd} </div>
+                     <div className = "price-column"> {priceEntry.maxPriceUsd} </div>
                  </div>
               ))}
          </div>        

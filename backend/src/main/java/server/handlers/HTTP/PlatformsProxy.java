@@ -1,7 +1,6 @@
 package server.handlers.HTTP;
 
 import server.utilities.SneakerUtils.Platforms;
-
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
@@ -21,10 +20,10 @@ public class PlatformsProxy {
   public PlatformsProxy() {
 
     platformsCache = CacheBuilder.newBuilder()
-        .maximumSize(100)                          // maximum 100 records can be cached
-        .expireAfterAccess(60, TimeUnit.MINUTES)      // cache will expire after 60 minutes of access
+        .maximumSize(100)                                // maximum 100 records can be cached
+        .expireAfterAccess(60, TimeUnit.MINUTES)            // cache will expire after 60 minutes of access
         .recordStats()
-        .build(new CacheLoader<String, Platforms>() {      // build the cacheloader
+        .build(new CacheLoader<String, Platforms>() {                // build the cacheloader
           @Override
           public Platforms load(String dummy) throws Exception {
             //make the expensive call

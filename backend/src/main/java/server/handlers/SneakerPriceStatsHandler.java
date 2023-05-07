@@ -61,9 +61,7 @@ public class SneakerPriceStatsHandler implements Route {
             return Serialize.success(successResponse);
 
         } catch (Exception e) {
-
             return Serialize.error("bad_request", e.getMessage());
-
         }
     }
 }

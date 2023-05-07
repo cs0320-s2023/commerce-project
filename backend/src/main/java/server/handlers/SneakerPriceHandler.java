@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+ * Omer
+ */
 public class SneakerPriceHandler implements Route {
     private SneakerUtils.RTPdata RTPdata;
     private SneakerUtils.RTPdtypes RTPdtypes;
@@ -29,17 +32,16 @@ public class SneakerPriceHandler implements Route {
                     }
                 }
             
-                private static String findLowestLastPrice(SneakerUtils.RTPdata RTPData) {
+                private static String findLowestMaxPrice(SneakerUtils.RTPdata RTPData) {
                     int i = 1000000000;
                     SneakerUtils.RTPdtypes d = RTPData.data().get(0);
 
                     for (SneakerUtils.RTPdtypes datum : RTPData.data()) {
-                        if (datum.lastPriceUsd()<i) {
+                        if (datum.maxPriceUsd()<i) {
                             d = datum;
                         }
                     }
-                    return String.valueOf(d.lastPriceUsd());
-    
+                    return String.valueOf(d.maxPriceUsd());
     }
 
     @Override
@@ -52,7 +54,7 @@ public class SneakerPriceHandler implements Route {
         //     return server.utilities.Serialize.error("error_bad_request", "keyword parameter is missing");
         // }
 
-        String product = findLowestLastPrice(RTPdata);
+        String product = findLowestMaxPrice(RTPdata);
         // System.out.println(skuNumber);
 
 

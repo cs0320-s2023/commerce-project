@@ -17,14 +17,14 @@ export async function getPriceStats (sku : string, dispatch : any)  {
 
     } else {
 
-        const url = backendURL + "/prices_stats?sku=" + sku;
+        const url = backendURL + "/price_stats?sku=" + sku;
 
         await fetch(url)
             .then(res => res.json())
-            .then((result_raw: any) => {
-                if (isServerSuccessResponse(result_raw)) {
+            .then((resultJson: any) => {
+                if (isServerSuccessResponse(resultJson)) {
 
-                    const result : any = result_raw.data;
+                    const result : any = resultJson.data;
 
                     const action = {
                         type : "priceStatsSuccess",
@@ -34,10 +34,10 @@ export async function getPriceStats (sku : string, dispatch : any)  {
                     dispatch(action) ;
                 
 
-                } else if (isServerErrorResponse(result)) {
+                } else if (isServerErrorResponse(resultJson)) {
                     const action = {
                         type : "priceStatsFailure",
-                        payload : result.message
+                        payload : resultJson.message
                     }; 
                     dispatch(action) ;
                 

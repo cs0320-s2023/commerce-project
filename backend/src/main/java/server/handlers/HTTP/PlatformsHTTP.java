@@ -1,22 +1,20 @@
 package server.handlers.HTTP;
-import server.utilities.SneakerUtils.Platforms;
 
+import server.utilities.SneakerUtils.Platforms;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.io.IOException;
-
 import com.squareup.moshi.Moshi;
 
 /**
  * Helper class to get platforms by making HTTP requests to rapidAPI servers
  */
 public class PlatformsHTTP {
-
   
-  public static Platforms getPlatforms()  throws Exception{
+  public static Platforms getPlatforms() throws Exception{
 
     try {
         // Compose URL
@@ -31,15 +29,11 @@ public class PlatformsHTTP {
             urlConnection.disconnect();
             Moshi moshi = new Moshi.Builder().build();
             return moshi.adapter(Platforms.class).fromJson(strResponse);
-
-        //    JSONParser jsonParser = new JSONParser();
-        //    return  (Platforms) jsonParser.parse(strResponse);
         }
 
       throw new Exception("RAPIDAPI server response code was " + urlConnection.getResponseCode());
 
     } catch (Exception e) {
-
       throw new Exception("Error while retrieving platforms: " + e.getMessage());
     }
   }

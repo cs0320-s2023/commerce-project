@@ -6,7 +6,6 @@ import spark.Route;
 import server.handlers.HTTP.PlatformsProxy;
 import server.utilities.Serialize;
 import server.utilities.SneakerUtils.Platforms;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,18 +13,19 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import com.squareup.moshi.Moshi;
 
+
 public class SneakerPlatformsHandler implements Route {
     
     private final Boolean mockingMode;
     private final PlatformsProxy platformsProxy = new PlatformsProxy();
 
+    //constructor
     public SneakerPlatformsHandler(Boolean mokingMode) {
         this.mockingMode = mokingMode;
     }
 
     // Given the structure of the provided model, let moshi parse the data in the mock platforms file
     private static Platforms readAndParseJson(String fileName) throws IOException {
-
         String fileContent = new String(Files.readAllBytes(Paths.get(fileName)));
         Moshi moshi = new Moshi.Builder().build();
         return moshi.adapter(Platforms.class).fromJson(fileContent);
@@ -56,12 +56,7 @@ public class SneakerPlatformsHandler implements Route {
             return Serialize.success(successResponse);
 
         } catch (Exception e) {
-            Map<String, Object> errorResponse = new HashMap<>();
-            errorResponse.put("result", "error");
-            errorResponse.put("message", e.getMessage());
-
-            return Serialize.success(errorResponse);
-
+            return Serialize.error("bad_request", e.getMessage());
         }
     }
 }
