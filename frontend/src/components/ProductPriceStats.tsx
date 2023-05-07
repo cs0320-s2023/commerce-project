@@ -119,7 +119,7 @@ export const ProductPriceStats = ({sku}: any) => {
                         <Slider 
                             getAriaLabel={() => 'Price Range range'}
                             min = {minRange * 0.95}
-                            max = {maxRange * 1.05}
+                            max = {maxRange * 1.15}
                             value={getEntryRange(priceEntry)}
                             valueLabelDisplay="auto"
                         />
