@@ -14,12 +14,17 @@ See Term Project Specifications
 In the `src` package is `main` and `test`:
 * `main` project entry point.
     * `server` includes server handling code 
-        * `handlers` 
+        * `handlers`
+          * `SneakerSKUHandler.java` : handles the request for the SKU and Image URL of a sneaker from its name
+          * `SneakerPriceHandler.java` : handles the request for the price of a sneaker from its SKU
            
 * `test` and its subdirectories contains unit testing, fuzz testing, and testing with mocks. 
 
 ### API Endpoints
-* will use:  https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-product-search/ 
+* Paid API will use:  https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-product-search/
+* MOCK API:
+  * `GET /sneaker/sku?name={name}` : returns the SKU and Image URL of a sneaker from its name
+  * `GET /sneaker/price?sku={sku}` : returns the price of a sneaker from its SKU
 
 ## Frontend
 * `frontend` contains code for rendering the website
@@ -50,8 +55,8 @@ No bugs were indentified. The following errors are outputted in a user-friendly 
 * cd into backend --> src --> main --> server and run `Server.java`
   * go to `localhost:3232` and utilize API endpoints and parameters detailed in the API section of README.
 
-* cd into frontend and run first `npm install` and then `npm start` or `npm run dev`
-* Run `Server.main()` and go to `localhost:3232` and utilize API endpoints and parameters detailed in the API section.
+* cd into frontend and run `npm install` , `npm install antd` , `npm install firebase` 
+* `npm run dev` to run the webapp
 
 * Run the tests: `npm test` for frontend and `mvn test`
   * run the server before running integration tests

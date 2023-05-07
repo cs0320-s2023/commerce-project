@@ -38,6 +38,15 @@ public class SneakerSKUHandler implements Route {
         return null;
     }
 
+    private static String findSneakerImage(SneakerUtils.SneakerData sneakerData, String sneakerName) {
+        for (SneakerUtils.SneakerInfo datum : sneakerData.data()) {
+            if (sneakerName.toLowerCase().equals(datum.name().toLowerCase())) {
+                return datum.image();
+            }
+        }
+        return null;
+    }
+
 
     @Override
     public Object handle(Request request, Response response) throws Exception {
@@ -52,6 +61,8 @@ public class SneakerSKUHandler implements Route {
         String skuNumber = findSneakerSKU(data, sneakerName);
         System.out.println(skuNumber);
 
+        String sneakerImage = findSneakerSKU(data, sneakerName);
+
 
         if (skuNumber.isBlank()) {
             return Serialize.error("error_bad_request", "sku number does not exist. try a more specific sneaker name");
@@ -61,6 +72,7 @@ public class SneakerSKUHandler implements Route {
         Map<String, Object> successResponse = new HashMap<>();
         successResponse.put("result", "success");
         successResponse.put("sku", skuNumber);
+        successResponse.put("image", sneakerImage);
 
         return Serialize.success(successResponse);
 
