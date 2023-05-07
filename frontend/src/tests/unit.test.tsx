@@ -1,7 +1,12 @@
 import { getPrices, getProduct } from "../data/getPrices";
+// import {
+//   handleAddToWishlist3,
+//   handleRemoveFromWishlist3,
+// } from "../data/getWishlist";
 import { IProduct } from "../data/dataTypes";
 import { userSignedIn } from "../firebase";
-import { mockPriceStats } from "../../../mockdata/priceStats";
+import { getPriceStats } from "../data/getPriceStats";
+import mockPriceStats from "../../../mockdata/priceStats.json";
 import { getProductList } from "../data/getProductList";
 import { secretAPIKey } from "../data/apikey";
 
