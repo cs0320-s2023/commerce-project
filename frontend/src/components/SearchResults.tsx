@@ -87,6 +87,7 @@ export const SearchResults = () => {
             const uid = user.uid;
             const wishlistRef = collection(db, "users", uid, "wishlist");
             
+            // defensive programming
             const docId = encodeURIComponent(product.name); // Encode the product name
             const docRef = doc(wishlistRef, docId);
 
@@ -116,9 +117,14 @@ export const SearchResults = () => {
         if (user) {
         const uid = user.uid;
         const wishlistRef = collection(db, "users", uid, "wishlist");
-        const docRef = doc(wishlistRef, product.name); // Use product name as document ID
+        
+        
+        const docId = encodeURIComponent(product.name); // Encode the product name
+        const docRef = doc(wishlistRef, docId);
         deleteDoc(docRef); // Remove document with corresponding product name
-        }
+        console.log("Removed shoe from wishlist");
+        
+      }
 
         //   const newWishlist = [...wishlist];
         //   newWishlist.splice(index, 1);
