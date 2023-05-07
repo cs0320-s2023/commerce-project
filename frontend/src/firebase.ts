@@ -4,6 +4,7 @@ import { getAnalytics } from "firebase/analytics";
 import {getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut, User} from "firebase/auth";
 import { useState, useEffect } from "react";
 import { getFirestore, collection, addDoc, setDoc, doc } from "firebase/firestore";
+import { firebaseConfig } from "./firebase.config";
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -11,16 +12,6 @@ import { getFirestore, collection, addDoc, setDoc, doc } from "firebase/firestor
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyCYcSuozs_BSEDoZtemPot2gPsfrt3P6O0",
-  authDomain: "sneakerbargains-15b15.firebaseapp.com",
-  databaseURL: "https://sneakerbargains-15b15-default-rtdb.firebaseio.com",
-  projectId: "sneakerbargains-15b15",
-  storageBucket: "sneakerbargains-15b15.appspot.com",
-  messagingSenderId: "1056538510538",
-  appId: "1:1056538510538:web:6d32adcfa62bff0ce06033",
-  measurementId: "G-GN7MD6P2PJ"
-};
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
