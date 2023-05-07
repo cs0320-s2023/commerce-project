@@ -73,7 +73,9 @@ export const ProductPriceStats = ({sku}: any) => {
 
     // If no Price Stats are available for this product, give the user a way to request them.
     if ((priceAllStats == null) || (priceAllStats == undefined)){
-        return <div className="get-price-stats" onClick={() => getSelectedPriceStats(sku)}>Get price stats</div>
+        //return <div className="get-price-stats" onClick={() => getSelectedPriceStats(sku)}>Get price stats</div>
+        return <button aria-label="Press Enter to get price stats" tabIndex={0} 
+        className="get-price-stats" onClick={() => getSelectedPriceStats(sku)}>Get Price Stats</button>
     }
 
     // Filter out the selected platforms.
@@ -93,8 +95,6 @@ export const ProductPriceStats = ({sku}: any) => {
         }
         return 0;
     }
-
-   
 
     priceStats.forEach( (priceEntry: any) => {
         minRange = (minRange < priceEntry.minPriceUsd) ? minRange : priceEntry.minPriceUsd + getPlatformFees(priceEntry);
