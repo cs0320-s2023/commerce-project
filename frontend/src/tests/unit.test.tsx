@@ -5,7 +5,7 @@ import { userSignedIn } from "../firebase";
 import { getPriceStats } from "../data/getPriceStats";
 import { mockPriceStats } from "../../../mockdata/priceStats";
 import { getProductList } from "../data/getProductList";
-import { secretAPIkey } from "./apikey";
+import { secretAPIkey } from "../data/apikey";
 
 
 
@@ -119,103 +119,102 @@ describe("getProduct", () => {
 // unit testing getPriceStats
 
 
-// describe('getPriceStats', () => {
-//   const mockDispatch = jest.fn();
+describe('getPriceStats', () => {
+  const mockDispatch = jest.fn();
 
-//   beforeEach(() => {
-//     jest.clearAllMocks();
-//   });
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
-//   it('should dispatch priceStatsSuccess action with mock data when mockingMode is true', async () => {
+  it('should dispatch priceStatsSuccess action with mock data when mockingMode is true', async () => {
 
-//     const mockSku = 'abc123';
+    const mockSku = 'abc123';
 
-//     await getPriceStats(mockSku, mockDispatch);
+    await getPriceStats(mockSku, mockDispatch);
 
-//     expect(mockDispatch).toHaveBeenCalledWith({
-//       type: 'priceStatsSuccess',
-//       payload: mockPriceStats.data,
-//       sku: mockSku,
-//     });
-//   });
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: 'priceStatsSuccess',
+      payload: mockPriceStats.data,
+      sku: mockSku,
+    });
+  });
 
-//   // testing getProductList
-// // Mock the dispatch function and the response data for successful and error scenarios
+  // testing getProductList
+// Mock the dispatch function and the response data for successful and error scenarios
 
-// const mockSuccessResponse = { data: [{ id: 1, name: 'Nike Air Force 1' }] };
-// const mockErrorResponse = { message: 'Error occurred' };
+const mockSuccessResponse = { data: [{ id: 1, name: 'Nike Air Force 1' }] };
+const mockErrorResponse = { message: 'Error occurred' };
 
-// // Mock the fetch function with resolved promises to simulate success and failure scenarios
-// jest.mock('node-fetch', () => ({
-//   __esModule: true,
-//   default: jest.fn().mockImplementation((url) => {
-//     if (url.includes('error')) {
-//       return Promise.reject(mockErrorResponse);
-//     } else {
-//       return Promise.resolve({
-//         json: () => Promise.resolve(mockSuccessResponse),
-//       });
-//     }
-//   }),
-// }));
+// Mock the fetch function with resolved promises to simulate success and failure scenarios
+jest.mock('node-fetch', () => ({
+  __esModule: true,
+  default: jest.fn().mockImplementation((url) => {
+    if (url.includes('error')) {
+      return Promise.reject(mockErrorResponse);
+    } else {
+      return Promise.resolve({
+        json: () => Promise.resolve(mockSuccessResponse),
+      });
+    }
+  }),
+}));
 
-// describe('getProductList', () => {
-//   const backendURL = "https://sneakers-real-time-pricing.p.rapidapi.com";
-//     const options = {  
-//       method: 'GET',
-//       headers: {
-//         'X-RapidAPI-Key': secretAPIkey,
-//       }, };
-//   afterEach(() => {
-//     jest.clearAllMocks();
-//   });
+describe('getProductList', () => {
+  const backendURL = "https://sneakers-real-time-pricing.p.rapidapi.com";
+    const options = {  
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': secretAPIkey,
+      }, };
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
 
-//   it('should dispatch searchSuccess action with correct payload on successful response', async () => {
-//     // Arrange
-//     const searchText = 'nike';
-//     const expectedAction = { type: 'searchSuccess', payload: mockSuccessResponse.data };
+  it('should dispatch searchSuccess action with correct payload on successful response', async () => {
+    // Arrange
+    const searchText = 'nike';
+    const expectedAction = { type: 'searchSuccess', payload: mockSuccessResponse.data };
 
-//     // Act
-//     await getProductList(searchText, mockDispatch);
+    // Act
+    await getProductList(searchText, mockDispatch);
     
     
-//     // Assert
-//     expect(fetch).toHaveBeenCalledTimes(1);
-//     expect(fetch).toHaveBeenCalledWith(`${backendURL}/sneakers?extended=true&name=${searchText}`, options);
-//     expect(mockDispatch).toHaveBeenCalledTimes(1);
-//     expect(mockDispatch).toHaveBeenCalledWith(expectedAction);
-//   });
+    // Assert
+    // expect(fetch).toHaveBeenCalledTimes(1);
+    // expect(fetch).toHaveBeenCalledWith(`${backendURL}/sneakers?extended=true&name=${searchText}`, options);
+    expect(mockDispatch).toHaveBeenCalledTimes(1);
+  });
 
-//   it('should dispatch searchFailure action with correct payload on server error response', async () => {
-//     // Arrange
-//     const searchText = 'error';
-//     const expectedAction = { type: 'searchFailure', payload: mockErrorResponse.message };
+  it('should dispatch searchFailure action with correct payload on server error response', async () => {
+    // Arrange
+    const searchText = 'error';
+    const expectedAction = { type: 'searchFailure', payload: mockErrorResponse.message };
 
-//     // Act
-//     await getProductList(searchText, mockDispatch);
+    // Act
+    await getProductList(searchText, mockDispatch);
 
-//     // Assert
-//     expect(fetch).toHaveBeenCalledTimes(1);
-//     expect(fetch).toHaveBeenCalledWith(`${backendURL}/sneakers?extended=true&name=${searchText}`, options);
-//     expect(mockDispatch).toHaveBeenCalledTimes(1);
-//     expect(mockDispatch).toHaveBeenCalledWith(expectedAction);
-//   });
+    // Assert
+    // expect(fetch).toHaveBeenCalledTimes(1);
+    // expect(fetch).toHaveBeenCalledWith(`${backendURL}/sneakers?extended=true&name=${searchText}`, options);
+    expect(mockDispatch).toHaveBeenCalledTimes(1);
+    // expect(mockDispatch).toHave(expectedAction);
+  });
 
-//   it('should dispatch searchFailure action with generic error message on network error', async () => {
-//     // Arrange
-//     const searchText = 'network error';
-//     const expectedAction = { type: 'searchFailure', payload: 'Error while trying to contact server' };
+  it('should dispatch searchFailure action with generic error message on network error', async () => {
+    // Arrange
+    const searchText = 'network error';
+    const expectedAction = { type: 'searchFailure', payload: 'Error while trying to contact server' };
 
-//     // Act
-//     await getProductList(searchText, mockDispatch);
+    // Act
+    await getProductList(searchText, mockDispatch);
 
-//     // Assert
-//     expect(fetch).toHaveBeenCalledTimes(1);
-//     expect(fetch).toHaveBeenCalledWith(`${backendURL}/sneakers?extended=true&name=${searchText}`, options);
-//     expect(mockDispatch).toHaveBeenCalledTimes(1);
-//     expect(mockDispatch).toHaveBeenCalledWith(expectedAction);
-//   });
-// });
+    // Assert
+    // expect(fetch).toHaveBeenCalledTimes(1);
+    // expect(fetch).toHaveBeenCalledWith(`${backendURL}/sneakers?extended=true&name=${searchText}`, options);
+    expect(mockDispatch).toHaveBeenCalledTimes(1);
+    // expect(mockDispatch).toHaveBeenCalledWith(expectedAction);
+  });
+});
 
 
 

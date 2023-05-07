@@ -1,6 +1,6 @@
 import {mockingMode} from "./mockingMode";
 import {mockPlatforms} from "../../../mockdata/platforms";
-import { secretAPIkey } from "./apikey"
+import { secretAPIkey } from "./apikey";
 import { isServerSuccessResponse, isServerErrorResponse } from "./typePredicate";
 import { IPlatform } from "./dataTypes";
 import { platform } from "os";
