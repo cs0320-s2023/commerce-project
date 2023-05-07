@@ -6,20 +6,18 @@ import { Platforms } from "./components/Platforms";
 import { NewSearchBar } from "./components/NewSearchBar";
 import { GoogleSignIn } from "./components";
 import { ErrorMessage } from "./components";
-import { PriceStats } from "./components/";
 import { reducer } from "./data/reducer";
 import { defaultPageState, initialContext } from "./data/dataTypes";
 
 export const PageContext = createContext(initialContext);
 
 function App() {
-  // Ignore the red underlining for now
+  // when we need to update the state of the components, we will call the dispatch function
   const [pageState, dispatch] = useReducer(reducer, defaultPageState);
 
-  const username = localStorage.getItem("name");
+  const username = localStorage.getItem("name"); // get username if signed in
 
-  const signedIn = username != undefined && username.length > 0;  // Good one
-  // const signedIn = true;  // Safae test
+  const signedIn = username != undefined && username.length > 0;  // flag to see if user is signed in
 
   return (
     <PageContext.Provider value={{ pageState, dispatch }}>
@@ -39,7 +37,7 @@ function App() {
         {signedIn ? (
           <>
             <NewSearchBar />
-            <PriceStats />
+            
             <div
               className="results-filter"
               id="results-filter"

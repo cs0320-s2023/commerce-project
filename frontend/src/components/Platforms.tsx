@@ -1,21 +1,24 @@
 import {useContext, useEffect, useState} from "react"
-import React, { Component } from "react";
 import "../App.css"
 import { getPlatforms } from "../data/getPlatforms";
-import {Alert, Tooltip} from "react-bootstrap"
+import {Alert} from "react-bootstrap"
 import {Switch} from "antd";
 import { PageContext } from "../App"
 import { IPlatform } from "../data/dataTypes";
-import { platform } from "os";
 
 const PlatformToggleSwitch = ({name}: any) => {
 
   const {pageState, dispatch} = useContext(PageContext);
 
-  const [checked, setChecked] = useState(true);
+  const [checked, setChecked] = useState(true); // selected by user
 
+  /*
+    Changes the platform from selected to not selected (& vis versa)
+  */
   const handleChange = (checked: boolean, event: any) => {
-    setChecked(checked);    
+
+    setChecked(checked); 
+
     pageState.platforms.forEach((platform) => {
       if (platform.name === name) {
         platform.selected = checked;
@@ -23,6 +26,7 @@ const PlatformToggleSwitch = ({name}: any) => {
         const action = {
           type : "filterPlatforms",
         }
+
         dispatch(action) ;
 
         return;
@@ -55,7 +59,7 @@ export const Platforms  = () => {
     )
 
     if (platforms == null) {
-        return <Alert variant = "" className="platforms-container">Loading Platforms!</Alert>
+        return <Alert variant = "secondary" className="platforms-container">Loading Platforms!</Alert>
     } 
 
     return (
@@ -63,7 +67,6 @@ export const Platforms  = () => {
           <div className ="title-filter">Platforms</div>
           <div className ="subtitle-filter">Narrow your search to your favorite platforms</div>
 
-        {/* <Alert variant = "" className="title">Your Platforms:</Alert> */}
         <div className="list-container">
           {platforms.map((platform: IPlatform) => (
             <PlatformToggleSwitch name={platform.name} key={platform.name} />

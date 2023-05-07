@@ -25,7 +25,6 @@ export interface IWishList {
 export interface IPageState {
     errorMessage: string,
     productList: IProduct[],
-    selectedProductPriceStats: IPriceStat[],
     userName : string | null,
     IWishList : IProduct[],
     platforms: IPlatform[]
@@ -39,7 +38,6 @@ export interface IPlatform {
 export const defaultPageState : IPageState = { 
     errorMessage: "",
     productList: [],
-    selectedProductPriceStats: [],
     userName : "",
     IWishList : [],
     platforms: []

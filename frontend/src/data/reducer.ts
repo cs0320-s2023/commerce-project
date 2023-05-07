@@ -37,7 +37,6 @@ export const reducer: Reducer<IPageState, IPageStateAction> = (state : IPageStat
 
             return {
                 ...state, 
-                selectedProductPriceStats : [],
                 errorMessage : payload,
                 userName: username
             }
@@ -48,10 +47,16 @@ export const reducer: Reducer<IPageState, IPageStateAction> = (state : IPageStat
                 platforms : payload,
             }
         
-        case "filterPlatforms":
+        case "getPlatformsFailure":
             return {
                 ...state, 
-                errorMessage : state.errorMessage + " ",
+                errorMessage : payload,
+            }
+
+        case "filterPlatforms":
+            return {
+                ...state,  
+                errorMessage : state.errorMessage + " ", //hack to trigger state change from React
             }
 
         default :

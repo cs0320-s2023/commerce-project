@@ -14,15 +14,25 @@ export async function getPlatforms (platforms: IPlatform[], dispatch : any) {
     if (mockingMode) {
 
         let plaforms : IPlatform[] = [];
-        mockPlatforms.data.forEach( (platform) => {
-            plaforms.push({name: platform.name, selected: true})
-        })
 
-        const action = {
-            type : "getPlatformsSuccess",
-            payload : plaforms
+        try { //defensive programming
+            mockPlatforms.data.forEach( (platform) => {
+                plaforms.push({name: platform.name, selected: true})
+            })
+
+            const action = {
+                type : "getPlatformsSuccess",
+                payload : plaforms
+            }
+            dispatch(action) ;
+
+        } catch (e : any) {
+            const action = {
+                type : "getPlatformsFailure",
+                payload : e.message
+            }
+            dispatch(action) ;
         }
-        dispatch(action) ;
 
     } else {
 
@@ -30,46 +40,52 @@ export async function getPlatforms (platforms: IPlatform[], dispatch : any) {
 
         await fetch(url)
             .then(res => res.json())
-            .then((result_raw) => {
-                if (isServerSuccessResponse(result_raw)) {
-                    const result : any = result_raw.data;
+            .then((resultJson) => {
+                try { //defensive programming
+                    if (isServerSuccessResponse(resultJson)) {
+                        const result : any = resultJson.data;
 
-                    let plaforms : IPlatform[] = [];
-                    result.data.forEach( (platform: IPlatform) => {
-                        plaforms.push({name: platform.name, selected: true})
-                    })
+                        let plaforms : IPlatform[] = [];
+                        result.data.forEach( (platform: IPlatform) => {
+                            plaforms.push({name: platform.name, selected: true})
+                        })
 
-                    const action = {
-                        type : "getPlatformsSuccess",
-                        payload : plaforms,
-                    };
-                    dispatch(action) ;
-                
+                        const action = {
+                            type : "getPlatformsSuccess",
+                            payload : plaforms,
+                        };
 
-                } else if (isServerErrorResponse(result_raw)) {
+                        dispatch(action) ;
+                    
+                    } else if (isServerErrorResponse(resultJson)) {
+                        const action = {
+                            type : "getPlatformsFailure",
+                            payload : resultJson.message
+                        }; 
+                        dispatch(action) ;
+                    
+                    } else { // any other error case 
+                        const action = {
+                            type : "getPlatformsFailure",
+                            payload : "Error while trying to contact server for platforms"
+                        };
+                        dispatch(action) ;
+                    } 
+
+                } catch (e : any) {
+
                     const action = {
                         type : "getPlatformsFailure",
-                        payload : result_raw.message
-                    }; 
+                        payload : e.message
+                    }
                     dispatch(action) ;
-                
-
-                } else {
-                    const action = {
-                        type : "getPlatformsFailure",
-                        payload : "Error while trying to contact server for prices stats"
-                    };
-                    dispatch(action) ;
-                  
                 }
             },
             (error) => {
-             
                 const action = {
                     type : "getPlatformsFailure",
                     payload : error
                 };
-
                 dispatch(action) ;
             }
     )
