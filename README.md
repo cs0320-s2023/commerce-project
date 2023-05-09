@@ -12,46 +12,50 @@ Github Repo: https://github.com/cs0320-s2023/commerce-project.git
 ## Contributions
 
 Kyle:
-Filtering styling with bootstrap
-Styled products as Cards with bootstrap
-Dom & unit testing
+* Styling with bootstrap:
+  * Cards (pictures with shoes)
+  * Alerts (worked on alerts to replace divs)
+  * Toggle buttons (all toggle buttons appeared on the website)
+* Frontend work with components - added roles and adjusted code after 
+* Running tests
+  * All of DOM testing - tested all the components possible including components that only appear after firing a click
+  * Half of unit testing - tested around half of the getters in the data folder
 
 Zeeshan: 
-Google authentification with firebase
-Wishlist functionality (panel, adding/removing products)
-Wishlist and Sign In/Out frontend
-Connecting wishlist and user accounts to database
-Accessibility + shortcuts
-Setting up and creating initial handler for backend mock api server 
-Defensive Programming 
+* Google authentification with firebase
+* Wishlist functionality (panel, adding/removing products)
+* Wishlist and Sign In/Out frontend
+* Connecting wishlist and user accounts to database
+* Accessibility + shortcuts
+* Setting up and creating initial handler for backend mock api server 
+* Defensive Programming throughout the project
 
 Omer:
-Front end:
-Dom & unit testing
-Assistance with google authentification with firebase
+* Front end:
+  * Dom & unit testing
+  * Assistance with google authentification with firebase
 
-Backend: 
-Setting up and creating initial handler for backend mock api server 
+* Backend: 
+  * Setting up and creating initial handler for backend mock api server 
 
 Safae: 
-Frontend : 
-Creation & styling of components:
-Search Bar
-Platforms filtering
-Search Results
-Product price Statistics
-Error Message
-Implementation of functionalities (in data folder):
-Interfaces to manage different data types
-Retrieving of platforms (from mock data & from API)
-Retrieving products from user search (from mock data & from API)
-Retrieving prices for each product (from mock data & from API)
+* Frontend : 
+  * Creation & styling of components:
+    * Search Bar
+    * Platforms filtering
+    * Search Results
+    * Product price Statistics
+    * Error Message
+  * Implementation of functionalities (in data folder):
+    * Interfaces to manage different data types
+    * Retrieving of platforms (from mock data & from API)
+    * Retrieving products from user search (from mock data & from API)
+    * Retrieving prices for each product (from mock data & from API)
 
-Backend:
-Creating and implementation of final handlers for back end 
-SneakerPlatformHandler, SneakerPriceStatsHandler, SneakerProductList 
-  —> with mocking & making API calls
-Created and implemented caching (all the HTTP and Proxy files)
+* Backend:
+    * Creating and implementation of final handlers for back end SneakerPlatformHandler, SneakerPriceStatsHandler, SneakerProductList 
+      --> with mocking & making API calls
+    * Created and implemented caching (all the HTTP and Proxy files)
 
 ## Backend
 In the `src` package is `main` and `test`:
